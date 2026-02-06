@@ -54,7 +54,7 @@
         <h2>Minicontos</h2>
         <section id="vitrine-mini" class="grid-contos">
             <div class="card-conto">
-                <img src="quimikamente.jpg" class="card-image" onclick="abrirEspecial('QuimikaMente', 'Fagner Otobelli', 'Madrugada. Ela desperta, joga o cobertor no chão e corre ao laboratório. Lavoisier revelara a fórmula que traria paz à Terra. No agitador Vortex, uma após outra, ela insere moléculas: amerício + argônio + cobalto + molibdenio + nitrogênio + urânio + nitrogênio + cálcio. Agita. Reage: AmArCoMoNUNCa.')" onerror="this.src='https://via.placeholder.com/300x200?text=QuimikaMente'">
+                <img src="quimikamente.png" class="card-image" onclick="abrirEspecial('QuimikaMente', 'Fagner Otobelli', 'Madrugada. Ela desperta, joga o cobertor no chão e corre ao laboratório. Lavoisier revelara a fórmula que traria paz à Terra. No agitador Vortex, uma após outra, ela insere moléculas: amerício + argônio + cobalto + molibdenio + nitrogênio + urânio + nitrogênio + cálcio. Agita. Reage: AmArCoMoNUNCa.')" onerror="this.src='https://via.placeholder.com/300x200?text=QuimikaMente'">
                 <div class="card-content" onclick="abrirEspecial('QuimikaMente', 'Fagner Otobelli', 'Madrugada. Ela desperta, joga o cobertor no chão e corre ao laboratório. Lavoisier revelara a fórmula que traria paz à Terra. No agitador Vortex, uma após outra, ela insere moléculas: amerício + argônio + cobalto + molibdenio + nitrogênio + urânio + nitrogênio + cálcio. Agita. Reage: AmArCoMoNUNCa.')">
                     <h4>QuimikaMente</h4>
                     <p>Por Fagner Otobelli</p>
@@ -72,7 +72,7 @@
                 <input type="text" id="titulo" placeholder="Título">
                 <input type="text" id="autor" placeholder="Autor">
                 <input type="date" id="data">
-                <input type="text" id="img" placeholder="Nome da imagem (ex: mini.jpg)">
+                <input type="text" id="img" placeholder="Nome da imagem (ex: mini.png)">
                 <textarea id="texto" maxlength="500" placeholder="Texto curto..."></textarea>
                 <button onclick="salvarMini()" style="width:100%; background:#000; color:#fff; padding:15px; border:none; cursor:pointer;">SALVAR</button>
             </div>
@@ -182,7 +182,6 @@
             window.scrollTo(0, document.body.scrollHeight);
         }
 
-        // Sistema Legal
         const textosLegais = {
             termos: `<h3>Termos de Uso</h3><p>Uso pessoal. Proibida reprodução.</p><div class="law-highlight"><strong>Aviso Legal:</strong> Tolerância zero contra racismo e homofobia (Lei nº 7.716/1989).</div>`,
             privacidade: `<h3>Política de Privacidade</h3><p>Nome e E-mail em comentários servem apenas para identificação e moderação.</p>`,
