@@ -10,52 +10,52 @@
         .logo { font-size: 22px; font-weight: 700; text-decoration: none; color: #000; }
         nav a { margin-left: 20px; text-decoration: none; color: #666; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
         
-        /* Seção Hero com Sobreposição */
+        /* Seção Hero - Texto preto sobre imagem natural */
         .hero-container { 
             position: relative; 
-            max-width: 800px; 
+            max-width: 850px; 
             margin: 20px auto; 
-            overflow: hidden;
-            color: #fff;
+            background-color: #fff;
         }
         
         .main-photo { 
             width: 100%; 
             display: block;
-            height: 450px; 
-            object-fit: cover; 
+            height: auto; 
+            max-height: 500px;
+            object-fit: cover;
         }
 
-        /* Camada escura para dar leitura ao texto */
-        .overlay {
+        .overlay-texto {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to right, rgba(0,0,0,0.7) 30%, rgba(0,0,0,0.2) 100%);
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%;
             display: flex;
-            align-items: center;
-            padding: 40px;
+            align-items: center; /* Centraliza verticalmente */
+            padding: 0 40px;
             box-sizing: border-box;
+            pointer-events: none; /* Garante que cliques passem para elementos abaixo se necessário */
         }
 
         .intro-text-box { 
-            max-width: 450px; 
+            max-width: 420px; 
             text-align: left;
+            color: #1a1a1a; /* Letras Pretas */
         }
 
         .intro-text-box p { 
-            font-size: 1.1rem; 
+            font-size: 1.15rem; 
             line-height: 1.6;
             margin-bottom: 15px;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
         }
 
         .copyright-photo { 
-            position: absolute; 
-            bottom: 10px; 
-            right: 20px; 
+            text-align: right;
             font-size: 10px; 
-            color: rgba(255,255,255,0.6); 
-            margin: 0;
+            color: #bbb; 
+            margin: 5px 20px 0 0;
         }
         
         footer { max-width: 650px; margin: 60px auto 40px auto; padding: 20px; border-top: 1px solid #eee; text-align: center; }
@@ -71,10 +71,10 @@
         .btn-fechar { position: fixed; top: 20px; right: 20px; background: #000; color: #fff; border: none; padding: 10px 20px; cursor: pointer; font-family: sans-serif; font-size: 12px; }
         .law-highlight { background-color: #fff9f9; border-left: 3px solid #c62828; padding: 15px; margin-top: 20px; font-style: italic; }
 
-        /* Mobile Adjustments */
-        @media (max-width: 600px) {
-            .main-photo { height: 550px; }
-            .overlay { background: rgba(0,0,0,0.6); align-items: flex-start; padding-top: 60px; }
+        /* Ajustes para Mobile */
+        @media (max-width: 650px) {
+            .overlay-texto { position: static; padding: 20px; }
+            .intro-text-box { max-width: 100%; }
             header { flex-direction: column; align-items: center; gap: 20px; }
         }
     </style>
@@ -90,17 +90,17 @@
     </header>
 
     <main>
-        <section class="hero-container">
+        <div class="hero-container">
             <img src="foto-autor.png" alt="Fagner Otobelli" class="main-photo">
-            <div class="overlay">
+            <div class="overlay-texto">
                 <article class="intro-text-box">
                     <p>A escrita não é apenas o ato final de imprimir palavras no papel; é um processo químico de experimentação.</p>
                     <p>Aqui, as ideias são os reagentes e a imaginação é o catalisador. <strong>QuimikaMente</strong> é o tubo de ensaio onde misturo fragmentos de realidade com doses generosas de ficção.</p>
                     <p>Busco destilar parágrafos em frases e frases em essências puras. Boas leituras!</p>
                 </article>
             </div>
-            <p class="copyright-photo">© Fagner Otobelli. Todos os direitos reservados.</p>
-        </section>
+        </div>
+        <p class="copyright-photo">© Fagner Otobelli. Todos os direitos reservados.</p>
     </main>
 
     <footer>
@@ -122,18 +122,18 @@
         const textosLegais = {
             termos: `
                 <h3>Termos de Uso</h3>
-                <p>Ao acessar o QuimikaMente, você concorda em utilizar o conteúdo deste site estritamente para leitura pessoal...</p>
+                <p>Ao acessar o QuimikaMente, você concorda em utilizar o conteúdo deste site estritamente para leitura pessoal e apreciação artística.</p>
                 <div class="law-highlight">
-                    <strong>Aviso Legal de Conduta:</strong> Em conformidade com a legislação brasileira (Lei nº 7.716/1989), o QuimikaMente mantém uma política de tolerância zero contra racismo, homofobia e preconceito.
+                    <strong>Aviso Legal de Conduta:</strong> Em conformidade com a legislação brasileira (Lei nº 7.716/1989), o QuimikaMente mantém uma política de tolerância zero contra racismo, homofobia e qualquer forma de preconceito.
                 </div>
             `,
             privacidade: `
                 <h3>Política de Privacidade</h3>
-                <p>O QuimikaMente respeita sua privacidade. Solicitamos Nome e E-mail em comentários apenas para fins de moderação.</p>
+                <p>O QuimikaMente não coleta dados automaticamente. Nomes e e-mails enviados em comentários são usados apenas para moderação.</p>
             `,
             autoral: `
                 <h3>Direitos Autorais</h3>
-                <p>Todo o conteúdo literário é de autoria de <strong>Fagner Otobelli</strong> (Lei nº 9.610/98). Artes desenvolvidas com auxílio de IA (Gemini).</p>
+                <p>Todo o conteúdo literário é de autoria de <strong>Fagner Otobelli</strong>. Imagens geradas por IA (Gemini) com refinamento do autor.</p>
             `
         };
 
