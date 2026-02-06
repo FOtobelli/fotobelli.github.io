@@ -42,4 +42,89 @@
         </nav>
     </header>
 
-    <main class="
+    <main class="container">
+        <h2>Minicontos</h2>
+        
+        <div class="admin-section">
+            <button id="btn-add" onclick="toggleForm()">+ Novo Miniconto</button>
+            <div id="form-container" class="form-card">
+                <input type="text" id="titulo" placeholder="Título do Miniconto">
+                <input type="text" id="autor" placeholder="Autor">
+                <input type="date" id="data-pub">
+                <input type="number" id="tempo-leitura" placeholder="Tempo de Leitura (min)">
+                <input type="text" id="img-url" placeholder="Nome da imagem (ex: capa.png)">
+                
+                <textarea id="texto-mini" rows="6" maxlength="500" placeholder="Escreva seu miniconto (máx. 500 caracteres)..." oninput="updateCount()"></textarea>
+                <span id="char-count">0 / 500 caracteres</span>
+                
+                <button onclick="adicionarMini()" style="width:100%; background: #000; color: #fff; border: none; padding: 15px; cursor: pointer; text-transform: uppercase;">Publicar Miniconto</button>
+            </div>
+        </div>
+
+        <section id="vitrine-mini" class="grid-contos"></section>
+    </main>
+
+    <footer>
+        <div class="footer-logo">QuimikaMente</div>
+        <div class="slogan">Viver, sentir, experimentar, recriar.</div>
+    </footer>
+
+    <script>
+        function toggleForm() {
+            const form = document.getElementById('form-container');
+            form.style.display = form.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function updateCount() {
+            const text = document.getElementById('texto-mini').value;
+            document.getElementById('char-count').innerText = text.length + " / 500 caracteres";
+        }
+
+        function adicionarMini() {
+            const mini = {
+                titulo: document.getElementById('titulo').value,
+                autor: document.getElementById('autor').value,
+                data: document.getElementById('data-pub').value,
+                tempo: document.getElementById('tempo-leitura').value,
+                img: document.getElementById('img-url').value,
+                texto: document.getElementById('texto-mini').value
+            };
+
+            if(!mini.titulo || !mini.texto) { alert("Preencha o título e o texto!"); return; }
+
+            let minis = JSON.parse(localStorage.getItem('quimikamente_mini_list') || '[]');
+            minis.push(mini);
+            localStorage.setItem('quimikamente_mini_list', JSON.stringify(minis));
+            
+            renderizarMinis();
+            toggleForm();
+            
+            // Limpa os campos
+            document.getElementById('titulo').value = '';
+            document.getElementById('texto-mini').value = '';
+            updateCount();
+        }
+
+        function renderizarMinis() {
+            const vitrine = document.getElementById('vitrine-mini');
+            let minis = JSON.parse(localStorage.getItem('quimikamente_mini_list') || '[]');
+            
+            vitrine.innerHTML = minis.map(m => `
+                <div class="card-conto">
+                    <img src="${m.img}" class="card-image" onerror="this.src='https://via.placeholder.com/300x200?text=QuimikaMente'">
+                    <div class="card-content">
+                        <h4>${m.titulo}</h4>
+                        <p>Por ${m.autor}</p>
+                        <div class="card-meta">
+                            <span>📅 ${m.data}</span>
+                            <span>⏱ ${m.tempo} MIN</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        window.onload = renderizarMinis;
+    </script>
+</body>
+</html>
