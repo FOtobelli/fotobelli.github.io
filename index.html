@@ -28,6 +28,7 @@
         .modal-legal-content { max-width: 600px; margin: 0 auto; text-align: justify; color: #333; line-height: 1.6; }
         .btn-fechar { position: fixed; top: 20px; right: 20px; background: #000; color: #fff; border: none; padding: 10px 20px; cursor: pointer; font-family: sans-serif; font-size: 12px; }
         h3 { border-bottom: 1px solid #eee; padding-bottom: 10px; margin-top: 0; }
+        .law-highlight { background-color: #fff9f9; border-left: 3px solid #c62828; padding: 15px; margin-top: 20px; font-style: italic; }
     </style>
 </head>
 <body>
@@ -62,8 +63,7 @@
 
     <div id="modal-legal" class="modal-legal">
         <button class="btn-fechar" onclick="fecharLegal()">FECHAR</button>
-        <div id="legal-content" class="modal-legal-content">
-            </div>
+        <div id="legal-content" class="modal-legal-content"></div>
     </div>
 
     <script>
@@ -72,28 +72,32 @@
                 <h3>Termos de Uso</h3>
                 <p>Ao acessar o QuimikaMente, você concorda em utilizar o conteúdo deste site estritamente para leitura e apreciação pessoal. É proibida a modificação, venda ou distribuição comercial de qualquer parte dos textos aqui publicados.</p>
                 <p>Este site é um projeto literário e artístico, e o acesso a ele implica no respeito às normas de convivência digital e à propriedade intelectual do autor.</p>
+                <div class="law-highlight">
+                    <strong>Aviso Legal de Conduta:</strong> Em conformidade com a legislação brasileira (Lei nº 7.716/1989 e decisões do STF), o QuimikaMente mantém uma política de tolerância zero contra qualquer manifestação de cunho racista, homofóbico, transfóbico ou qualquer outra forma de injúria racial e preconceito. Comentários ou mensagens desta natureza serão sumariamente descartados e os dados dos autores poderão ser encaminhados às autoridades competentes.
+                </div>
             `,
             privacidade: `
                 <h3>Política de Privacidade</h3>
-                <p>O QuimikaMente respeita sua privacidade. Este site não coleta dados pessoais, não utiliza cookies de rastreamento de terceiros, nem armazena informações sobre seus visitantes em bancos de dados externos.</p>
-                <p>Qualquer informação técnica temporária é processada apenas para o funcionamento básico do navegador via armazenamento local (localStorage), garantindo total privacidade à sua navegação.</p>
+                <p>O QuimikaMente respeita sua privacidade. Este site não coleta dados pessoais automaticamente, não utiliza cookies de rastreamento de terceiros, nem comercializa informações de visitantes.</p>
+                <p><strong>Interação:</strong> Caso o leitor opte por enviar comentários, solicitamos Nome e E-mail apenas para fins de identificação e moderação. Esses dados não serão compartilhados com terceiros.</p>
+                <p>Qualquer informação técnica temporária é processada apenas via armazenamento local (localStorage) no seu próprio dispositivo.</p>
             `,
             autoral: `
                 <h3>Direitos Autorais</h3>
                 <p>Todo o conteúdo literário (contos e minicontos) presente neste site é de autoria exclusiva de <strong>Fagner Otobelli</strong>, protegido pela Lei nº 9.610/98.</p>
-                <p>As artes e imagens visuais que ilustram este projeto foram desenvolvidas pelo autor utilizando ferramentas de Inteligência Artificial (Gemini), possuindo direitos de autoria e propriedade intelectual sobre a composição final e refinamento técnico. A reprodução sem autorização é expressamente proibida.</p>
+                <p>As artes e imagens visuais que ilustram este projeto foram desenvolvidas pelo autor utilizando ferramentas de Inteligência Artificial (Gemini), possuindo direitos de autoria e propriedade intelectual sobre a composição final e o refinamento artístico. A reprodução, cópia ou uso não autorizado é expressamente proibida e sujeita às penalidades da lei.</p>
             `
         };
 
         function abrirLegal(tipo) {
             document.getElementById('legal-content').innerHTML = textosLegais[tipo];
             document.getElementById('modal-legal').style.display = 'block';
-            document.body.style.overflow = 'hidden'; // Impede o scroll do fundo ao ler
+            document.body.style.overflow = 'hidden'; 
         }
 
         function fecharLegal() {
             document.getElementById('modal-legal').style.display = 'none';
-            document.body.style.overflow = 'auto'; // Devolve o scroll
+            document.body.style.overflow = 'auto'; 
         }
     </script>
 </body>
