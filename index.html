@@ -10,7 +10,6 @@
         .logo { font-size: 22px; font-weight: 700; text-decoration: none; color: #000; }
         nav a { margin-left: 20px; text-decoration: none; color: #666; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
         
-        /* Seção Hero - Texto centralizado e justificado na base */
         .hero-container { 
             position: relative; 
             max-width: 850px; 
@@ -33,23 +32,32 @@
             width: 100%; 
             height: 100%;
             display: flex;
-            justify-content: center; /* Centraliza horizontalmente */
-            align-items: flex-end;    /* Empurra para a base da imagem */
-            padding: 0 40px 80px 40px; /* O '80px' abaixa o texto (aprox. 3cm) */
+            justify-content: center; 
+            align-items: flex-end;    
+            /* Padding bottom aumentado para baixar o texto mais 2cm (total ~5cm da base original) */
+            padding: 0 40px 40px 40px; 
             box-sizing: border-box;
             pointer-events: none;
         }
 
         .intro-text-box { 
             max-width: 500px; 
-            text-align: justify; /* Justifica o texto */
+            text-align: justify; 
             color: #1a1a1a;
+            font-weight: bold; /* Toda a escrita em negrito */
+            /* Sombra sutil branca para aumentar visibilidade sobre a foto */
+            text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8), 1px 1px 2px rgba(255, 255, 255, 1);
         }
 
         .intro-text-box p { 
             font-size: 1.15rem; 
             line-height: 1.6;
             margin-bottom: 15px;
+        }
+
+        /* Destaque Azul Claro para QuimikaMente */
+        .highlight-blue {
+            color: #00bcd4; /* Azul claro estilo ciano */
         }
 
         .copyright-photo { 
@@ -70,11 +78,10 @@
         .modal-legal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.98); z-index: 2000; overflow-y: auto; padding: 60px 20px; box-sizing: border-box; }
         .modal-legal-content { max-width: 600px; margin: 0 auto; text-align: justify; color: #333; line-height: 1.6; }
         .btn-fechar { position: fixed; top: 20px; right: 20px; background: #000; color: #fff; border: none; padding: 10px 20px; cursor: pointer; font-family: sans-serif; font-size: 12px; }
-        .law-highlight { background-color: #fff9f9; border-left: 3px solid #c62828; padding: 15px; margin-top: 20px; font-style: italic; }
 
         @media (max-width: 650px) {
             .overlay-texto { position: static; padding: 20px; }
-            .intro-text-box { max-width: 100%; }
+            .intro-text-box { max-width: 100%; text-shadow: none; }
             header { flex-direction: column; align-items: center; gap: 20px; }
         }
     </style>
@@ -95,7 +102,7 @@
             <div class="overlay-texto">
                 <article class="intro-text-box">
                     <p>A escrita não é apenas o ato final de imprimir palavras no papel; é um processo químico de experimentação.</p>
-                    <p>Aqui, as ideias são os reagentes e a imaginação é o catalisador. <strong>QuimikaMente</strong> é o tubo de ensaio onde misturo fragmentos de realidade com doses generosas de ficção.</p>
+                    <p>Aqui, as ideias são os reagentes e a imaginação é o catalisador. <strong class="highlight-blue">QuimikaMente</strong> é o tubo de ensaio onde misturo fragmentos de realidade com doses generosas de ficção.</p>
                     <p>Busco destilar parágrafos em frases e frases em essências puras. Boas leituras!</p>
                 </article>
             </div>
@@ -120,21 +127,9 @@
 
     <script>
         const textosLegais = {
-            termos: `
-                <h3>Termos de Uso</h3>
-                <p>Ao acessar o QuimikaMente, você concorda em utilizar o conteúdo deste site estritamente para leitura pessoal e apreciação artística.</p>
-                <div class="law-highlight">
-                    <strong>Aviso Legal de Conduta:</strong> Em conformidade com a legislação brasileira (Lei nº 7.716/1989), o QuimikaMente mantém uma política de tolerância zero contra racismo, homofobia e qualquer forma de preconceito.
-                </div>
-            `,
-            privacidade: `
-                <h3>Política de Privacidade</h3>
-                <p>O QuimikaMente não coleta dados automaticamente. Nomes e e-mails enviados em comentários são usados apenas para moderação.</p>
-            `,
-            autoral: `
-                <h3>Direitos Autorais</h3>
-                <p>Todo o conteúdo literário é de autoria de <strong>Fagner Otobelli</strong>. Imagens geradas por IA (Gemini) com refinamento do autor.</p>
-            `
+            termos: `<h3>Termos de Uso</h3><p>Conteúdo para leitura pessoal e apreciação artística.</p>`,
+            privacidade: `<h3>Política de Privacidade</h3><p>Não coletamos dados automaticamente.</p>`,
+            autoral: `<h3>Direitos Autorais</h3><p>Autoria de Fagner Otobelli. Imagens via IA (Gemini).</p>`
         };
 
         function abrirLegal(tipo) {
