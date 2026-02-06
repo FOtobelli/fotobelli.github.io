@@ -33,23 +33,32 @@
             width: 100%; 
             height: 100%;
             display: flex;
-            justify-content: center; /* Centraliza horizontalmente */
-            align-items: flex-end;    /* Empurra para a base da imagem */
-            padding: 0 40px 80px 40px; /* O '80px' abaixa o texto (aprox. 3cm) */
+            justify-content: center; 
+            align-items: flex-end;    
+            /* padding-bottom reduzido para baixar o texto ao máximo */
+            padding: 0 40px 5px 40px; 
             box-sizing: border-box;
             pointer-events: none;
         }
 
         .intro-text-box { 
             max-width: 500px; 
-            text-align: justify; /* Justifica o texto */
+            text-align: justify; 
             color: #1a1a1a;
+            font-weight: bold; /* Negrito em tudo */
+            /* Sombra sutil branca para garantir leitura sobre a foto */
+            text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.9), 1px 1px 2px rgba(255, 255, 255, 1);
         }
 
         .intro-text-box p { 
             font-size: 1.15rem; 
             line-height: 1.6;
             margin-bottom: 15px;
+        }
+
+        /* Azul claro para o nome */
+        .highlight-blue {
+            color: #00bcd4;
         }
 
         .copyright-photo { 
@@ -74,7 +83,7 @@
 
         @media (max-width: 650px) {
             .overlay-texto { position: static; padding: 20px; }
-            .intro-text-box { max-width: 100%; }
+            .intro-text-box { max-width: 100%; text-shadow: none; }
             header { flex-direction: column; align-items: center; gap: 20px; }
         }
     </style>
@@ -95,7 +104,7 @@
             <div class="overlay-texto">
                 <article class="intro-text-box">
                     <p>A escrita não é apenas o ato final de imprimir palavras no papel; é um processo químico de experimentação.</p>
-                    <p>Aqui, as ideias são os reagentes e a imaginação é o catalisador. <strong>QuimikaMente</strong> é o tubo de ensaio onde misturo fragmentos de realidade com doses generosas de ficção.</p>
+                    <p>Aqui, as ideias são os reagentes e a imaginação é o catalisador. <span class="highlight-blue">QuimikaMente</span> é o tubo de ensaio onde misturo fragmentos de realidade com doses generosas de ficção.</p>
                     <p>Busco destilar parágrafos em frases e frases em essências puras. Boas leituras!</p>
                 </article>
             </div>
