@@ -34,7 +34,7 @@
             display: flex;
             justify-content: center; 
             align-items: flex-end;    
-            padding: 0 40px 0 40px; /* Padding zero na base para controle total via transform */
+            padding: 0 40px 0 40px; 
             box-sizing: border-box;
             pointer-events: none;
         }
@@ -43,9 +43,9 @@
             max-width: 500px; 
             text-align: justify; 
             color: #1a1a1a;
-            font-weight: normal; /* Leveza: sem negrito geral */
-            /* Baixa o texto em 20px (aprox. 2cm na tela) para sair da imagem */
-            transform: translateY(40px); 
+            font-weight: normal;
+            /* Aumentado de 40px para 60px para baixar mais 1cm */
+            transform: translateY(60px); 
             text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.8);
         }
 
@@ -55,9 +55,9 @@
             margin-bottom: 15px;
         }
 
-        /* QuimikaMente: Azul claro e negrito */
+        /* QuimikaMente: Preto e Negrito */
         .highlight-brand {
-            color: #00bcd4;
+            color: #1a1a1a;
             font-weight: bold;
         }
 
@@ -65,7 +65,8 @@
             text-align: right;
             font-size: 10px; 
             color: #bbb; 
-            margin: 45px 20px 0 0; /* Aumentado para não colidir com o texto que desceu */
+            /* Aumentado para 65px para compensar a descida do texto */
+            margin: 65px 20px 0 0; 
         }
         
         footer { max-width: 650px; margin: 60px auto 40px auto; padding: 20px; border-top: 1px solid #eee; text-align: center; }
