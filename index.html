@@ -18,21 +18,7 @@
         .slogan { font-size: 13px; color: #888; margin-bottom: 25px; }
         .legal { font-size: 11px; color: #bbb; text-transform: uppercase; letter-spacing: 1px; }
         .legal a { color: #bbb; text-decoration: none; margin: 0 10px; }
-    /* --- ESTILOS DOS CONTOS --- */
-.admin-section { margin: 40px 0; text-align: center; }
-#btn-add { background: #000; color: #fff; border: none; padding: 10px 20px; cursor: pointer; font-family: 'Georgia', serif; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
-
-.form-card { display: none; background: #f9f9f9; padding: 20px; border: 1px solid #eee; margin: 20px auto; max-width: 500px; text-align: left; }
-.form-card input { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; box-sizing: border-box; }
-
-.grid-contos { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 30px; margin-top: 50px; text-align: left; }
-.card-conto { background: #fff; border: 1px solid #eee; transition: 0.3s; cursor: pointer; }
-.card-conto:hover { border-color: #000; transform: translateY(-3px); }
-.card-image { width: 100%; height: 200px; object-fit: cover; background: #f0f0f0; }
-.card-content { padding: 15px; }
-.card-content h4 { margin: 0 0 5px 0; font-size: 18px; }
-.card-content p { margin: 0; font-size: 13px; color: #666; }
-.card-meta { margin-top: 10px; font-size: 11px; color: #999; display: flex; justify-content: space-between; border-top: 1px solid #f5f5f5; padding-top: 10px; }</style>
+    </style>
 </head>
 <body>
     <header>
@@ -43,77 +29,23 @@
             <a href="minicontos.html">Minicontos</a>
         </nav>
     </header>
+
     <main class="container">
         <img src="foto-autor.png" alt="Fagner Otobelli" class="main-photo">
         <p class="copyright-photo">© Fagner Otobelli. Todos os direitos reservados.</p>
+        
         <article class="intro-text">
             <p>A escrita não é apenas o ato final de imprimir palavras no papel; é um processo químico de experimentação. Aqui, as ideias são os reagentes e a imaginação é o catalisador. <strong>QuimikaMente</strong> é o tubo de ensaio onde misturo fragmentos de realidade com doses generosas de ficção, observando as reações voláteis que transformam o trivial em singular. Busco destilar parágrafos em frases e frases em essências puras.</p>
             <p style="text-align: center; margin-top: 30px;"><strong>Boas leituras!</strong></p>
         </article>
-        <div class="admin-section">
-        <button id="btn-add" onclick="toggleForm()">+ Adicionar Novo Conto</button>
-        <div id="form-container" class="form-card">
-            <input type="text" id="titulo" placeholder="Título do Conto">
-            <input type="text" id="autor" placeholder="Autor">
-            <input type="date" id="data-pub">
-            <input type="number" id="tempo-leitura" placeholder="Tempo de Leitura (min)">
-            <input type="text" id="img-url" placeholder="Nome do arquivo (ex: capa.png)">
-            <button id="btn-add" onclick="adicionarConto()" style="width:100%; margin-top:10px; background: #000; color: #fff; border: none; padding: 10px; cursor: pointer;">Publicar</button>
-        </div>
-    </div>
-
-    <section id="vitrine-contos" class="grid-contos"></section>
     </main>
+
     <footer>
         <div class="footer-logo">QuimikaMente</div>
         <div class="slogan">Viver, sentir, experimentar, recriar.</div>
         <div class="legal">
             <a href="#">Termos de Uso</a> | <a href="#">Política de Privacidade</a> | <a href="#">Direitos Autorais</a>
         </div>
-    </footer> <script>
-        function toggleForm() {
-            const form = document.getElementById('form-container');
-            form.style.display = form.style.display === 'block' ? 'none' : 'block';
-        }
-
-        function adicionarConto() {
-            const conto = {
-                titulo: document.getElementById('titulo').value,
-                autor: document.getElementById('autor').value,
-                data: document.getElementById('data-pub').value,
-                tempo: document.getElementById('tempo-leitura').value,
-                img: document.getElementById('img-url').value
-            };
-
-            let contos = JSON.parse(localStorage.getItem('quimikamente_list') || '[]');
-            contos.push(conto);
-            localStorage.setItem('quimikamente_list', JSON.stringify(contos));
-            
-            renderizarCards();
-            toggleForm();
-        }
-
-        function renderizarCards() {
-            const vitrine = document.getElementById('vitrine-contos');
-            let contos = JSON.parse(localStorage.getItem('quimikamente_list') || '[]');
-            
-            vitrine.innerHTML = contos.map(c => `
-                <div class="card-conto">
-                    <img src="${c.img}" class="card-image" onerror="this.src='https://via.placeholder.com/300x200?text=PNG+AQUI'">
-                    <div class="card-content">
-                        <h4>${c.titulo}</h4>
-                        <p>Por ${c.autor}</p>
-                        <div class="card-meta">
-                            <span>📅 ${c.data}</span>
-                            <span>⏱ ${c.tempo} MIN</span>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        window.onload = renderizarCards;
-    </script>
-
+    </footer>
 </body>
 </html>
