@@ -9,26 +9,74 @@
         header { padding: 40px 20px; max-width: 650px; margin: 0 auto; display: flex; justify-content: space-between; align-items: baseline; }
         .logo { font-size: 22px; font-weight: 700; text-decoration: none; color: #000; }
         nav a { margin-left: 20px; text-decoration: none; color: #666; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
-        .container { max-width: 600px; margin: 20px auto; padding: 0 20px; text-align: center; }
-        .main-photo { width: 100%; max-width: 450px; height: auto; margin-bottom: 5px; }
-        .copyright-photo { font-size: 11px; color: #999; margin-top: 0; margin-bottom: 30px; }
-        .intro-text { font-size: 1.2rem; color: #1a1a1a; text-align: justify; }
         
-        footer { max-width: 650px; margin: 80px auto 40px auto; padding: 20px; border-top: 1px solid #eee; text-align: center; }
+        /* Seção Hero com Sobreposição */
+        .hero-container { 
+            position: relative; 
+            max-width: 800px; 
+            margin: 20px auto; 
+            overflow: hidden;
+            color: #fff;
+        }
+        
+        .main-photo { 
+            width: 100%; 
+            display: block;
+            height: 450px; 
+            object-fit: cover; 
+        }
+
+        /* Camada escura para dar leitura ao texto */
+        .overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to right, rgba(0,0,0,0.7) 30%, rgba(0,0,0,0.2) 100%);
+            display: flex;
+            align-items: center;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .intro-text-box { 
+            max-width: 450px; 
+            text-align: left;
+        }
+
+        .intro-text-box p { 
+            font-size: 1.1rem; 
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .copyright-photo { 
+            position: absolute; 
+            bottom: 10px; 
+            right: 20px; 
+            font-size: 10px; 
+            color: rgba(255,255,255,0.6); 
+            margin: 0;
+        }
+        
+        footer { max-width: 650px; margin: 60px auto 40px auto; padding: 20px; border-top: 1px solid #eee; text-align: center; }
         .footer-logo { font-weight: bold; font-size: 18px; margin-bottom: 5px; }
         .slogan { font-size: 13px; color: #888; margin-bottom: 25px; }
         
-        /* Ajuste nos links legais */
         .legal { font-size: 11px; color: #bbb; text-transform: uppercase; letter-spacing: 1px; }
         .legal a { color: #bbb; text-decoration: none; margin: 0 10px; cursor: pointer; transition: 0.3s; }
         .legal a:hover { color: #000; }
 
-        /* Estilo dos Modais Legais */
         .modal-legal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.98); z-index: 2000; overflow-y: auto; padding: 60px 20px; box-sizing: border-box; }
         .modal-legal-content { max-width: 600px; margin: 0 auto; text-align: justify; color: #333; line-height: 1.6; }
         .btn-fechar { position: fixed; top: 20px; right: 20px; background: #000; color: #fff; border: none; padding: 10px 20px; cursor: pointer; font-family: sans-serif; font-size: 12px; }
-        h3 { border-bottom: 1px solid #eee; padding-bottom: 10px; margin-top: 0; }
         .law-highlight { background-color: #fff9f9; border-left: 3px solid #c62828; padding: 15px; margin-top: 20px; font-style: italic; }
+
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            .main-photo { height: 550px; }
+            .overlay { background: rgba(0,0,0,0.6); align-items: flex-start; padding-top: 60px; }
+            header { flex-direction: column; align-items: center; gap: 20px; }
+        }
     </style>
 </head>
 <body>
@@ -41,14 +89,18 @@
         </nav>
     </header>
 
-    <main class="container">
-        <img src="foto-autor.png" alt="Fagner Otobelli" class="main-photo">
-        <p class="copyright-photo">© Fagner Otobelli. Todos os direitos reservados.</p>
-        
-        <article class="intro-text">
-            <p>A escrita não é apenas o ato final de imprimir palavras no papel; é um processo químico de experimentação. Aqui, as ideias são os reagentes e a imaginação é o catalisador. <strong>QuimikaMente</strong> é o tubo de ensaio onde misturo fragmentos de realidade com doses generosas de ficção, observando as reações voláteis que transformam o trivial em singular. Busco destilar parágrafos em frases e frases em essências puras.</p>
-            <p style="text-align: center; margin-top: 30px;"><strong>Boas leituras!</strong></p>
-        </article>
+    <main>
+        <section class="hero-container">
+            <img src="foto-autor.png" alt="Fagner Otobelli" class="main-photo">
+            <div class="overlay">
+                <article class="intro-text-box">
+                    <p>A escrita não é apenas o ato final de imprimir palavras no papel; é um processo químico de experimentação.</p>
+                    <p>Aqui, as ideias são os reagentes e a imaginação é o catalisador. <strong>QuimikaMente</strong> é o tubo de ensaio onde misturo fragmentos de realidade com doses generosas de ficção.</p>
+                    <p>Busco destilar parágrafos em frases e frases em essências puras. Boas leituras!</p>
+                </article>
+            </div>
+            <p class="copyright-photo">© Fagner Otobelli. Todos os direitos reservados.</p>
+        </section>
     </main>
 
     <footer>
@@ -70,22 +122,18 @@
         const textosLegais = {
             termos: `
                 <h3>Termos de Uso</h3>
-                <p>Ao acessar o QuimikaMente, você concorda em utilizar o conteúdo deste site estritamente para leitura e apreciação pessoal. É proibida a modificação, venda ou distribuição comercial de qualquer parte dos textos aqui publicados.</p>
-                <p>Este site é um projeto literário e artístico, e o acesso a ele implica no respeito às normas de convivência digital e à propriedade intelectual do autor.</p>
+                <p>Ao acessar o QuimikaMente, você concorda em utilizar o conteúdo deste site estritamente para leitura pessoal...</p>
                 <div class="law-highlight">
-                    <strong>Aviso Legal de Conduta:</strong> Em conformidade com a legislação brasileira (Lei nº 7.716/1989 e decisões do STF), o QuimikaMente mantém uma política de tolerância zero contra qualquer manifestação de cunho racista, homofóbico, transfóbico ou qualquer outra forma de injúria racial e preconceito. Comentários ou mensagens desta natureza serão sumariamente descartados e os dados dos autores poderão ser encaminhados às autoridades competentes.
+                    <strong>Aviso Legal de Conduta:</strong> Em conformidade com a legislação brasileira (Lei nº 7.716/1989), o QuimikaMente mantém uma política de tolerância zero contra racismo, homofobia e preconceito.
                 </div>
             `,
             privacidade: `
                 <h3>Política de Privacidade</h3>
-                <p>O QuimikaMente respeita sua privacidade. Este site não coleta dados pessoais automaticamente, não utiliza cookies de rastreamento de terceiros, nem comercializa informações de visitantes.</p>
-                <p><strong>Interação:</strong> Caso o leitor opte por enviar comentários, solicitamos Nome e E-mail apenas para fins de identificação e moderação. Esses dados não serão compartilhados com terceiros.</p>
-                <p>Qualquer informação técnica temporária é processada apenas via armazenamento local (localStorage) no seu próprio dispositivo.</p>
+                <p>O QuimikaMente respeita sua privacidade. Solicitamos Nome e E-mail em comentários apenas para fins de moderação.</p>
             `,
             autoral: `
                 <h3>Direitos Autorais</h3>
-                <p>Todo o conteúdo literário (contos e minicontos) presente neste site é de autoria exclusiva de <strong>Fagner Otobelli</strong>, protegido pela Lei nº 9.610/98.</p>
-                <p>As artes e imagens visuais que ilustram este projeto foram desenvolvidas pelo autor utilizando ferramentas de Inteligência Artificial (Gemini), possuindo direitos de autoria e propriedade intelectual sobre a composição final e o refinamento artístico. A reprodução, cópia ou uso não autorizado é expressamente proibida e sujeita às penalidades da lei.</p>
+                <p>Todo o conteúdo literário é de autoria de <strong>Fagner Otobelli</strong> (Lei nº 9.610/98). Artes desenvolvidas com auxílio de IA (Gemini).</p>
             `
         };
 
