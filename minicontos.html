@@ -93,14 +93,19 @@
             if(!mini.titulo || !mini.texto) { alert("Preencha o título e o texto!"); return; }
 
             let minis = JSON.parse(localStorage.getItem('quimikamente_mini_list') || '[]');
-            minis.push(mini);
+            
+            // Usamos unshift para que o NOVO conto fique sempre no topo
+            minis.unshift(mini); 
+            
             localStorage.setItem('quimikamente_mini_list', JSON.stringify(minis));
             
             renderizarMinis();
             toggleForm();
             
-            // Limpa os campos
+            // Limpa os campos após publicar
             document.getElementById('titulo').value = '';
+            document.getElementById('autor').value = '';
+            document.getElementById('img-url').value = '';
             document.getElementById('texto-mini').value = '';
             updateCount();
         }
@@ -124,6 +129,7 @@
             `).join('');
         }
 
+        // Carrega os minicontos salvos assim que a página abre
         window.onload = renderizarMinis;
     </script>
 </body>
