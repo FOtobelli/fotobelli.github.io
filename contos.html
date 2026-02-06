@@ -10,30 +10,24 @@
         .logo { font-size: 22px; font-weight: 700; text-decoration: none; color: #000; }
         nav a { margin-left: 20px; text-decoration: none; color: #666; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
         .container { max-width: 900px; margin: 20px auto; padding: 0 20px; text-align: center; }
-        
-        /* Grid e Cards */
         .grid-contos { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; margin-top: 50px; text-align: left; }
-        .card-conto { background: #fff; border: 1px solid #eee; position: relative; transition: 0.3s; cursor: pointer; }
-        .card-conto:hover { border-color: #000; }
-        .card-image { width: 100%; height: 200px; object-fit: cover; background: #f0f0f0; }
-        .card-content { padding: 15px; }
-        .card-meta { margin-top: 10px; font-size: 11px; color: #999; display: flex; justify-content: space-between; border-top: 1px solid #f5f5f5; padding-top: 10px; }
+        .card-conto { background: #fff; border: 1px solid #eee; padding-bottom: 10px; transition: 0.3s; }
+        .card-image { width: 100%; height: 200px; object-fit: cover; background: #f0f0f0; cursor: pointer; }
+        .card-content { padding: 15px; cursor: pointer; }
+        .card-meta { margin-top: 10px; font-size: 11px; color: #999; border-top: 1px solid #f5f5f5; padding-top: 10px; }
+        
+        /* Botões sempre visíveis */
+        .admin-controls { display: flex; gap: 10px; padding: 0 15px 15px 15px; }
+        .btn-edit { background: #eee; color: #333; border: none; padding: 5px 10px; cursor: pointer; font-size: 11px; }
+        .btn-del { background: #ffebee; color: #c62828; border: none; padding: 5px 10px; cursor: pointer; font-size: 11px; }
 
-        /* Botões de Ação no Card */
-        .actions { position: absolute; top: 10px; right: 10px; display: flex; gap: 5px; opacity: 0; transition: 0.3s; }
-        .card-conto:hover .actions { opacity: 1; }
-        .btn-action { background: rgba(0,0,0,0.7); color: #fff; border: none; padding: 5px 10px; cursor: pointer; font-size: 10px; border-radius: 3px; }
-        .btn-del { background: rgba(200,0,0,0.8); }
-
-        /* Modal de Leitura */
         #modal-leitura { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 1000; overflow-y: auto; padding: 60px 20px; box-sizing: border-box; }
-        .modal-content { max-width: 700px; margin: 0 auto; text-align: justify; }
+        .modal-content { max-width: 700px; margin: 0 auto; }
         .btn-fechar { position: fixed; top: 20px; right: 20px; background: #000; color: #fff; border: none; padding: 10px 20px; cursor: pointer; }
 
-        /* Formulário */
         .admin-section { margin: 60px 0; padding: 20px; border-top: 1px solid #eee; }
         .form-card { display: none; background: #f9f9f9; padding: 25px; border: 1px solid #ddd; max-width: 600px; margin: 20px auto; text-align: left; }
-        .form-card input, .form-card textarea { width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ccc; font-family: inherit; box-sizing: border-box; }
+        .form-card input, .form-card textarea { width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ccc; box-sizing: border-box; }
     </style>
 </head>
 <body>
@@ -47,16 +41,16 @@
         <section id="vitrine-contos" class="grid-contos"></section>
 
         <div class="admin-section">
-            <button onclick="toggleForm()" id="btn-main-form">+ Adicionar Novo Conto</button>
+            <button onclick="toggleForm()">+ Adicionar Novo Conto</button>
             <div id="form-container" class="form-card">
                 <h3 id="form-title">Novo Conto</h3>
                 <input type="hidden" id="edit-index" value="-1">
                 <input type="text" id="titulo" placeholder="Título">
                 <input type="text" id="autor" placeholder="Autor">
                 <input type="date" id="data">
-                <input type="text" id="img" placeholder="Nome da imagem (capa.jpg)">
-                <textarea id="texto" rows="15" placeholder="Cole seu conto aqui..."></textarea>
-                <button onclick="salvarConto()" style="width:100%; background:#000; color:#fff; padding:15px; border:none; cursor:pointer; font-weight:bold;">SALVAR</button>
+                <input type="text" id="img" placeholder="Nome da imagem (ex: quimikamente.jpg)">
+                <textarea id="texto" rows="10" placeholder="Texto do conto..."></textarea>
+                <button onclick="salvarConto()" style="width:100%; background:#000; color:#fff; padding:15px; border:none; cursor:pointer;">SALVAR</button>
             </div>
         </div>
     </main>
@@ -64,90 +58,56 @@
     <div id="modal-leitura">
         <button class="btn-fechar" onclick="fecharLeitura()">FECHAR</button>
         <div class="modal-content">
-            <h1 id="read-titulo" style="font-size: 48px; margin-bottom: 5px;"></h1>
-            <p id="read-autor" style="color: #888; text-transform: uppercase; margin-bottom: 50px;"></p>
-            <div id="read-texto" style="font-size: 20px; white-space: pre-wrap;"></div>
+            <h1 id="read-titulo"></h1>
+            <p id="read-autor" style="color: #888;"></p>
+            <div id="read-texto" style="font-size: 18px; white-space: pre-wrap; text-align: justify;"></div>
         </div>
     </div>
 
     <script>
-        const STORAGE_KEY = 'quimikamente_contos_v3';
-
-        function toggleForm() {
-            const f = document.getElementById('form-container');
-            f.style.display = f.style.display === 'block' ? 'none' : 'block';
-            if(f.style.display === 'none') resetForm();
-        }
-
-        function resetForm() {
-            document.getElementById('edit-index').value = "-1";
-            document.getElementById('form-title').innerText = "Novo Conto";
-            document.getElementById('titulo').value = '';
-            document.getElementById('autor').value = '';
-            document.getElementById('texto').value = '';
-        }
-
+        const KEY = 'quimikamente_contos_final';
+        function toggleForm() { document.getElementById('form-container').style.display = document.getElementById('form-container').style.display === 'block' ? 'none' : 'block'; }
+        
         function salvarConto() {
             const index = document.getElementById('edit-index').value;
-            const novo = {
-                t: document.getElementById('titulo').value,
-                a: document.getElementById('autor').value,
-                d: document.getElementById('data').value,
-                i: document.getElementById('img').value,
-                txt: document.getElementById('texto').value
-            };
-
-            let lista = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-            if(index === "-1") lista.unshift(novo);
-            else lista[index] = novo;
-
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(lista));
+            const novo = { t: document.getElementById('titulo').value, a: document.getElementById('autor').value, d: document.getElementById('data').value, i: document.getElementById('img').value, txt: document.getElementById('texto').value };
+            let lista = JSON.parse(localStorage.getItem(KEY) || '[]');
+            if(index === "-1") lista.unshift(novo); else lista[index] = novo;
+            localStorage.setItem(KEY, JSON.stringify(lista));
             location.reload();
         }
 
         function renderizar() {
             const vitrine = document.getElementById('vitrine-contos');
-            let lista = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+            let lista = JSON.parse(localStorage.getItem(KEY) || '[]');
             vitrine.innerHTML = lista.map((m, idx) => `
                 <div class="card-conto">
-                    <div class="actions">
-                        <button class="btn-action" onclick="event.stopPropagation(); editar(${idx})">Editar</button>
-                        <button class="btn-action btn-del" onclick="event.stopPropagation(); excluir(${idx})">X</button>
+                    <img src="${m.i}" class="card-image" onclick="abrirLeitura(${idx})" onerror="this.src='https://via.placeholder.com/300x200?text=Sem+Imagem'">
+                    <div class="card-content" onclick="abrirLeitura(${idx})">
+                        <h4>${m.t}</h4>
+                        <div class="card-meta"><span>📅 ${m.d}</span></div>
                     </div>
-                    <div onclick="abrirLeitura(${idx})">
-                        <img src="${m.i}" class="card-image" onerror="this.src='https://via.placeholder.com/300x200?text=Capa'">
-                        <div class="card-content">
-                            <h4>${m.t}</h4>
-                            <p>Por ${m.a}</p>
-                            <div class="card-meta"><span>📅 ${m.d}</span></div>
-                        </div>
+                    <div class="admin-controls">
+                        <button class="btn-edit" onclick="editar(${idx})">Editar</button>
+                        <button class="btn-del" onclick="excluir(${idx})">Excluir</button>
                     </div>
                 </div>`).join('');
         }
 
         function abrirLeitura(idx) {
-            let lista = JSON.parse(localStorage.getItem(STORAGE_KEY));
-            const c = lista[idx];
-            document.getElementById('read-titulo').innerText = c.t;
-            document.getElementById('read-autor').innerText = "Por " + c.a;
-            document.getElementById('read-texto').innerText = c.txt;
+            let lista = JSON.parse(localStorage.getItem(KEY));
+            document.getElementById('read-titulo').innerText = lista[idx].t;
+            document.getElementById('read-autor').innerText = "Por " + lista[idx].a;
+            document.getElementById('read-texto').innerText = lista[idx].txt;
             document.getElementById('modal-leitura').style.display = 'block';
-            document.body.style.overflow = 'hidden';
         }
 
-        function fecharLeitura() { document.getElementById('modal-leitura').style.display = 'none'; document.body.style.overflow = 'auto'; }
-
-        function excluir(idx) {
-            if(confirm("Deseja apagar este conto?")) {
-                let lista = JSON.parse(localStorage.getItem(STORAGE_KEY));
-                lista.splice(idx, 1);
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(lista));
-                renderizar();
-            }
-        }
-
+        function fecharLeitura() { document.getElementById('modal-leitura').style.display = 'none'; }
+        
+        function excluir(idx) { if(confirm("Apagar conto?")) { let lista = JSON.parse(localStorage.getItem(KEY)); lista.splice(idx, 1); localStorage.setItem(KEY, JSON.stringify(lista)); renderizar(); } }
+        
         function editar(idx) {
-            let lista = JSON.parse(localStorage.getItem(STORAGE_KEY));
+            let lista = JSON.parse(localStorage.getItem(KEY));
             const c = lista[idx];
             document.getElementById('edit-index').value = idx;
             document.getElementById('titulo').value = c.t;
@@ -155,11 +115,9 @@
             document.getElementById('data').value = c.d;
             document.getElementById('img').value = c.i;
             document.getElementById('texto').value = c.txt;
-            document.getElementById('form-title').innerText = "Editando Conto";
             document.getElementById('form-container').style.display = 'block';
             window.scrollTo(0, document.body.scrollHeight);
         }
-
         window.onload = renderizar;
     </script>
 </body>
