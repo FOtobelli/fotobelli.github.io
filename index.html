@@ -12,7 +12,7 @@
         
         .hero-container { 
             position: relative; 
-            max-width: 850px; 
+            max-width: 871px; /* Ajustado para a largura real da nova imagem */
             margin: 20px auto; 
             background-color: #fff;
         }
@@ -21,51 +21,14 @@
             width: 100%; 
             display: block;
             height: auto; 
-            max-height: 550px;
-            object-fit: cover;
-        }
-
-        .overlay-texto {
-            position: absolute;
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%;
-            display: flex;
-            justify-content: center; 
-            align-items: flex-end;    
-            padding: 0 40px 0 40px; 
-            box-sizing: border-box;
-            pointer-events: none;
-        }
-
-        .intro-text-box { 
-            max-width: 500px; 
-            text-align: justify; 
-            color: #1a1a1a;
-            font-weight: normal;
-            /* Texto erguido para 20px (reduzindo a descida anterior) */
-            transform: translateY(20px); 
-            text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.8);
-        }
-
-        .intro-text-box p { 
-            font-size: 1.15rem; 
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-
-        .highlight-brand {
-            color: #1a1a1a;
-            font-weight: bold;
+            /* Removido o max-height para manter a proporção exata de 871x489 */
         }
 
         .copyright-photo { 
             text-align: right;
             font-size: 10px; 
             color: #bbb; 
-            /* Ajustado para 30px para acompanhar a subida do texto */
-            margin: 30px 20px 0 0; 
+            margin: 15px 20px 0 0; 
         }
         
         footer { max-width: 650px; margin: 60px auto 40px auto; padding: 20px; border-top: 1px solid #eee; text-align: center; }
@@ -81,10 +44,8 @@
         .btn-fechar { position: fixed; top: 20px; right: 20px; background: #000; color: #fff; border: none; padding: 10px 20px; cursor: pointer; font-family: sans-serif; font-size: 12px; }
 
         @media (max-width: 650px) {
-            .overlay-texto { position: static; padding: 20px; }
-            .intro-text-box { max-width: 100%; transform: none; text-shadow: none; }
             header { flex-direction: column; align-items: center; gap: 20px; }
-            .copyright-photo { margin-top: 10px; }
+            .hero-container { margin: 10px auto; }
         }
     </style>
 </head>
@@ -100,14 +61,7 @@
 
     <main>
         <div class="hero-container">
-            <img src="foto-autor.png" alt="Fagner Otobelli" class="main-photo">
-            <div class="overlay-texto">
-                <article class="intro-text-box">
-                    <p>A escrita não é apenas o ato final de imprimir palavras no papel; é um processo químico de experimentação.</p>
-                    <p>Aqui, as ideias são os reagentes e a imaginação é o catalisador. <span class="highlight-brand">QuimikaMente</span> é o tubo de ensaio onde misturo fragmentos de realidade com doses generosas de ficção.</p>
-                    <p>Busco destilar parágrafos em frases e frases em essências puras. Boas leituras!</p>
-                </article>
-            </div>
+            <img src="foto-autor1.jpg" alt="Fagner Otobelli - QuimikaMente" width="871" height="489" class="main-photo">
         </div>
         <p class="copyright-photo">© Fagner Otobelli. Todos os direitos reservados.</p>
     </main>
