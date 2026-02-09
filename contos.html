@@ -16,8 +16,8 @@
         .card-image { width: 100%; height: 200px; object-fit: cover; background: #f0f0f0; cursor: pointer; }
         .card-content { padding: 15px; cursor: pointer; }
         .card-meta { margin-top: 10px; font-size: 11px; color: #999; border-top: 1px solid #f5f5f5; padding-top: 10px; }
-        .tag-fixo { font-size: 9px; color: #2196F3; font-weight: bold; text-transform: uppercase; }
-
+        
+        /* Controles Admin: Escondidos por padrão */
         .admin-controls { display: none; gap: 10px; padding: 0 15px 15px 15px; }
         .btn-edit { background: #eee; color: #333; border: none; padding: 5px 10px; cursor: pointer; font-size: 11px; }
         .btn-del { background: #ffebee; color: #c62828; border: none; padding: 5px 10px; cursor: pointer; font-size: 11px; }
@@ -26,14 +26,21 @@
         .modal-content { max-width: 700px; margin: 0 auto; }
         .btn-fechar-leitura { position: fixed; top: 20px; right: 20px; background: #000; color: #fff; border: none; padding: 10px 20px; cursor: pointer; z-index: 1001; }
 
+        .secao-comentarios { margin-top: 60px; padding-top: 40px; border-top: 2px solid #f0f0f0; text-align: left; }
+        .form-comentario { background: #f9f9f9; padding: 25px; border-radius: 8px; margin-top: 20px; }
+        .form-comentario input, .form-comentario textarea { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; }
+        .btn-comentar { background: #000; color: #fff; border: none; padding: 12px 25px; cursor: pointer; width: 100%; font-weight: bold; }
+
         footer { max-width: 650px; margin: 80px auto 40px auto; padding: 20px; border-top: 1px solid #eee; text-align: center; }
         .legal { font-size: 11px; color: #bbb; text-transform: uppercase; letter-spacing: 1px; }
         .legal a { color: #bbb; text-decoration: none; margin: 0 10px; cursor: pointer; }
 
+        /* Área administrativa restrita */
         #admin-section { display: none; margin: 60px 0; padding: 20px; border-top: 1px solid #eee; }
         .form-card { display: none; background: #f9f9f9; padding: 25px; border: 1px solid #ddd; max-width: 600px; margin: 20px auto; text-align: left; }
         .form-card input, .form-card textarea { width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ccc; box-sizing: border-box; }
         
+        /* Botão invisível de acesso */
         #secret-access { opacity: 0.2; cursor: default; font-size: 10px; margin-top: 20px; display: inline-block; }
     </style>
 </head>
@@ -52,16 +59,16 @@
         <section id="vitrine-contos" class="grid-contos"></section>
 
         <div id="admin-section">
-            <button onclick="toggleForm()" style="background: #000; color: #fff; padding: 10px 20px; border: none; cursor: pointer;">+ ADICIONAR NOVO CONTO (TEMPORÁRIO)</button>
+            <button onclick="toggleForm()" style="background: #000; color: #fff; padding: 10px 20px; border: none; cursor: pointer;">+ ADICIONAR NOVO CONTO</button>
             <div id="form-container" class="form-card">
-                <h3>Novo Conto</h3>
+                <h3 id="form-title">Novo Conto</h3>
                 <input type="hidden" id="edit-index" value="-1">
                 <input type="text" id="titulo" placeholder="Título">
                 <input type="text" id="autor" placeholder="Autor" value="Fagner Otobelli">
                 <input type="date" id="data">
                 <input type="text" id="img" placeholder="Link da Imagem">
                 <textarea id="texto" rows="10" placeholder="Texto do conto..."></textarea>
-                <button onclick="salvarConto()" style="width:100%; background:#000; color:#fff; padding:15px; border:none; cursor:pointer;">SALVAR NO NAVEGADOR</button>
+                <button onclick="salvarConto()" style="width:100%; background:#000; color:#fff; padding:15px; border:none; cursor:pointer;">SALVAR CONTO</button>
             </div>
         </div>
     </main>
@@ -78,41 +85,30 @@
     <footer>
         <div class="footer-logo">QuimikaMente</div>
         <div class="legal">
-            <a>Termos</a> | <a>Privacidade</a> | <a>Direitos Autorais</a>
+            <a onclick="abrirLegal('termos')">Termos</a> | 
+            <a onclick="abrirLegal('privacidade')">Privacidade</a> | 
+            <a onclick="abrirLegal('autoral')">Direitos Autorais</a>
         </div>
         <p style="font-size: 10px; color: #ccc; margin-top: 20px;">&copy; 2026 QuimikaMente</p>
+        
         <span id="secret-access" onclick="fazerLogin()">Admin</span>
     </footer>
 
     <script>
-        // ==========================================
-        // ÁREA DE RASCUNHO (ACERVO PERMANENTE)
-        // Coloque seus contos oficiais aqui para nunca perder
-        // ==========================================
-        const ACERVO_FIXO = [
-            {
-                t: "Título do seu Primeiro Conto Longo",
-                a: "Fagner Otobelli",
-                d: "2026-02-09",
-                i: "quimikamente.jpg", // Nome da imagem que está no GitHub
-                txt: `Aqui você cola o texto longo do seu conto.
-                      Pode ter vários parágrafos.
-                      Ele ficará salvo para sempre no código.`
-            },
-            /* Para adicionar outro, copie do { ao }, coloque uma vírgula e cole abaixo */
-        ];
-
-        // ==========================================
-
         const KEY = 'quimikamente_contos_final';
         let logado = false;
 
+        // --- SISTEMA DE SEGURANÇA ---
         function fazerLogin() {
-            const senha = prompt("Senha de autor:");
-            if (senha === 'EueGemini.com') { 
+            const senha = prompt("Digite a senha de autor:");
+            // VOCÊ PODE MUDAR A SENHA ABAIXO (atualmente é 'quimika123')
+            if (senha === 'quimika123') {
                 logado = true;
                 document.getElementById('admin-section').style.display = 'block';
                 renderizar();
+                alert("Modo autor ativado!");
+            } else {
+                alert("Senha incorreta.");
             }
         }
 
@@ -122,6 +118,7 @@
         }
 
         function salvarConto() {
+            if (!logado) return;
             const index = document.getElementById('edit-index').value;
             const novo = { 
                 t: document.getElementById('titulo').value, 
@@ -138,33 +135,26 @@
 
         function renderizar() {
             const vitrine = document.getElementById('vitrine-contos');
-            let listaNavegador = JSON.parse(localStorage.getItem(KEY) || '[]');
-            
-            // Une o Acervo Fixo (GitHub) com a Lista do Navegador (Temporária)
-            let total = [...ACERVO_FIXO, ...listaNavegador];
-
-            vitrine.innerHTML = total.map((m, idx) => {
-                const isFixo = idx < ACERVO_FIXO.length;
-                return `
+            let lista = JSON.parse(localStorage.getItem(KEY) || '[]');
+            vitrine.innerHTML = lista.map((m, idx) => `
                 <div class="card-conto">
                     <img src="${m.i}" class="card-image" onclick="abrirLeitura(${idx})" onerror="this.src='https://via.placeholder.com/300x200?text=QuimikaMente'">
                     <div class="card-content" onclick="abrirLeitura(${idx})">
-                        ${isFixo ? '<span class="tag-fixo">✔ No Acervo</span>' : ''}
                         <h4>${m.t}</h4>
                         <div class="card-meta"><span>📅 ${m.d}</span></div>
                     </div>
-                    <div class="admin-controls" style="display: ${logado && !isFixo ? 'flex' : 'none'}">
-                        <button class="btn-edit" onclick="editar(${idx - ACERVO_FIXO.length})">Editar</button>
-                        <button class="btn-del" onclick="excluir(${idx - ACERVO_FIXO.length})">Excluir</button>
+                    <div class="admin-controls" style="display: ${logado ? 'flex' : 'none'}">
+                        <button class="btn-edit" onclick="editar(${idx})">Editar</button>
+                        <button class="btn-del" onclick="excluir(${idx})">Excluir</button>
                     </div>
-                </div>`}).join('');
+                </div>`).join('');
         }
 
         function abrirLeitura(idx) {
-            let total = [...ACERVO_FIXO, ...JSON.parse(localStorage.getItem(KEY) || '[]')];
-            document.getElementById('read-titulo').innerText = total[idx].t;
-            document.getElementById('read-autor').innerText = "Por " + total[idx].a;
-            document.getElementById('read-texto').innerText = total[idx].txt;
+            let lista = JSON.parse(localStorage.getItem(KEY));
+            document.getElementById('read-titulo').innerText = lista[idx].t;
+            document.getElementById('read-autor').innerText = "Por " + lista[idx].a;
+            document.getElementById('read-texto').innerText = lista[idx].txt;
             document.getElementById('modal-leitura').style.display = 'block';
             document.body.style.overflow = 'hidden';
         }
@@ -175,7 +165,8 @@
         }
 
         function excluir(idx) { 
-            if(confirm("Apagar conto temporário?")) { 
+            if(!logado) return;
+            if(confirm("Apagar conto permanentemente?")) { 
                 let lista = JSON.parse(localStorage.getItem(KEY)); 
                 lista.splice(idx, 1); 
                 localStorage.setItem(KEY, JSON.stringify(lista)); 
@@ -184,6 +175,7 @@
         }
 
         function editar(idx) {
+            if(!logado) return;
             let lista = JSON.parse(localStorage.getItem(KEY));
             const c = lista[idx];
             document.getElementById('edit-index').value = idx;
