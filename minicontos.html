@@ -3,109 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minicontos - QuimikaMente</title>
+    <title>Contos - QuimikaMente</title>
     <style>
         body { font-family: 'Georgia', serif; line-height: 1.8; margin: 0; color: #1a1a1a; background-color: #ffffff; }
-        header { padding: 40px 20px; max-width: 650px; margin: 0 auto; display: flex; justify-content: space-between; align-items: baseline; }
+        header { padding: 40px 20px; max-width: 800px; margin: 0 auto; display: flex; justify-content: space-between; align-items: baseline; }
         .logo { font-size: 22px; font-weight: 700; text-decoration: none; color: #000; }
         nav a { margin-left: 20px; text-decoration: none; color: #666; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
         
-        .container { max-width: 900px; margin: 20px auto; padding: 0 20px; text-align: center; }
-        .grid-contos { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; margin-top: 50px; text-align: left; }
-        .card-conto { background: #fff; border: 1px solid #eee; padding-bottom: 10px; transition: 0.3s; position: relative; }
-        .card-image { width: 100%; height: 200px; object-fit: cover; background: #f0f0f0; cursor: pointer; }
-        .card-content { padding: 15px; cursor: pointer; }
-        .card-meta { margin-top: 10px; font-size: 11px; color: #999; border-top: 1px solid #f5f5f5; padding-top: 10px; }
+        .container { max-width: 1000px; margin: 20px auto; padding: 0 20px; text-align: center; }
+        h2 { font-size: 32px; margin-bottom: 40px; font-weight: 400; letter-spacing: -1px; }
+
+        .grid-contos { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 40px; margin-top: 50px; text-align: left; }
+        .card-conto { background: #fff; border-bottom: 1px solid #eee; padding-bottom: 20px; transition: 0.3s; position: relative; }
+        .card-image { width: 100%; height: 250px; object-fit: cover; background: #f9f9f9; cursor: pointer; filter: grayscale(100%); transition: 0.5s; }
+        .card-image:hover { filter: grayscale(0%); }
+        .card-content { padding: 15px 0; cursor: pointer; }
+        .card-content h4 { margin: 10px 0; font-size: 20px; color: #000; }
+        .card-meta { margin-top: 10px; font-size: 11px; color: #999; text-transform: uppercase; letter-spacing: 1px; }
         
-        /* Controles de Admin escondidos por padrão */
-        .admin-controls { display: none; gap: 10px; padding: 0 15px 15px 15px; }
-        .btn-edit { background: #eee; color: #333; border: none; padding: 5px 10px; cursor: pointer; font-size: 11px; }
-        .btn-del { background: #ffebee; color: #c62828; border: none; padding: 5px 10px; cursor: pointer; font-size: 11px; }
+        /* Controles de Admin */
+        .admin-controls { display: none; gap: 10px; margin-top: 10px; }
+        .btn-edit { background: #000; color: #fff; border: none; padding: 5px 12px; cursor: pointer; font-size: 10px; }
+        .btn-del { background: #fff; color: #c62828; border: 1px solid #c62828; padding: 5px 12px; cursor: pointer; font-size: 10px; }
 
-        #modal-leitura { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 1000; overflow-y: auto; padding: 60px 20px; box-sizing: border-box; }
-        .modal-content { max-width: 600px; margin: 0 auto; text-align: center; }
-        .btn-fechar-leitura { position: fixed; top: 20px; right: 20px; background: #000; color: #fff; border: none; padding: 10px 20px; cursor: pointer; z-index: 1001; }
+        /* Modal de Leitura Imersiva */
+        #modal-leitura { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 1000; overflow-y: auto; padding: 80px 20px; box-sizing: border-box; }
+        .modal-content { max-width: 700px; margin: 0 auto; text-align: left; }
+        .modal-content h1 { font-size: 42px; text-align: center; margin-bottom: 10px; }
+        .modal-content .meta-leitura { text-align: center; color: #888; margin-bottom: 50px; font-style: italic; }
+        #read-texto { font-size: 19px; line-height: 1.8; color: #333; white-space: pre-wrap; }
+        .btn-fechar-leitura { position: fixed; top: 20px; right: 20px; background: #000; color: #fff; border: none; padding: 10px 20px; cursor: pointer; z-index: 1001; font-size: 12px; }
 
-        footer { max-width: 650px; margin: 80px auto 40px auto; padding: 20px; border-top: 1px solid #eee; text-align: center; }
+        footer { max-width: 800px; margin: 80px auto 40px auto; padding: 20px; border-top: 1px solid #eee; text-align: center; }
         .legal { font-size: 11px; color: #bbb; text-transform: uppercase; letter-spacing: 1px; }
         .legal a { color: #bbb; text-decoration: none; margin: 0 10px; cursor: pointer; }
 
-        /* Área administrativa restrita */
-        #admin-section { display: none; margin: 60px 0; padding: 20px; border-top: 1px solid #eee; }
-        .form-card { display: none; background: #f9f9f9; padding: 25px; border: 1px solid #ddd; max-width: 500px; margin: 20px auto; text-align: left; }
-        .form-card input, .form-card textarea { width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ccc; box-sizing: border-box; }
+        /* Painel Administrativo */
+        #admin-section { display: none; margin: 60px 0; padding: 40px; background: #fdfdfd; border: 1px dashed #ccc; }
+        .form-card { display: none; max-width: 700px; margin: 20px auto; text-align: left; }
+        .form-card input, .form-card textarea { width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid #eee; font-family: sans-serif; }
+        .form-card textarea { height: 300px; }
         
-        #secret-access { opacity: 0.2; cursor: default; font-size: 10px; margin-top: 20px; display: inline-block; }
+        #secret-access { opacity: 0.2; cursor: pointer; font-size: 10px; margin-top: 20px; display: inline-block; }
     </style>
 </head>
 <body>
     <header>
         <a href="index.html" class="logo">QuimikaMente</a>
-        <nav><a href="index.html">Home</a><a href="contos.html">Contos</a><a href="minicontos.html">Minicontos</a></nav>
+        <nav><a href="index.html">Home</a><a href="contos.html" style="color:#000; font-weight:bold;">Contos</a><a href="minicontos.html">Minicontos</a></nav>
     </header>
 
     <main class="container">
-        <h2>Minicontos</h2>
-        <section id="vitrine-mini" class="grid-contos">
-            <div class="card-conto">
-                <img src="quimikamente.png" class="card-image" onclick="abrirEspecial('QuimikaMente', 'Fagner Otobelli', 'Madrugada. Ela desperta, joga o cobertor no chão e corre ao laboratório. Lavoisier revelara a fórmula que traria paz à Terra. No agitador Vortex, uma após outra, ela insere moléculas: amerício + argônio + cobalto + molibdenio + nitrogênio + urânio + nitrogênio + cálcio. Agita. Reage: AmArCoMoNUNCa.')" onerror="this.src='https://via.placeholder.com/300x200?text=QuimikaMente'">
-                <div class="card-content" onclick="abrirEspecial('QuimikaMente', 'Fagner Otobelli', 'Madrugada. Ela desperta, joga o cobertor no chão e corre ao laboratório. Lavoisier revelara a fórmula que traria paz à Terra. No agitador Vortex, uma após outra, ela insere moléculas: amerício + argônio + cobalto + molibdenio + nitrogênio + urânio + nitrogênio + cálcio. Agita. Reage: AmArCoMoNUNCa.')">
-                    <h4>QuimikaMente</h4>
-                    <p style="font-size: 12px; color: #666;">Por Fagner Otobelli</p>
-                    <div class="card-meta"><span>📅 06/02/2026</span></div>
-                </div>
-                <p style="font-size: 10px; color: #ccc; padding-left: 15px;">(Fixo)</p>
-            </div>
-        </section>
+        <h2>Contos</h2>
+        
+        <section id="vitrine-contos" class="grid-contos">
+            </section>
 
         <div id="admin-section">
-            <button onclick="toggleForm()" style="background: #000; color: #fff; padding: 10px 20px; border: none; cursor: pointer;">+ NOVO MINICONTO</button>
+            <button onclick="toggleForm()" style="background: #000; color: #fff; padding: 12px 25px; border: none; cursor: pointer; letter-spacing: 1px;">+ PUBLICAR NOVO CONTO</button>
             <div id="form-container" class="form-card">
-                <h3 id="form-title">Novo Miniconto</h3>
+                <h3 id="form-title">Redigir Conto</h3>
                 <input type="hidden" id="edit-index" value="-1">
-                <input type="text" id="titulo" placeholder="Título">
+                <input type="text" id="titulo" placeholder="Título do Conto">
                 <input type="text" id="autor" placeholder="Autor" value="Fagner Otobelli">
-                <input type="date" id="data">
-                <input type="text" id="img" placeholder="Nome da imagem">
-                <textarea id="texto" maxlength="500" placeholder="Texto curto..."></textarea>
-                <button onclick="salvarMini()" style="width:100%; background:#000; color:#fff; padding:15px; border:none; cursor:pointer;">SALVAR</button>
+                <input type="text" id="data" placeholder="Data (ex: 09 de Fevereiro, 2026)">
+                <input type="text" id="img" placeholder="URL da Imagem de Capa">
+                <textarea id="texto" placeholder="Escreva sua história aqui..."></textarea>
+                <button onclick="salvarConto()" style="width:100%; background:#000; color:#fff; padding:20px; border:none; cursor:pointer; font-weight:bold;">PUBLICAR NO SITE</button>
             </div>
         </div>
     </main>
 
     <div id="modal-leitura">
-        <button class="btn-fechar-leitura" onclick="fecharLeitura()">FECHAR</button>
-        <div class="modal-content">
+        <button class="btn-fechar-leitura" onclick="fecharLeitura()">VOLTAR À VITRINE</button>
+        <article class="modal-content">
             <h1 id="read-titulo"></h1>
-            <p id="read-autor"></p>
-            <div id="read-texto" style="font-size: 24px; font-style: italic; margin: 40px 0;"></div>
-        </div>
+            <p class="meta-leitura" id="read-meta-full"></p>
+            <div id="read-texto"></div>
+        </article>
     </div>
 
     <footer>
-        <div class="footer-logo">QuimikaMente</div>
         <div class="legal">
-            <a onclick="abrirLegal('termos')">Termos</a> | 
-            <a onclick="abrirLegal('privacidade')">Privacidade</a> | 
-            <a onclick="abrirLegal('autoral')">Direitos Autorais</a>
+            <a onclick="alert('Termos de uso em atualização.')">Termos</a> | 
+            <a onclick="alert('Sua privacidade é nossa prioridade.')">Privacidade</a> | 
+            <a onclick="alert('Todos os direitos reservados aos autores.')">Direitos Autorais</a>
         </div>
-        <p style="font-size: 10px; color: #ccc; margin-top: 20px;">&copy; 2026 QuimikaMente</p>
-        <span id="secret-access" onclick="fazerLogin()">Admin</span>
+        <p style="font-size: 10px; color: #ccc; margin-top: 20px;">&copy; 2026 QuimikaMente - Laboratório Literário</p>
+        <span id="secret-access" onclick="fazerLogin()">Acesso Restrito</span>
     </footer>
 
     <script>
-        const KEY_MINI = 'quimikamente_mini_final';
+        const KEY_CONTOS = 'quimikamente_contos_db';
         let logado = false;
 
         function fazerLogin() {
-            const senha = prompt("Digite a senha de autor:");
-            if (senha === 'EueGemini.com') { // <--- ALTERE A SENHA AQUI
+            const senha = prompt("Chave de acesso do autor:");
+            if (senha === 'EueGemini.com') {
                 logado = true;
                 document.getElementById('admin-section').style.display = 'block';
                 renderizar();
-                alert("Modo autor ativado!");
-            } else {
-                alert("Senha incorreta.");
+                alert("Bem-vindo de volta, Autor.");
             }
         }
 
@@ -114,46 +112,55 @@
             f.style.display = f.style.display === 'block' ? 'none' : 'block'; 
         }
 
-        function salvarMini() {
+        function salvarConto() {
             if(!logado) return;
             const index = document.getElementById('edit-index').value;
-            const novo = { t: document.getElementById('titulo').value, a: document.getElementById('autor').value, d: document.getElementById('data').value, i: document.getElementById('img').value, txt: document.getElementById('texto').value };
-            let lista = JSON.parse(localStorage.getItem(KEY_MINI) || '[]');
+            const novo = { 
+                t: document.getElementById('titulo').value, 
+                a: document.getElementById('autor').value, 
+                d: document.getElementById('data').value, 
+                i: document.getElementById('img').value, 
+                txt: document.getElementById('texto').value 
+            };
+            
+            let lista = JSON.parse(localStorage.getItem(KEY_CONTOS) || '[]');
             if(index === "-1") lista.unshift(novo); else lista[index] = novo;
-            localStorage.setItem(KEY_MINI, JSON.stringify(lista));
+            
+            localStorage.setItem(KEY_CONTOS, JSON.stringify(lista));
+            alert("Conto salvo com sucesso!");
             location.reload();
         }
 
         function renderizar() {
-            const vitrine = document.getElementById('vitrine-mini');
-            let lista = JSON.parse(localStorage.getItem(KEY_MINI) || '[]');
+            const vitrine = document.getElementById('vitrine-contos');
+            let lista = JSON.parse(localStorage.getItem(KEY_CONTOS) || '[]');
             
-            // Limpa apenas os itens dinâmicos, mantendo o fixo se necessário, 
-            // mas aqui vamos reconstruir a vitrine mantendo o estilo
-            const fixo = vitrine.firstElementChild.outerHTML;
-            vitrine.innerHTML = fixo + lista.map((m, idx) => `
+            if(lista.length === 0) {
+                vitrine.innerHTML = "<p style='grid-column: 1/-1; color: #999;'>Nenhum conto publicado ainda.</p>";
+                return;
+            }
+
+            vitrine.innerHTML = lista.map((m, idx) => `
                 <div class="card-conto">
-                    <img src="${m.i}" class="card-image" onclick="abrirLeitura(${idx})" onerror="this.src='https://via.placeholder.com/300x200?text=QuimikaMente'">
+                    <img src="${m.i || 'https://via.placeholder.com/600x400?text=QuimikaMente'}" class="card-image" onclick="abrirLeitura(${idx})">
                     <div class="card-content" onclick="abrirLeitura(${idx})">
+                        <div class="card-meta">${m.d}</div>
                         <h4>${m.t}</h4>
-                        <div class="card-meta"><span>📅 ${m.d}</span></div>
+                        <p style="font-size: 13px; color: #666;">Por ${m.a}</p>
                     </div>
                     <div class="admin-controls" style="display: ${logado ? 'flex' : 'none'}">
-                        <button class="btn-edit" onclick="editar(${idx})">Editar</button>
-                        <button class="btn-del" onclick="excluir(${idx})">Excluir</button>
+                        <button class="btn-edit" onclick="editar(${idx})">EDITAR</button>
+                        <button class="btn-del" onclick="excluir(${idx})">EXCLUIR</button>
                     </div>
                 </div>`).join('');
         }
 
         function abrirLeitura(idx) {
-            let lista = JSON.parse(localStorage.getItem(KEY_MINI));
-            abrirEspecial(lista[idx].t, lista[idx].a, lista[idx].txt);
-        }
-
-        function abrirEspecial(t, a, txt) {
-            document.getElementById('read-titulo').innerText = t;
-            document.getElementById('read-autor').innerText = "Por " + a;
-            document.getElementById('read-texto').innerText = '“' + txt + '”';
+            let lista = JSON.parse(localStorage.getItem(KEY_CONTOS));
+            const conto = lista[idx];
+            document.getElementById('read-titulo').innerText = conto.t;
+            document.getElementById('read-meta-full').innerText = `Escrito por ${conto.a} em ${conto.d}`;
+            document.getElementById('read-texto').innerText = conto.txt;
             document.getElementById('modal-leitura').style.display = 'block';
             document.body.style.overflow = 'hidden';
         }
@@ -164,18 +171,16 @@
         }
 
         function excluir(idx) { 
-            if(!logado) return;
-            if(confirm("Apagar?")) { 
-                let lista = JSON.parse(localStorage.getItem(KEY_MINI)); 
+            if(confirm("Deseja remover este conto permanentemente?")) { 
+                let lista = JSON.parse(localStorage.getItem(KEY_CONTOS)); 
                 lista.splice(idx, 1); 
-                localStorage.setItem(KEY_MINI, JSON.stringify(lista)); 
+                localStorage.setItem(KEY_CONTOS, JSON.stringify(lista)); 
                 renderizar(); 
             } 
         }
         
         function editar(idx) {
-            if(!logado) return;
-            let lista = JSON.parse(localStorage.getItem(KEY_MINI));
+            let lista = JSON.parse(localStorage.getItem(KEY_CONTOS));
             const c = lista[idx];
             document.getElementById('edit-index').value = idx;
             document.getElementById('titulo').value = c.t;
