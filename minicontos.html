@@ -20,7 +20,10 @@
         /* GRID DE MINICONTOS */
         .grid-mini { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; margin-top: 50px; text-align: left; }
         
-        .card-mini { background: #fff; border: 1px solid #eee; transition: 0.3s; cursor: pointer; display: flex; flex-direction: column; }
+        /* ESTILO PARA MANTER O DESTAQUE SEMPRE EM PRIMEIRO */
+        .card-mini { background: #fff; border: 1px solid #eee; transition: 0.3s; cursor: pointer; display: flex; flex-direction: column; order: 2; } /* Todos começam com ordem 2 */
+        .card-mini.destaque { order: 1; border: 1px solid #000; } /* O destaque ganha ordem 1 (aparece antes) */
+
         .card-mini:hover { border-color: #bbb; transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
         .card-image { width: 100%; height: 200px; object-fit: cover; background: #f9f9f9; }
         .card-content { padding: 15px; flex-grow: 1; }
@@ -35,7 +38,7 @@
         #read-texto { font-size: 26px; font-style: italic; line-height: 1.5; margin: 40px 0; color: #222; text-align: center; }
         #read-autor { font-size: 14px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* FOOTER E LEGAIS PADRONIZADOS */
+        /* FOOTER */
         footer { max-width: 650px; margin: 80px auto 40px auto; padding: 20px; border-top: 1px solid #eee; text-align: center; }
         .footer-logo { font-weight: bold; font-size: 18px; margin-bottom: 5px; }
         .slogan { font-size: 13px; color: #888; margin-bottom: 25px; }
@@ -66,7 +69,7 @@
         
         <section class="grid-mini">
 
-            <article class="card-mini" onclick="abrirMini('mini1')">
+            <article class="card-mini destaque" onclick="abrirMini('mini1')">
                 <img src="quimikamente.png" class="card-image" onerror="this.src='https://via.placeholder.com/300x200?text=QuimikaMente'">
                 <div class="card-content">
                     <h4 class="card-titulo">QuimikaMente</h4>
@@ -76,7 +79,7 @@
                 <template id="text-mini1">Madrugada. Ela desperta, joga o cobertor no chão e corre ao laboratório. Lavoisier revelara a fórmula que traria paz à Terra. No agitador Vortex, uma após outra, ela insere moléculas: amerício + argônio + cobalto + molibdenio + nitrogênio + urânio + nitrogênio + cálcio. Agita. Reage: AmArCoMoNUNCa.</template>
             </article>
 
-        </section>
+            </section>
     </main>
 
     <div id="modal-leitura" class="modal-leitura">
@@ -108,10 +111,7 @@
             const card = event.currentTarget;
             document.getElementById('read-titulo').innerText = card.querySelector('.card-titulo').innerText;
             document.getElementById('read-autor').innerText = card.querySelector('.card-autor').innerText;
-            
-            // Alterado: Agora carrega o texto puro, sem aspas automáticas
             document.getElementById('read-texto').innerHTML = document.getElementById('text-' + id).innerHTML;
-            
             document.getElementById('modal-leitura').style.display = 'block';
             document.body.style.overflow = 'hidden';
         }
