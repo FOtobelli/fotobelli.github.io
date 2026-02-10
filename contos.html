@@ -20,9 +20,8 @@
         /* GRID DE CONTOS */
         .grid-contos { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; margin-top: 50px; text-align: left; }
         
-        /* CARD DO CONTO */
         .card-conto { background: #fff; border: 1px solid #eee; text-decoration: none; color: inherit; transition: 0.3s; display: flex; flex-direction: column; cursor: pointer; }
-        .card-conto:hover { border-color: #bbb; transform: translateY(-3px); }
+        .card-conto:hover { border-color: #bbb; transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
         .card-image { width: 100%; height: 200px; object-fit: cover; background: #f9f9f9; }
         .card-content { padding: 15px; flex-grow: 1; }
         .card-titulo { font-size: 18px; font-weight: bold; margin: 0 0 5px 0; color: #000; }
@@ -34,13 +33,16 @@
         .modal-content { max-width: 700px; margin: 0 auto; }
         .btn-fechar { position: fixed; top: 20px; right: 20px; background: #000; color: #fff; border: none; padding: 10px 20px; cursor: pointer; z-index: 1001; font-size: 12px; }
         .read-info-bar { margin: 20px 0; padding: 10px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; font-size: 13px; color: #888; display: flex; gap: 20px; }
+        #read-texto { font-size: 19px; line-height: 1.8; text-align: justify; white-space: pre-wrap; }
 
-        /* FOOTER */
+        /* FOOTER E LEGAIS */
         footer { max-width: 650px; margin: 80px auto 40px auto; padding: 20px; border-top: 1px solid #eee; text-align: center; }
         .footer-logo { font-weight: bold; font-size: 18px; margin-bottom: 5px; }
         .slogan { font-size: 13px; color: #888; margin-bottom: 25px; }
         .legal { font-size: 11px; color: #bbb; text-transform: uppercase; letter-spacing: 1px; }
         .legal a { color: #bbb; text-decoration: none; margin: 0 10px; cursor: pointer; }
+        .modal-legal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.98); z-index: 2000; overflow-y: auto; padding: 60px 20px; box-sizing: border-box; }
+        .modal-legal-content { max-width: 600px; margin: 0 auto; text-align: justify; color: #333; line-height: 1.6; }
 
         @media (max-width: 650px) { header { flex-direction: column; gap: 20px; } }
     </style>
@@ -61,7 +63,6 @@
 
     <main class="container">
         <h2>Contos</h2>
-        
         <section class="grid-contos">
 
             <article class="card-conto" onclick="abrirLeitura('conto1')">
@@ -71,31 +72,16 @@
                     <p class="card-sinopse">Uma reflexão sobre como as memórias oxidam a nossa alma sob a luz do presente.</p>
                     <div class="card-meta">
                         <span>👤 Fagner Otobelli</span>
-                        <span>⏱️ 5 min</span>
+                        <span>⏱️ 10 min</span>
                     </div>
                     <div style="font-size: 10px; color: #ccc; margin-top: 5px;">📅 10 FEV 2026</div>
                 </div>
                 <template id="text-conto1">
-                    Era uma vez um laboratório onde o tempo não passava em horas, mas em gotas de saudade... 
-                    (Escreva o resto do seu conto aqui, ele pode ter quantos parágrafos você quiser).
+                    Era uma vez um laboratório onde o tempo não passava em horas...
+                    (Cole seu texto aqui)
                 </template>
             </article>
-            <article class="card-conto" onclick="abrirLeitura('conto2')">
-                <img src="capa-conto2.jpg" class="card-image" onerror="this.src='https://via.placeholder.com/400x250?text=QuimikaMente'">
-                <div class="card-content">
-                    <h4 class="card-titulo">Alquimia das Cinzas</h4>
-                    <p class="card-sinopse">No fogo da vida, nem tudo o que queima se transforma em fumaça.</p>
-                    <div class="card-meta">
-                        <span>👤 Fagner Otobelli</span>
-                        <span>⏱️ 3 min</span>
-                    </div>
-                    <div style="font-size: 10px; color: #ccc; margin-top: 5px;">📅 08 FEV 2026</div>
-                </div>
-                <template id="text-conto2">
-                    As cinzas no fundo do cadinho contavam uma história que o fogo tentou apagar...
-                    (Texto do segundo conto aqui).
-                </template>
-            </article>
+
             </section>
     </main>
 
@@ -109,41 +95,52 @@
                 <span id="read-data"></span>
                 <span id="read-tempo"></span>
             </div>
-            <div id="read-texto" style="font-size: 19px; white-space: pre-wrap; text-align: justify; margin-top: 30px;"></div>
+            <div id="read-texto"></div>
         </div>
     </div>
 
     <footer>
         <div class="footer-logo">QuimikaMente</div>
         <div class="slogan">Viver, sentir, experimentar, recriar.</div>
-        <div class="legal">© 2026 Fagner Otobelli</div>
+        <div class="legal">
+            <a onclick="abrirLegal('termos')">Termos de Uso</a> | 
+            <a onclick="abrirLegal('privacidade')">Política de Privacidade</a> | 
+            <a onclick="abrirLegal('autoral')">Direitos Autorais</a>
+        </div>
     </footer>
+
+    <div id="modal-legal" class="modal-legal">
+        <button class="btn-fechar" onclick="fecharLegal()">FECHAR</button>
+        <div id="legal-content" class="modal-legal-content"></div>
+    </div>
 
     <script>
         function abrirLeitura(id) {
             const card = event.currentTarget;
-            const titulo = card.querySelector('.card-titulo').innerText;
-            const sinopse = card.querySelector('.card-sinopse').innerText;
-            const autor = card.querySelector('.card-meta span:nth-child(1)').innerText;
-            const tempo = card.querySelector('.card-meta span:nth-child(2)').innerText;
-            const data = card.querySelector('div[style*="color: #ccc"]').innerText;
-            const texto = document.getElementById('text-' + id).innerHTML;
-
-            document.getElementById('read-titulo').innerText = titulo;
-            document.getElementById('read-sinopse').innerText = sinopse;
-            document.getElementById('read-autor').innerText = autor;
-            document.getElementById('read-data').innerText = data;
-            document.getElementById('read-tempo').innerText = "⏱️ Leitura: " + tempo;
-            document.getElementById('read-texto').innerHTML = texto;
-
+            document.getElementById('read-titulo').innerText = card.querySelector('.card-titulo').innerText;
+            document.getElementById('read-sinopse').innerText = card.querySelector('.card-sinopse').innerText;
+            document.getElementById('read-autor').innerText = card.querySelector('.card-meta span:nth-child(1)').innerText;
+            document.getElementById('read-tempo').innerText = "⏱️ Leitura: " + card.querySelector('.card-meta span:nth-child(2)').innerText;
+            document.getElementById('read-data').innerText = card.querySelector('div[style*="color: #ccc"]').innerText;
+            document.getElementById('read-texto').innerHTML = document.getElementById('text-' + id).innerHTML;
             document.getElementById('modal-leitura').style.display = 'block';
             document.body.style.overflow = 'hidden';
         }
 
-        function fecharLeitura() {
-            document.getElementById('modal-leitura').style.display = 'none';
-            document.body.style.overflow = 'auto';
+        function fecharLeitura() { document.getElementById('modal-leitura').style.display = 'none'; document.body.style.overflow = 'auto'; }
+
+        const textosLegais = {
+            termos: `<h3>Termos de Uso</h3><p>Conteúdo literário de uso pessoal...</p>`,
+            privacidade: `<h3>Privacidade</h3><p>Não coletamos seus dados...</p>`,
+            autoral: `<h3>Direitos Autorais</h3><p>Todos os direitos reservados a Fagner Otobelli.</p>`
+        };
+
+        function abrirLegal(tipo) {
+            document.getElementById('legal-content').innerHTML = textosLegais[tipo];
+            document.getElementById('modal-legal').style.display = 'block';
         }
+
+        function fecharLegal() { document.getElementById('modal-legal').style.display = 'none'; }
     </script>
 </body>
 </html>
