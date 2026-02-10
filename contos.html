@@ -6,49 +6,52 @@
     <title>Contos - QuimikaMente</title>
     <style>
         body { font-family: 'Georgia', serif; line-height: 1.8; margin: 0; color: #1a1a1a; background-color: #ffffff; }
-        header { padding: 40px 20px; max-width: 650px; margin: 0 auto; display: flex; justify-content: space-between; align-items: baseline; }
-        .logo { font-size: 22px; font-weight: 700; text-decoration: none; color: #000; }
+        
+        /* HEADER PADRONIZADO */
+        header { padding: 40px 20px; max-width: 650px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo-container { display: flex; align-items: center; text-decoration: none; color: #000; }
+        .logo-img { height: 45px; width: auto; margin-right: 15px; display: block; }
+        .logo-text { font-size: 24px; font-weight: 700; }
         nav a { margin-left: 20px; text-decoration: none; color: #666; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
         
         .container { max-width: 900px; margin: 20px auto; padding: 0 20px; text-align: center; }
-        .grid-contos { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; margin-top: 50px; text-align: left; }
-        .card-conto { background: #fff; border: 1px solid #eee; padding-bottom: 10px; transition: 0.3s; position: relative; }
-        .card-image { width: 100%; height: 200px; object-fit: cover; background: #f0f0f0; cursor: pointer; }
-        .card-content { padding: 15px; cursor: pointer; }
-        .card-meta { margin-top: 10px; font-size: 11px; color: #999; border-top: 1px solid #f5f5f5; padding-top: 10px; }
-        
-        /* Modal de Leitura */
-        #modal-leitura { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 1000; overflow-y: auto; padding: 60px 20px; box-sizing: border-box; }
-        .modal-content { max-width: 700px; margin: 0 auto; }
-        .btn-fechar-leitura { position: fixed; top: 20px; right: 20px; background: #000; color: #fff; border: none; padding: 10px 20px; cursor: pointer; z-index: 1001; }
+        h2 { font-weight: normal; font-style: italic; font-size: 28px; margin-bottom: 40px; }
 
-        /* Estilo do Footer - IGUAL AO INDEX */
-        footer { max-width: 650px; margin: 60px auto 40px auto; padding: 20px; border-top: 1px solid #eee; text-align: center; }
+        /* GRID DE CONTOS */
+        .grid-contos { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; margin-top: 50px; text-align: left; }
+        
+        /* CARD DO CONTO */
+        .card-conto { background: #fff; border: 1px solid #eee; text-decoration: none; color: inherit; transition: 0.3s; display: flex; flex-direction: column; cursor: pointer; }
+        .card-conto:hover { border-color: #bbb; transform: translateY(-3px); }
+        .card-image { width: 100%; height: 200px; object-fit: cover; background: #f9f9f9; }
+        .card-content { padding: 15px; flex-grow: 1; }
+        .card-titulo { font-size: 18px; font-weight: bold; margin: 0 0 5px 0; color: #000; }
+        .card-sinopse { font-size: 14px; color: #555; font-style: italic; margin-bottom: 10px; line-height: 1.4; }
+        .card-meta { font-size: 11px; color: #999; border-top: 1px solid #f5f5f5; padding-top: 10px; display: flex; justify-content: space-between; }
+        
+        /* MODAL DE LEITURA */
+        .modal-leitura { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 1000; overflow-y: auto; padding: 60px 20px; box-sizing: border-box; }
+        .modal-content { max-width: 700px; margin: 0 auto; }
+        .btn-fechar { position: fixed; top: 20px; right: 20px; background: #000; color: #fff; border: none; padding: 10px 20px; cursor: pointer; z-index: 1001; font-size: 12px; }
+        .read-info-bar { margin: 20px 0; padding: 10px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; font-size: 13px; color: #888; display: flex; gap: 20px; }
+
+        /* FOOTER */
+        footer { max-width: 650px; margin: 80px auto 40px auto; padding: 20px; border-top: 1px solid #eee; text-align: center; }
         .footer-logo { font-weight: bold; font-size: 18px; margin-bottom: 5px; }
         .slogan { font-size: 13px; color: #888; margin-bottom: 25px; }
         .legal { font-size: 11px; color: #bbb; text-transform: uppercase; letter-spacing: 1px; }
-        .legal a { color: #bbb; text-decoration: none; margin: 0 10px; cursor: pointer; transition: 0.3s; }
-        .legal a:hover { color: #000; }
+        .legal a { color: #bbb; text-decoration: none; margin: 0 10px; cursor: pointer; }
 
-        /* Modal Legal - IGUAL AO INDEX */
-        .modal-legal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.98); z-index: 2000; overflow-y: auto; padding: 60px 20px; box-sizing: border-box; }
-        .modal-legal-content { max-width: 600px; margin: 0 auto; text-align: justify; color: #333; line-height: 1.6; }
-        .modal-legal-content h3 { border-bottom: 1px solid #eee; padding-bottom: 10px; }
-        .btn-fechar { position: fixed; top: 20px; right: 20px; background: #000; color: #fff; border: none; padding: 10px 20px; cursor: pointer; font-family: sans-serif; font-size: 12px; }
-
-        /* Admin Section */
-        #admin-section { display: none; margin: 60px 0; padding: 20px; border-top: 1px solid #eee; }
-        .form-card { display: none; background: #f9f9f9; padding: 25px; border: 1px solid #ddd; max-width: 600px; margin: 20px auto; text-align: left; }
-        .form-card input, .form-card textarea { width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ccc; box-sizing: border-box; }
-        .admin-controls { display: none; gap: 10px; padding: 0 15px 15px 15px; }
-        .btn-edit { background: #eee; color: #333; border: none; padding: 5px 10px; cursor: pointer; font-size: 11px; }
-        .btn-del { background: #ffebee; color: #c62828; border: none; padding: 5px 10px; cursor: pointer; font-size: 11px; }
-        #secret-access { opacity: 0.1; cursor: default; font-size: 9px; margin-top: 30px; display: inline-block; text-decoration: none; color: #ccc; }
+        @media (max-width: 650px) { header { flex-direction: column; gap: 20px; } }
     </style>
 </head>
 <body>
+
     <header>
-        <a href="index.html" class="logo">QuimikaMente</a>
+        <a href="index.html" class="logo-container">
+            <img src="logo-quimikamente.png" alt="" class="logo-img">
+            <span class="logo-text">QuimikaMente</span>
+        </a>
         <nav>
             <a href="index.html">Home</a>
             <a href="contos.html">Contos</a>
@@ -58,172 +61,89 @@
 
     <main class="container">
         <h2>Contos</h2>
-        <section id="vitrine-contos" class="grid-contos"></section>
+        
+        <section class="grid-contos">
 
-        <div id="admin-section">
-            <button onclick="toggleForm()" style="background: #000; color: #fff; padding: 10px 20px; border: none; cursor: pointer;">+ ADICIONAR NOVO CONTO</button>
-            <div id="form-container" class="form-card">
-                <h3 id="form-title">Novo Conto</h3>
-                <input type="hidden" id="edit-index" value="-1">
-                <input type="text" id="titulo" placeholder="Título">
-                <input type="text" id="autor" placeholder="Autor" value="FOtobelli">
-                <input type="date" id="data">
-                <input type="text" id="img" placeholder="Link da Imagem">
-                <textarea id="texto" rows="10" placeholder="Texto do conto..."></textarea>
-                <button onclick="salvarConto()" style="width:100%; background:#000; color:#fff; padding:15px; border:none; cursor:pointer;">SALVAR CONTO</button>
-            </div>
-        </div>
+            <article class="card-conto" onclick="abrirLeitura('conto1')">
+                <img src="capa-conto1.jpg" class="card-image" onerror="this.src='https://via.placeholder.com/400x250?text=QuimikaMente'">
+                <div class="card-content">
+                    <h4 class="card-titulo">O Reagente do Tempo</h4>
+                    <p class="card-sinopse">Uma reflexão sobre como as memórias oxidam a nossa alma sob a luz do presente.</p>
+                    <div class="card-meta">
+                        <span>👤 Fagner Otobelli</span>
+                        <span>⏱️ 5 min</span>
+                    </div>
+                    <div style="font-size: 10px; color: #ccc; margin-top: 5px;">📅 10 FEV 2026</div>
+                </div>
+                <template id="text-conto1">
+                    Era uma vez um laboratório onde o tempo não passava em horas, mas em gotas de saudade... 
+                    (Escreva o resto do seu conto aqui, ele pode ter quantos parágrafos você quiser).
+                </template>
+            </article>
+            <article class="card-conto" onclick="abrirLeitura('conto2')">
+                <img src="capa-conto2.jpg" class="card-image" onerror="this.src='https://via.placeholder.com/400x250?text=QuimikaMente'">
+                <div class="card-content">
+                    <h4 class="card-titulo">Alquimia das Cinzas</h4>
+                    <p class="card-sinopse">No fogo da vida, nem tudo o que queima se transforma em fumaça.</p>
+                    <div class="card-meta">
+                        <span>👤 Fagner Otobelli</span>
+                        <span>⏱️ 3 min</span>
+                    </div>
+                    <div style="font-size: 10px; color: #ccc; margin-top: 5px;">📅 08 FEV 2026</div>
+                </div>
+                <template id="text-conto2">
+                    As cinzas no fundo do cadinho contavam uma história que o fogo tentou apagar...
+                    (Texto do segundo conto aqui).
+                </template>
+            </article>
+            </section>
     </main>
 
-    <div id="modal-leitura">
-        <button class="btn-fechar-leitura" onclick="fecharLeitura()">FECHAR LEITURA</button>
+    <div id="modal-leitura" class="modal-leitura">
+        <button class="btn-fechar" onclick="fecharLeitura()">FECHAR LEITURA</button>
         <div class="modal-content">
             <h1 id="read-titulo"></h1>
-            <p id="read-autor" style="color: #888;"></p>
-            <div id="read-texto" style="font-size: 18px; white-space: pre-wrap; text-align: justify;"></div>
+            <p id="read-sinopse" style="font-style: italic; color: #555; font-size: 18px;"></p>
+            <div class="read-info-bar">
+                <span id="read-autor"></span>
+                <span id="read-data"></span>
+                <span id="read-tempo"></span>
+            </div>
+            <div id="read-texto" style="font-size: 19px; white-space: pre-wrap; text-align: justify; margin-top: 30px;"></div>
         </div>
     </div>
 
     <footer>
         <div class="footer-logo">QuimikaMente</div>
         <div class="slogan">Viver, sentir, experimentar, recriar.</div>
-        <div class="legal">
-            <a onclick="abrirLegal('termos')">Termos de Uso</a> | 
-            <a onclick="abrirLegal('privacidade')">Política de Privacidade</a> | 
-            <a onclick="abrirLegal('autoral')">Direitos Autorais</a>
-        </div>
-        <span id="secret-access" onclick="fazerLogin()">Admin</span>
+        <div class="legal">© 2026 Fagner Otobelli</div>
     </footer>
 
-    <div id="modal-legal" class="modal-legal">
-        <button class="btn-fechar" onclick="fecharLegal()">FECHAR</button>
-        <div id="legal-content" class="modal-legal-content"></div>
-    </div>
-
     <script>
-        const KEY = 'quimikamente_contos_final';
-        let logado = false;
+        function abrirLeitura(id) {
+            const card = event.currentTarget;
+            const titulo = card.querySelector('.card-titulo').innerText;
+            const sinopse = card.querySelector('.card-sinopse').innerText;
+            const autor = card.querySelector('.card-meta span:nth-child(1)').innerText;
+            const tempo = card.querySelector('.card-meta span:nth-child(2)').innerText;
+            const data = card.querySelector('div[style*="color: #ccc"]').innerText;
+            const texto = document.getElementById('text-' + id).innerHTML;
 
-        function fazerLogin() {
-            const senha = prompt("Digite a senha de autor:");
-            if (senha === 'EueGemini.com') {
-                logado = true;
-                document.getElementById('admin-section').style.display = 'block';
-                renderizar();
-                alert("Modo autor ativado!");
-            } else {
-                alert("Senha incorreta.");
-            }
-        }
+            document.getElementById('read-titulo').innerText = titulo;
+            document.getElementById('read-sinopse').innerText = sinopse;
+            document.getElementById('read-autor').innerText = autor;
+            document.getElementById('read-data').innerText = data;
+            document.getElementById('read-tempo').innerText = "⏱️ Leitura: " + tempo;
+            document.getElementById('read-texto').innerHTML = texto;
 
-        function toggleForm() { 
-            const f = document.getElementById('form-container');
-            f.style.display = f.style.display === 'block' ? 'none' : 'block'; 
-        }
-
-        function salvarConto() {
-            if (!logado) return;
-            const index = document.getElementById('edit-index').value;
-            const novo = { 
-                t: document.getElementById('titulo').value, 
-                a: document.getElementById('autor').value, 
-                d: document.getElementById('data').value, 
-                i: document.getElementById('img').value, 
-                txt: document.getElementById('texto').value 
-            };
-            let lista = JSON.parse(localStorage.getItem(KEY) || '[]');
-            if(index === "-1") lista.unshift(novo); else lista[index] = novo;
-            localStorage.setItem(KEY, JSON.stringify(lista));
-            location.reload();
-        }
-
-        function renderizar() {
-            const vitrine = document.getElementById('vitrine-contos');
-            let lista = JSON.parse(localStorage.getItem(KEY) || '[]');
-            vitrine.innerHTML = lista.map((m, idx) => `
-                <div class="card-conto">
-                    <img src="${m.i}" class="card-image" onclick="abrirLeitura(${idx})" onerror="this.src='https://via.placeholder.com/300x200?text=QuimikaMente'">
-                    <div class="card-content" onclick="abrirLeitura(${idx})">
-                        <h4>${m.t}</h4>
-                        <p style="font-size: 12px; color: #666;">Por ${m.a}</p>
-                        <div class="card-meta"><span>📅 ${m.d}</span></div>
-                    </div>
-                    <div class="admin-controls" style="display: ${logado ? 'flex' : 'none'}">
-                        <button class="btn-edit" onclick="editar(${idx})">Editar</button>
-                        <button class="btn-del" onclick="excluir(${idx})">Excluir</button>
-                    </div>
-                </div>`).join('');
-        }
-
-        function abrirLeitura(idx) {
-            let lista = JSON.parse(localStorage.getItem(KEY));
-            document.getElementById('read-titulo').innerText = lista[idx].t;
-            document.getElementById('read-autor').innerText = "Por " + lista[idx].a;
-            document.getElementById('read-texto').innerText = lista[idx].txt;
             document.getElementById('modal-leitura').style.display = 'block';
             document.body.style.overflow = 'hidden';
         }
 
-        function fecharLeitura() { 
-            document.getElementById('modal-leitura').style.display = 'none'; 
+        function fecharLeitura() {
+            document.getElementById('modal-leitura').style.display = 'none';
             document.body.style.overflow = 'auto';
         }
-
-        function excluir(idx) { 
-            if(!logado) return;
-            if(confirm("Apagar conto permanentemente?")) { 
-                let lista = JSON.parse(localStorage.getItem(KEY)); 
-                lista.splice(idx, 1); 
-                localStorage.setItem(KEY, JSON.stringify(lista)); 
-                renderizar(); 
-            } 
-        }
-
-        function editar(idx) {
-            if(!logado) return;
-            let lista = JSON.parse(localStorage.getItem(KEY));
-            const c = lista[idx];
-            document.getElementById('edit-index').value = idx;
-            document.getElementById('titulo').value = c.t;
-            document.getElementById('autor').value = c.a;
-            document.getElementById('data').value = c.d;
-            document.getElementById('img').value = c.i;
-            document.getElementById('texto').value = c.txt;
-            document.getElementById('form-container').style.display = 'block';
-            window.scrollTo(0, 0);
-        }
-
-        // --- Lógica Legal (IMPORTADA DO INDEX) ---
-        const textosLegais = {
-            termos: `
-                <h3>Termos de Uso</h3>
-                <p>Ao acessar o QuimikaMente, você concorda em utilizar este espaço para fins estritamente pessoais e artísticos. É expressamente proibida a reprodução, modificação ou distribuição do conteúdo sem autorização prévia.</p>
-                <p><strong>Conduta e Ética:</strong> Este é um espaço de respeito. Não toleramos qualquer forma de discriminação. É terminantemente proibida a veiculação de comentários ou interações que configurem crime de racismo (Lei nº 7.716/1989) ou homofobia e transfobia (conforme entendimento do STF na ADO 26), sob pena de banimento e medidas judiciais cabíveis.</p>`,
-            
-            privacidade: `
-                <h3>Política de Privacidade</h3>
-                <p>O QuimikaMente respeita a sua privacidade e a LGPD (Lei Geral de Proteção de Dados). Atualmente, este site não coleta dados pessoais, não utiliza cookies de rastreamento nem armazena informações dos visitantes de forma automática.</p>
-                <p>Caso no futuro venhamos a oferecer newsletters ou formulários de contato, o uso desses dados será restrito à finalidade de comunicação direta entre o autor e o leitor, garantindo sempre o direito de exclusão dos dados pelo usuário.</p>`,
-            
-            autoral: `
-                <h3>Direitos Autorais</h3>
-                <p><strong>Textos:</strong> Todo o conteúdo literário, incluindo contos, minicontos e ensaios, é 100% autoral e de propriedade intelectual exclusiva de <strong>Fagner Otobelli</strong>.</p>
-                <p><strong>Imagens:</strong> As artes visuais deste site foram desenvolvidas em um processo colaborativo entre o autor e inteligência artificial (Gemini/Google), sendo protegidas como obras derivadas de criação artística.</p>
-                <p>Todos os direitos reservados © 2026. A cópia não autorizada constitui crime de violação de direito autoral conforme a legislação vigente.</p>`
-        };
-
-        function abrirLegal(tipo) {
-            document.getElementById('legal-content').innerHTML = textosLegais[tipo];
-            document.getElementById('modal-legal').style.display = 'block';
-            document.body.style.overflow = 'hidden'; 
-        }
-
-        function fecharLegal() {
-            document.getElementById('modal-legal').style.display = 'none';
-            document.body.style.overflow = 'auto'; 
-        }
-
-        window.onload = renderizar;
     </script>
 </body>
 </html>
