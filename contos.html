@@ -36,7 +36,6 @@
         .modal-leitura, .modal-legal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 1000; overflow-y: auto; padding: 60px 20px; box-sizing: border-box; }
         .modal-legal { background: rgba(255,255,255,0.98); z-index: 2000; }
         .modal-content, .modal-legal-content { max-width: 700px; margin: 0 auto; }
-        .modal-legal-content { max-width: 600px; text-align: justify; }
         
         .btn-fechar { position: fixed; top: 20px; right: 20px; background: #000; color: #fff; border: none; padding: 10px 20px; cursor: pointer; z-index: 1001; font-size: 12px; }
         .read-info-bar { margin: 20px 0; padding: 10px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; font-size: 13px; color: #888; display: flex; gap: 20px; }
@@ -46,8 +45,12 @@
         .secao-comentarios { margin-top: 60px; border-top: 1px double #eee; padding: 40px 0; text-align: left; }
         .secao-comentarios h3 { text-align: center; letter-spacing: 2px; font-size: 16px; text-transform: uppercase; }
         .form-comentario { display: flex; flex-direction: column; gap: 15px; max-width: 500px; margin: 30px auto; }
-        .form-comentario input, .form-comentario textarea { padding: 12px; border: 1px solid #eee; font-family: 'Georgia', serif; font-size: 14px; }
-        .btn-enviar { background: #000; color: #fff; border: none; padding: 15px; cursor: pointer; letter-spacing: 2px; text-transform: uppercase; font-size: 12px; }
+        .form-comentario input, .form-comentario textarea { padding: 12px; border: 1px solid #eee; font-family: 'Georgia', serif; font-size: 14px; outline: none; }
+        .form-comentario input:focus, .form-comentario textarea:focus { border-color: #000; }
+        .btn-enviar { background: #000; color: #fff; border: none; padding: 15px; cursor: pointer; letter-spacing: 2px; text-transform: uppercase; font-size: 12px; transition: 0.3s; }
+        .btn-enviar:hover { background: #333; }
+        .btn-enviar:disabled { background: #ccc; cursor: not-allowed; }
+        .status-msg { text-align: center; font-size: 12px; margin-top: 10px; font-style: italic; }
 
         /* FOOTER */
         footer { max-width: 650px; margin: 80px auto 40px auto; padding: 20px; border-top: 1px solid #eee; text-align: center; }
@@ -111,7 +114,7 @@ Foi despertado por um trovão e encontrava-se em um vale com vistas a um abismo 
 — Serás encaminhado aos traidores da pátria e, por teus atos, tua sentença: ficarás com o corpo submerso, apenas a cabeça para fora do gelo.
 “Isso é totalmente injusto. Na época do alistamento, meu chefe conhecia a cúpula militar e solicitou, se possível, minha dispensa porque eu era importante...”
 — Tu escolheste não servir. És um traidor da pátria.
-“Cadê ele? Meu falecido sócio também tá enterrado no gelo? Ele também não quis servir. Empregamos cerca de 90 funcionários, pessoas que sustentam suas famílias porque seguimos na informática. Quero ir com ele, se dane. Cadê ele?”
+“Cadê ele? Meu falecido sócio também tá enterrado no gelo? Hele também não quis servir. Empregamos cerca de 90 funcionários, pessoas que sustentam suas famílias porque seguimos na informática. Quero ir com ele, se dane. Cadê ele?”
 Sentiu como serpentes a roçarem o traçado prateado de sua forma e tonteou, caindo desacordado. 
 Ao recobrar a consciência, ele estava em um lago congelado e, ao seu entorno, milhares de cabeças, feições agonizantes, flutuavam sobre as águas. Ouviu lamúrias bestiais e, ao movimentar sua fronte, viu seu contorno também submerso, reconhecendo que sua própria cabeça era mais uma a boiar.
 E sentiu o gelo a penetrar, como uma navalha, sua silhueta prateada; e sentiu o pulsar do coração lento e doloroso a abandoná-lo; e sentiu esvair-se, e, desesperado, gritou:
@@ -194,7 +197,7 @@ De súbito, um trovão ressoou, produzindo um extenso e grave eco. Arregalou os 
 Acomodado nos braços do idoso, notou aumentar o som constante e metálico das gotas que se chocavam contra a côncava proteção.
 
 — Quem é você? Não encontro minha casa, nem minha rua — afirmou, ao pé do ouvido do velho. — Terminei o quebra-cabeça e estava indo ao parque com meu pai empinar pipa. De repente, tudo ficou diferente. Estou com fome.
-— Não é fome, meu rapaz. O medo é como um túnel: quanto mais dá atenção, mais escuro fica — proferiu o senhor, ainda entrelaçado ao moleque. — Praticar o bem pode acender luzes, muitas luzes...
+— Não é fome, meu rapaz. O medo é como um túnel: quanto mais dá atenção, mais escuro fica — proferiu o senhor, ainda entrelaçado ao moleque. — Praticar o bem pode acender luzes, many luzes...
 
 De sobressalto, o moleque despertou. Ofegante, removeu o lençol, enquanto o imponente ruído da chuva batendo contra o toldo da parada de ônibus ecoava à memória, ainda que pudesse sentir o calor do abraço acolhedor do velho desconhecido a reconfortá-lo. 
 
@@ -229,12 +232,13 @@ Quando voltou a si, o moleque se viu cercado por passageiros e passageiras, vizi
 
             <section class="secao-comentarios">
                 <h3>O que achou deste conto?</h3>
-                <form action="https://formspree.io/f/seu-id-aqui" method="POST" class="form-comentario">
-                    <input type="hidden" name="_subject" id="subject-comentario" value="Novo comentário">
+                <form action="https://formspree.io/f/xbdadbrl" method="POST" class="form-comentario" id="form-comentario">
+                    <input type="hidden" name="_subject" id="subject-comentario" value="Novo comentário em Contos">
                     <input type="text" name="nome" placeholder="Seu Nome" required>
                     <input type="email" name="email" placeholder="Seu E-mail" required>
                     <textarea name="mensagem" rows="5" placeholder="Sua mensagem..." required></textarea>
-                    <button type="submit" class="btn-enviar">Enviar para Moderação</button>
+                    <button type="submit" id="btn-enviar" class="btn-enviar">Enviar para Moderação</button>
+                    <p id="form-status" class="status-msg">Seu comentário será enviado para o autor e publicado após aprovação.</p>
                 </form>
             </section>
         </div>
@@ -266,12 +270,16 @@ Quando voltou a si, o moleque se viu cercado por passageiros e passageiras, vizi
             document.getElementById('read-data').innerText = card.querySelector('div[style*="color: #ccc"]').innerText;
             document.getElementById('read-texto').innerHTML = document.getElementById('text-' + id).innerHTML;
             
-            // Assunto do e-mail
+            // Atualiza o assunto do e-mail com o nome do conto
             document.getElementById('subject-comentario').value = "Comentário no Conto: " + titulo;
 
             document.getElementById('modal-leitura').style.display = 'block';
             document.body.style.overflow = 'hidden';
             document.getElementById('modal-leitura').scrollTop = 0;
+            
+            // Reseta o status do formulário ao abrir novo conto
+            document.getElementById("form-status").innerText = "Seu comentário será enviado para o autor e publicado após aprovação.";
+            document.getElementById("form-status").style.color = "#1a1a1a";
         }
 
         function fecharLeitura() { 
@@ -279,22 +287,46 @@ Quando voltou a si, o moleque se viu cercado por passageiros e passageiras, vizi
             document.body.style.overflow = 'auto'; 
         }
 
+        // Lógica de envio AJAX para o Formspree
+        const form = document.getElementById("form-comentario");
+        const status = document.getElementById("form-status");
+        const btn = document.getElementById("btn-enviar");
+
+        form.addEventListener("submit", async function(event) {
+            event.preventDefault();
+            btn.disabled = true;
+            btn.innerText = "ENVIANDO...";
+            
+            const data = new FormData(event.target);
+            fetch(event.target.action, {
+                method: form.method,
+                body: data,
+                headers: { 'Accept': 'application/json' }
+            }).then(response => {
+                if (response.ok) {
+                    status.innerHTML = "<strong>✅ Mensagem enviada com sucesso!</strong>";
+                    status.style.color = "#28a745";
+                    form.reset();
+                    btn.innerText = "ENVIAR PARA MODERAÇÃO";
+                    btn.disabled = false;
+                } else {
+                    status.innerHTML = "❌ Erro ao enviar. Tente novamente.";
+                    status.style.color = "#dc3545";
+                    btn.disabled = false;
+                    btn.innerText = "TENTAR NOVAMENTE";
+                }
+            }).catch(error => {
+                status.innerHTML = "❌ Erro de conexão com o servidor.";
+                btn.disabled = false;
+                btn.innerText = "TENTAR NOVAMENTE";
+            });
+        });
+
+        // Textos Legais
         const textosLegais = {
-            termos: `
-                <h3>Termos de Uso</h3>
-                <p>Ao acessar o QuimikaMente, você concorda em utilizar este espaço para fins estritamente pessoais e artísticos. É expressamente proibida a reprodução, modificação ou distribuição do conteúdo sem autorização prévia.</p>
-                <p><strong>Conduta e Ética:</strong> Este é um espaço de respeito. Não toleramos qualquer forma de discriminação. É terminantemente proibida a veiculação de comentários ou interações que configurem crime de racismo (Lei nº 7.716/1989) ou homofobia e transfobia (conforme entendimento do STF na ADO 26), sob pena de banimento e medidas judiciais cabíveis.</p>`,
-            
-            privacidade: `
-                <h3>Política de Privacidade</h3>
-                <p>O QuimikaMente respeita a sua privacidade e a LGPD (Lei Geral de Proteção de Dados). Atualmente, este site não coleta dados pessoais, não utiliza cookies de rastreamento nem armazena informações dos visitantes de forma automática.</p>
-                <p>Caso no futuro venhamos a oferecer newsletters ou formulários de contato, o uso desses dados será restrito à finalidade de comunicação direta entre o autor e o leitor, garantindo sempre o direito de exclusão dos dados pelo usuário.</p>`,
-            
-            autoral: `
-                <h3>Direitos Autorais</h3>
-                <p><strong>Textos:</strong> Todo o conteúdo literário, incluindo contos, minicontos e ensaios, é 100% autoral e de propriedade intelectual exclusiva de <strong>Fagner Otobelli</strong>.</p>
-                <p><strong>Imagens:</strong> As artes visuais deste site foram desenvolvidas em um processo colaborativo entre o autor e inteligência artificial (Gemini/Google), sendo protegidas como obras derivadas de criação artística.</p>
-                <p>Todos os direitos reservados © 2026. A cópia não autorizada constitui crime de violação de direito autoral conforme a legislação vigente.</p>`
+            termos: `<h3>Termos de Uso</h3><p>Ao acessar o QuimikaMente, você concorda em utilizar este espaço para fins estritamente pessoais e artísticos. É expressamente proibida a reprodução, modificação ou distribuição do conteúdo sem autorização prévia.</p><p><strong>Conduta e Ética:</strong> Este é um espaço de respeito. Não toleramos qualquer forma de discriminação. É terminantemente proibida a veiculação de comentários ou interações que configurem crime de racismo (Lei nº 7.716/1989) ou homofobia e transfobia, sob pena de banimento e medidas judiciais cabíveis.</p>`,
+            privacidade: `<h3>Política de Privacidade</h3><p>O QuimikaMente respeita a sua privacidade e a LGPD. Atualmente, este site não coleta dados pessoais de navegação automática. O uso dos dados enviados via formulário é restrito à finalidade de comunicação direta entre o autor e o leitor.</p>`,
+            autoral: `<h3>Direitos Autorais</h3><p><strong>Textos:</strong> Todo o conteúdo literário é de propriedade intelectual exclusiva de <strong>Fagner Otobelli</strong>.</p><p><strong>Imagens:</strong> As artes visuais foram desenvolvidas em processo colaborativo entre o autor e inteligência artificial (Gemini/Google).</p><p>Todos os direitos reservados © 2026.</p>`
         };
 
         function abrirLegal(tipo) {
