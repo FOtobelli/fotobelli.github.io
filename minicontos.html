@@ -43,6 +43,16 @@
         #read-texto { font-size: 26px; font-style: italic; line-height: 1.5; margin: 40px 0; color: #222; text-align: center; }
         #read-autor { font-size: 14px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
 
+        /* SEÇÃO DE COMENTÁRIOS NO MODAL */
+        .secao-comentarios { margin-top: 60px; border-top: 1px double #eee; padding-top: 40px; text-align: left; }
+        .secao-comentarios h3 { font-size: 18px; text-transform: uppercase; letter-spacing: 2px; text-align: center; margin-bottom: 30px; }
+        .form-comentario { display: flex; flex-direction: column; gap: 15px; }
+        .form-comentario input, .form-comentario textarea { font-family: 'Georgia', serif; padding: 12px; border: 1px solid #eee; font-size: 14px; outline: none; }
+        .form-comentario input:focus, .form-comentario textarea:focus { border-color: #000; }
+        .btn-enviar { background: #000; color: #fff; border: none; padding: 15px; cursor: pointer; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s; }
+        .btn-enviar:hover { background: #333; }
+        .aviso-moderacao { font-size: 11px; color: #999; text-align: center; margin-top: 10px; font-style: italic; }
+
         /* FOOTER */
         footer { max-width: 650px; margin: 80px auto 40px auto; padding: 20px; border-top: 1px solid #eee; text-align: center; }
         .footer-logo { font-weight: bold; font-size: 18px; margin-bottom: 5px; }
@@ -123,6 +133,20 @@
             <h1 id="read-titulo"></h1>
             <p id="read-autor"></p>
             <div id="read-texto"></div>
+
+            <section class="secao-comentarios">
+                <h3>Deixe sua impressão</h3>
+                <form action="https://formspree.io/f/seu-id-aqui" method="POST" class="form-comentario">
+                    <input type="hidden" name="_subject" id="subject-comentario" value="Novo comentário em Miniconto">
+                    
+                    <input type="text" name="nome" placeholder="Seu Nome" required>
+                    <input type="email" name="email" placeholder="Seu E-mail" required>
+                    <textarea name="mensagem" rows="4" placeholder="O que você sentiu ao ler?" required></textarea>
+                    
+                    <button type="submit" class="btn-enviar">Enviar para Moderação</button>
+                    <p class="aviso-moderacao">Seu comentário será enviado para o autor e publicado após aprovação.</p>
+                </form>
+            </section>
         </div>
     </div>
 
@@ -144,9 +168,15 @@
     <script>
         function abrirMini(id) {
             const card = event.currentTarget;
-            document.getElementById('read-titulo').innerText = card.querySelector('.card-titulo').innerText;
+            const titulo = card.querySelector('.card-titulo').innerText;
+            
+            document.getElementById('read-titulo').innerText = titulo;
             document.getElementById('read-autor').innerText = card.querySelector('.card-autor').innerText;
             document.getElementById('read-texto').innerHTML = document.getElementById('text-' + id).innerHTML;
+            
+            // Atualiza o assunto do e-mail para você saber de qual conto estão falando
+            document.getElementById('subject-comentario').value = "Comentário no Miniconto: " + titulo;
+
             document.getElementById('modal-leitura').style.display = 'block';
             document.body.style.overflow = 'hidden';
         }
@@ -164,7 +194,7 @@
             
             privacidade: `
                 <h3>Política de Privacidade</h3>
-                <p>O QuimikaMente respeita a sua privacidade e a LGPD. Atualmente, este site não coleta dados pessoais nem utiliza cookies de rastreamento.</p>`,
+                <p>O QuimikaMente respeita a sua privacidade e a LGPD. Os dados fornecidos nos comentários (nome e e-mail) são utilizados exclusivamente para identificação do autor do comentário e não serão compartilhados com terceiros.</p>`,
             
             autoral: `
                 <h3>Direitos Autorais</h3>
