@@ -3,7 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minicontos - QuimikaMente</title>
+    
+    <title>Minicontos | QuimikaMente - A Arte da Brevidade</title>
+    <meta name="description" content="Explore a coleção de minicontos no QuimikaMente. Histórias rápidas, intensas e experimentais para ler em um minuto.">
+    <meta name="keywords" content="minicontos, microcontos, literatura rápida, Fagner Otobelli, QuimikaMente">
+    <link rel="canonical" href="https://quimikamente.com.br/minicontos.html">
+    <meta name="author" content="FOtobelli">
+
     <style>
         body { font-family: 'Georgia', serif; line-height: 1.8; margin: 0; color: #1a1a1a; background-color: #ffffff; }
         
@@ -17,7 +23,7 @@
         .container { max-width: 900px; margin: 20px auto; padding: 0 20px; text-align: center; }
         h2 { font-weight: normal; font-style: italic; font-size: 28px; margin-bottom: 40px; }
 
-        /* GRID DE MINICONTOS - Mantém a lógica de destaque */
+        /* GRID DE MINICONTOS */
         .grid-mini { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; margin-top: 50px; text-align: left; }
         
         .card-mini { background: #fff; border: 1px solid #eee; transition: 0.3s; cursor: pointer; display: flex; flex-direction: column; order: 2; }
@@ -37,7 +43,7 @@
         #read-texto { font-size: 26px; font-style: italic; line-height: 1.5; margin: 40px 0; color: #222; text-align: center; }
         #read-autor { font-size: 14px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* FOOTER IGUAL AO INDEX */
+        /* FOOTER */
         footer { max-width: 650px; margin: 80px auto 40px auto; padding: 20px; border-top: 1px solid #eee; text-align: center; }
         .footer-logo { font-weight: bold; font-size: 18px; margin-bottom: 5px; }
         .slogan { font-size: 13px; color: #888; margin-bottom: 25px; }
@@ -56,7 +62,7 @@
 
     <header>
         <a href="index.html" class="logo-container">
-            <img src="logo-quimikamente.png" alt="" class="logo-img">
+            <img src="logo-quimikamente.png" alt="Logo QuimikaMente" class="logo-img">
             <span class="logo-text">QuimikaMente</span>
         </a>
         <nav>
@@ -71,7 +77,7 @@
         
         <section class="grid-mini">
             <article class="card-mini destaque" onclick="abrirMini('mini1')">
-                <img src="quimikamente.png" class="card-image" onerror="this.src='https://via.placeholder.com/300x200?text=QuimikaMente'">
+                <img src="quimikamente.png" class="card-image" alt="Ilustração Miniconto QuimikaMente" onerror="this.src='https://via.placeholder.com/300x200?text=QuimikaMente'">
                 <div class="card-content">
                     <h4 class="card-titulo">QuimikaMente</h4>
                     <p class="card-autor">Por FOtobelli</p>
@@ -84,7 +90,7 @@
             </article>
 
             <article class="card-mini" onclick="abrirMini('mini2')">
-                <img src="miniconto2.jpg" class="card-image" onerror="this.src='https://via.placeholder.com/300x200?text=Pretérito+Imperfeito'">
+                <img src="miniconto2.jpg" class="card-image" alt="Ilustração Pretérito Imperfeito" onerror="this.src='https://via.placeholder.com/300x200?text=Pretérito+Imperfeito'">
                 <div class="card-content">
                     <h4 class="card-titulo">Pretérito Imperfeito</h4>
                     <p class="card-autor">Por FOtobelli</p>
@@ -97,7 +103,7 @@
             </article>
 
             <article class="card-mini" onclick="abrirMini('mini3')">
-                <img src="miniconto3.jpg" class="card-image" onerror="this.src='https://via.placeholder.com/300x200?text=Desvelou'">
+                <img src="miniconto3.jpg" class="card-image" alt="Ilustração Desvelou" onerror="this.src='https://via.placeholder.com/300x200?text=Desvelou'">
                 <div class="card-content">
                     <h4 class="card-titulo">Desvelou</h4>
                     <p class="card-autor">Por FOtobelli</p>
@@ -136,7 +142,6 @@
     </div>
 
     <script>
-        /* FUNÇÕES DOS MINICONTOS MANTIDAS */
         function abrirMini(id) {
             const card = event.currentTarget;
             document.getElementById('read-titulo').innerText = card.querySelector('.card-titulo').innerText;
@@ -151,23 +156,19 @@
             document.body.style.overflow = 'auto';
         }
 
-        /* TEXTOS LEGAIS ATUALIZADOS E COMPLETOS */
         const textosLegais = {
             termos: `
                 <h3>Termos de Uso</h3>
                 <p>Ao acessar o QuimikaMente, você concorda em utilizar este espaço para fins estritamente pessoais e artísticos. É expressamente proibida a reprodução, modificação ou distribuição do conteúdo sem autorização prévia.</p>
-                <p><strong>Conduta e Ética:</strong> Este é um espaço de respeito. Não toleramos qualquer forma de discriminação. É terminantemente proibida a veiculação de comentários ou interações que configurem crime de racismo (Lei nº 7.716/1989) ou homofobia e transfobia (conforme entendimento do STF na ADO 26), sob pena de banimento e medidas judiciais cabíveis.</p>`,
+                <p><strong>Conduta e Ética:</strong> Este é um espaço de respeito. Não toleramos qualquer forma de discriminação.</p>`,
             
             privacidade: `
                 <h3>Política de Privacidade</h3>
-                <p>O QuimikaMente respeita a sua privacidade e a LGPD (Lei Geral de Proteção de Dados). Atualmente, este site não coleta dados pessoais, não utiliza cookies de rastreamento nem armazena informações dos visitantes de forma automática.</p>
-                <p>Caso no futuro venhamos a oferecer newsletters ou formulários de contato, o uso desses dados será restrito à finalidade de comunicação direta entre o autor e o leitor, garantindo sempre o direito de exclusão dos dados pelo usuário.</p>`,
+                <p>O QuimikaMente respeita a sua privacidade e a LGPD. Atualmente, este site não coleta dados pessoais nem utiliza cookies de rastreamento.</p>`,
             
             autoral: `
                 <h3>Direitos Autorais</h3>
-                <p><strong>Textos:</strong> Todo o conteúdo literário, incluindo contos, minicontos e ensaios, é 100% autoral e de propriedade intelectual exclusiva de <strong>Fagner Otobelli</strong>.</p>
-                <p><strong>Imagens:</strong> As artes visuais deste site foram desenvolvidas em um processo colaborativo entre o autor e inteligência artificial (Gemini/Google), sendo protegidas como obras derivadas de criação artística.</p>
-                <p>Todos os direitos reservados © 2026. A cópia não autorizada constitui crime de violação de direito autoral conforme a legislação vigente.</p>`
+                <p>Todo o conteúdo literário é 100% autoral e de propriedade intelectual exclusiva de <strong>Fagner Otobelli</strong>. Direitos reservados © 2026.</p>`
         };
 
         function abrirLegal(tipo) {
