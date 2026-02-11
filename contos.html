@@ -5,15 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Contos | QuimikaMente - Literatura por FOtobelli</title>
-    <meta name="description" content="Mergulhe nos contos. Histórias ordinárias, bem-humoradas ou profundas, mas que exploram a essência humana e o imaginário no QuimikaMente.">
-    <meta name="keywords" content="contos literários, ler contos online, ficção brasileira, literatura contemporânea, QuimikaMente">
-    <link rel="canonical" href="https://quimikamente.com.br/contos.html">
+    <meta name="description" content="Mergulhe nos contos. Histórias ordinárias, bem-humoradas ou profundas no QuimikaMente.">
     <meta name="author" content="FOtobelli">
     
     <style>
         body { font-family: 'Georgia', serif; line-height: 1.8; margin: 0; color: #1a1a1a; background-color: #ffffff; }
         
-        /* HEADER PADRONIZADO */
+        /* HEADER */
         header { padding: 40px 20px; max-width: 650px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
         .logo-container { display: flex; align-items: center; text-decoration: none; color: #000; }
         .logo-img { height: 55px; width: auto; margin-right: 15px; display: block; }
@@ -34,21 +32,29 @@
         .card-sinopse { font-size: 14px; color: #555; font-style: italic; margin-bottom: 10px; line-height: 1.4; }
         .card-meta { font-size: 11px; color: #999; border-top: 1px solid #f5f5f5; padding-top: 10px; display: flex; justify-content: space-between; }
         
-        /* MODAL DE LEITURA */
-        .modal-leitura { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 1000; overflow-y: auto; padding: 60px 20px; box-sizing: border-box; }
-        .modal-content { max-width: 700px; margin: 0 auto; }
+        /* MODAIS */
+        .modal-leitura, .modal-legal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 1000; overflow-y: auto; padding: 60px 20px; box-sizing: border-box; }
+        .modal-legal { background: rgba(255,255,255,0.98); z-index: 2000; }
+        .modal-content, .modal-legal-content { max-width: 700px; margin: 0 auto; }
+        .modal-legal-content { max-width: 600px; text-align: justify; }
+        
         .btn-fechar { position: fixed; top: 20px; right: 20px; background: #000; color: #fff; border: none; padding: 10px 20px; cursor: pointer; z-index: 1001; font-size: 12px; }
         .read-info-bar { margin: 20px 0; padding: 10px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; font-size: 13px; color: #888; display: flex; gap: 20px; }
-        #read-texto { font-size: 19px; line-height: 1.8; text-align: justify; white-space: pre-wrap; }
+        #read-texto { font-size: 19px; line-height: 1.8; text-align: justify; white-space: pre-wrap; margin-bottom: 40px; }
 
-        /* FOOTER E LEGAIS */
+        /* FORMULÁRIO DE COMENTÁRIOS */
+        .secao-comentarios { margin-top: 60px; border-top: 1px double #eee; padding: 40px 0; text-align: left; }
+        .secao-comentarios h3 { text-align: center; letter-spacing: 2px; font-size: 16px; text-transform: uppercase; }
+        .form-comentario { display: flex; flex-direction: column; gap: 15px; max-width: 500px; margin: 30px auto; }
+        .form-comentario input, .form-comentario textarea { padding: 12px; border: 1px solid #eee; font-family: 'Georgia', serif; font-size: 14px; }
+        .btn-enviar { background: #000; color: #fff; border: none; padding: 15px; cursor: pointer; letter-spacing: 2px; text-transform: uppercase; font-size: 12px; }
+
+        /* FOOTER */
         footer { max-width: 650px; margin: 80px auto 40px auto; padding: 20px; border-top: 1px solid #eee; text-align: center; }
         .footer-logo { font-weight: bold; font-size: 18px; margin-bottom: 5px; }
         .slogan { font-size: 13px; color: #888; margin-bottom: 25px; }
         .legal { font-size: 11px; color: #bbb; text-transform: uppercase; letter-spacing: 1px; }
         .legal a { color: #bbb; text-decoration: none; margin: 0 10px; cursor: pointer; }
-        .modal-legal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.98); z-index: 2000; overflow-y: auto; padding: 60px 20px; box-sizing: border-box; }
-        .modal-legal-content { max-width: 600px; margin: 0 auto; text-align: justify; color: #333; line-height: 1.6; }
 
         @media (max-width: 650px) { header { flex-direction: column; gap: 20px; } }
     </style>
@@ -83,33 +89,33 @@
                     <div style="font-size: 10px; color: #ccc; margin-top: 5px;">📅 10 FEV 2026</div>
                 </div>
                 <template id="text-conto01">
-    — É só um exame de praxe, amor — reclamou ele, ajustando o travesseiro. — Alterou o resultado inicial porque eu tô empenhado em cumprir o contrato com o meu maior cliente; horas a mais de trabalho, é isso. 
-    — É imprudente da sua parte, é irresponsável — sentenciou ela, encerrando a acirrada discussão, acomodando o lençol sobre os quadris e voltando seu corpo ao lado oposto. 
-    Cansado, suspirou profundamente, observando o balanço suave e parelho da chuva através da fresta da cortina. Notou o vento soprar brando a beijar os galhos dos coqueiros iluminados pelos postes públicos e relaxou, sentindo as pálpebras pesarem.
-    Ofuscando a luz da manhã, a densa névoa corria apressada, formando uma cortina esbranquiçada que se esparramava sobre a rodovia. Ele conduzia sua picape rumo ao trabalho, após realizar o exame. Enquanto pressionava o botão multimídia conectado ao volante, abruptamente, a vívida neblina, como uma avalanche, encobriu sua visão por completo. A camada branca envolveu o para-brisa e os vidros laterais do carro, penetrando as frestas sorrateiramente. Em choque, viu a gélida umidade se espalhar pelo interior do veículo, conduzindo sua mente a um vazio imenso, espécie de porão sombrio que recendia a mofo. 
-    Segundos depois, assustado, ele voltou a focar na estrada. As obscuras imagens se dissiparam, e ele percebeu alguns borrões das sinaleiras dos veículos que trafegavam à frente. Luzes vermelhas acendiam, frenéticas, em meio à névoa. Ao escutar o som das sirenes e o brilho dos sinalizadores da ambulância e do caminhão dos bombeiros, acionou o pisca-alerta. Freou, aos poucos, até parar, constatando a longa fila que se formava nas quatro pistas: trânsito parado nos dois sentidos. 
-    Transcorridos breves minutos e recomposto do pavor, em contraponto à pacata personalidade de desenvolvedor de software, desembarcou do carro, desrespeitando as instruções do policial militar, e passou por ele sem ser notado. Caminhou até o local onde estava a ambulância, buscando um ângulo em que ficasse oculto aos olhos dos profissionais que prestavam o complexo serviço de resgate. 
-    Espreitou o cenário, reparando no guard-rail central retorcido ao absorver o impacto da parte frontal da caminhonete, que foi transformada em uma lata de atum. “Provavelmente o condutor perdeu o controle, subiu o cordão e mergulhou, de frente, contra a proteção metálica no centro. A parte mais atingida foi a dianteira do motorista. Tá bem moída, meu Deus. Será que tinha alguém junto?" 
-    Ele caminhou em direção aos destroços, e um bombeiro pareceu flagrar o intruso, que disfarçou, virando de costas e agachando-se como se procurasse algo caído ao chão. Verificou o socorrista voltar à rotina, ignorando sua presença. 
-    Perante o caos flagrado por suas retinas, impulsos emocionais destoantes do comportamento habitual o motivaram, e ele andou até o canteiro central. Fitou os vidros quebrados, a porta entreaberta e um braço para fora do veículo, imóvel e com riscos vermelhos que escorriam e pingavam fartos, formando uma poça no asfalto. Os enfermeiros retiraram o atum da fragmentada lata, e o rosto esfacelado do motorista revelou-se. Sentiu como se um bloco de gelo lhe resvalasse pela espinha e paralisasse seus sentidos. 
-    Quando se viu sendo removido de sua picape, repentinamente foi envolto pela neblina espessa e retornou ao porão vazio. Enxergava a vasta escuridão, escutava o silêncio e cheirava o mofo. Subitamente, uma minúscula fagulha acendeu em meio à sombra profunda. Como se uma descarga elétrica a atingisse, a pequena chispa tremulou freneticamente. “O que saiu de dentro da caminhonete foi direto pro IML. Que lugar é esse? É minha cova? Já fui enterrado? Não pode ser.”
-    Notou um movimento espiralado, como vento em redemoinho ao seu redor, e a penumbra dominou o vazio. De súbito, ele ressurgiu em seu corpo físico, projetado através de uma imensa tela diante de seus olhos, caminhando em uma plantação de girassóis tendo sua filha acomodada sobre os ombros. Beijou as bochechas de sardas e pele macia da amada criança, e ela retribuiu o afeto. Embora a sensação de seu toque na delicada pele estivesse ausente, podia sentir um estado de amor e paz que nunca antes experimentara. Estagnado, mirou os olhos dela demoradamente. Em recortes, reviveu momentos de vigorosa alegria na data mais apreciada pela filha: o Natal. A primeira boneca, a primeira bicicleta, o primeiro gatinho recolhido das ruas e adotado, contra a vontade do pai — mas realizando o sonho da criança. Anos depois, o felino se tornou o melhor companheiro de sofá durante as partidas de futebol. Acenou para a esposa que, à distância, sorria e os observava. A cena desfez-se e seu corpo sumiu, retornando à diminuta centelha isolada no infinito manto negro.  
-    O tempo arrastou-se, moroso, sem que conseguisse manter qualquer interação com o meio. Enxergava a fagulha de brilho opaco ao seu lado, captava o silêncio, sentia o mofo e a umidade dominando o fúnebre e desconhecido paradeiro.
-    — Travou o sistema de novo? — tentou bradar. As cordas vocais produziam apenas um som abafado. Prosseguiu forçando: — Eu recém caminhei, feliz, pelos campos de girassol com minha filha, mas agora sou uma tela preta que não sente nada além de um estado de confusão? Que inferno. Isso aqui é o inferno? Morri e fui pro inferno, é isso?
-    Como que tomado por redemoinho arenoso a impactar a centelha obsessivamente, sentiu-se sugado, e tudo desapareceu. Arremessado pela força espiral, ele caiu no piso lodoso, vislumbrando um funil gigantesco à sua frente. Ao voltar seu olhar para alto, mesmo à distância pôde reconhecer o contorno do planeta Terra. Sem consciência de sua forma física, movia-se por instintos e pensamentos fragmentados. A matéria que o compunha era disforme, assemelhando-se a uma arraia com barbatanas e uma longa cauda pontiaguda, mas que se descompactava e reagrupava constantemente. Rastejou por uma selva pantanosa e cercada de colinas. Sem ser notado, viu passar lobos, panteras e leões até chegar a um abismo de onde avistou um vale denso. À esquerda, surgiu uma escada de coloração verde-oliva e que conduzia ao primeiro espiral do funil. Arrastou-se pelo acesso, escutando gritos atrozes cada vez mais próximos de si. Ao romper uma camada espessa de musgo, uma chispa cintilou ao seu lado, formando uma figura de silhuetas angelicais. 
-    — Quem é você? — indagou, recuperando parcialmente a consciência ao se deparar com o formoso ser alado.
-    — Você — respondeu a ser, tocando a cauda da arraia.
-    Ele engatinhou e sua forma energética foi se erguendo, sustentada por duas pernas, caminhando curvado até ficar totalmente ereto, ganhando contornos humanos. Ouviu lamentos, sentiu angústia, tateou a matéria úmida que esculpia a escadaria; viu-se em um sutil esboço humano e prateado, formato semelhante àquela silhueta que o guiava, porém sem asas. 
-    Chegaram ao limite do penhasco, de onde visualizou um ribeiro de águas turvas e, do lado oposto à margem, outro círculo mais elevado do funil. Um sinistro barqueiro de grandes olhos esbugalhados aproximou-se, e um forte odor de enxofre o fez perder os sentidos. 
-    Foi despertado por um trovão e encontrava-se em um vale com vistas a um abismo nebuloso e brados constantes de trovoadas que ressoavam. Seguia acompanhado de seu guia, e ambos foram transportados a um castelo murado, onde passaram por sete portas até captarem uma voz branda soar:
-    — Serás encaminhado aos traidores da pátria e, por teus atos, tua sentença: ficarás com o corpo submerso, apenas a cabeça para fora do gelo.
-    “Isso é totalmente injusto. Na época do alistamento, meu chefe conhecia a cúpula militar e solicitou, se possível, minha dispensa porque eu era importante...”
-    — Tu escolheste não servir. És um traidor da pátria.
-    “Cadê ele? Meu falecido sócio também tá enterrado no gelo? Ele também não quis servir. Empregamos cerca de 90 funcionários, pessoas que sustentam suas famílias porque seguimos na informática. Quero ir com ele, se dane. Cadê ele?”
-    Sentiu como serpentes a roçarem o traçado prateado de sua forma e tonteou, caindo desacordado. 
-    Ao recobrar a consciência, ele estava em um lago congelado e, ao seu entorno, milhares de cabeças, feições agonizantes, flutuavam sobre as águas. Ouviu lamúrias bestiais e, ao movimentar sua fronte, viu seu contorno também submerso, reconhecendo que sua própria cabeça era mais uma a boiar.
-    E sentiu o gelo a penetrar, como uma navalha, sua silhueta prateada; e sentiu o pulsar do coração lento e doloroso a abandoná-lo; e sentiu esvair-se, e, desesperado, gritou:
-    — Deus, me leva pro paraíso.
+— É só um exame de praxe, amor — reclamou ele, ajustando o travesseiro. — Alterou o resultado inicial porque eu tô empenhado em cumprir o contrato com o meu maior cliente; horas a mais de trabalho, é isso. 
+— É imprudente da sua parte, é irresponsável — sentenciou ela, encerrando a acirrada discussão, acomodando o lençol sobre os quadris e voltando seu corpo ao lado oposto. 
+Cansado, suspirou profundamente, observando o balanço suave e parelho da chuva através da fresta da cortina. Notou o vento soprar brando a beijar os galhos dos coqueiros iluminados pelos postes públicos e relaxou, sentindo as pálpebras pesarem.
+Ofuscando a luz da manhã, a densa névoa corria apressada, formando uma cortina esbranquiçada que se esparramava sobre a rodovia. Ele conduzia sua picape rumo ao trabalho, após realizar o exame. Enquanto pressionava o botão multimídia conectado ao volante, abruptamente, a vívida neblina, como uma avalanche, encobriu sua visão por completo. A camada branca envolveu o para-brisa e os vidros laterais do carro, penetrando as frestas sorrateiramente. Em choque, viu a gélida umidade se espalhar pelo interior do veículo, conduzindo sua mente a um vazio imenso, espécie de porão sombrio que recendia a mofo. 
+Segundos depois, assustado, ele voltou a focar na estrada. As obscuras imagens se dissiparam, e ele percebeu alguns borrões das sinaleiras dos veículos que trafegavam à frente. Luzes vermelhas acendiam, frenéticas, em meio à névoa. Ao escutar o som das sireres e o brilho dos sinalizadores da ambulância e do caminhão dos bombeiros, acionou o pisca-alerta. Freou, aos poucos, até parar, constatando a longa fila que se formava nas quatro pistas: trânsito parado nos dois sentidos. 
+Transcorridos breves minutos e recomposto do pavor, em contraponto à pacata personalidade de desenvolvedor de software, desembarcou do carro, desrespeitando as instruções do policial militar, e passou por ele sem ser notado. Caminhou até o local onde estava a ambulância, buscando um ângulo em que ficasse oculto aos olhos dos profissionais que prestavam o complexo serviço de resgate. 
+Espreitou o cenário, reparando no guard-rail central retorcido ao absorver o impacto da parte frontal da caminhonete, que foi transformada em uma lata de atum. “Provavelmente o condutor perdeu o controle, subiu o cordão e mergulhou, de frente, contra a proteção metálica no centro. A parte mais atingida foi a dianteira do motorista. Tá bem moída, meu Deus. Será que tinha alguém junto?" 
+Ele caminhou em direção aos destroços, e um bombeiro pareceu flagrar o intruso, que disfarçou, virando de costas e agachando-se como se procurasse algo caído ao chão. Verificou o socorrista voltar à rotina, ignorando sua presença. 
+Perante o caos flagrado por suas retinas, impulsos emocionais destoantes do comportamento habitual o motivaram, e ele andou até o canteiro central. Fitou os vidros quebrados, a porta entreaberta e um braço para fora do veículo, imóvel e com riscos vermelhos que escorriam e pingavam fartos, formando uma poça no asfalto. Os enfermeiros retiraram o atum da fragmentada lata, e o rosto esfacelado do motorista revelou-se. Sentiu como se um bloco de gelo lhe resvalasse pela espinha e paralisasse seus sentidos. 
+Quando se viu sendo removido de sua picape, repentinamente foi envolto pela neblina espessa e retornou ao porão vazio. Enxergava a vasta escuridão, escutava o silêncio e cheirava o mofo. Subitamente, uma minúscula fagulha acendeu em meio à sombra profunda. Como se uma descarga elétrica a atingisse, a pequena chispa tremulou freneticamente. “O que saiu de dentro da caminhonete foi direto pro IML. Que lugar é esse? É minha cova? Já fui enterrado? Não pode ser.”
+Notou um movimento espiralado, como vento em redemoinho ao seu redor, e a penumbra dominou o vazio. De súbito, ele ressurgiu em seu corpo físico, projetado através de uma imensa tela diante de seus olhos, caminhando em uma plantação de girassóis tendo sua filha acomodada sobre os ombros. Beijou as bochechas de sardas e pele macia da amada criança, e ela retribuiu o afeto. Embora a sensação de seu toque na delicada pele estivesse ausente, podia sentir um estado de amor e paz que nunca antes experimentara. Estagnado, mirou os olhos dela demoradamente. Em recortes, reviveu momentos de vigorosa alegria na data mais apreciada pela filha: o Natal. A primeira boneca, a primeira bicicleta, o primeiro gatinho recolhido das ruas e adotado, contra a vontade do pai — mas realizando o sonho da criança. Anos depois, o felino se tornou o melhor companheiro de sofá durante as partidas de futebol. Acenou para a esposa que, à distância, sorria e os observava. A cena desfez-se e seu corpo sumiu, retornando à diminuta centelha isolada no infinito manto negro.  
+O tempo arrastou-se, moroso, sem que conseguisse manter qualquer interação com o meio. Enxergava a fagulha de brilho opaco ao seu lado, captava o silêncio, sentia o mofo e a umidade dominando o fúnebre e desconhecido paradeiro.
+— Travou o sistema de novo? — tentou bradar. As cordas vocais produziam apenas um som abafado. Prosseguiu forçando: — Eu recém caminhei, feliz, pelos campos de girassol com minha filha, mas agora sou uma tela preta que não sente nada além de um estado de confusão? Que inferno. Isso aqui é o inferno? Morri e fui pro inferno, é isso?
+Como que tomado por redemoinho arenoso a impactar a centelha obsessivamente, sentiu-se sugado, e tudo desapareceu. Arremessado pela força espiral, ele caiu no piso lodoso, vislumbrando um funil gigantesco à sua frente. Ao voltar seu olhar para alto, mesmo à distância pôde reconhecer o contorno do planeta Terra. Sem consciência de sua forma física, movia-se por instintos e pensamentos fragmentados. A matéria que o compunha era disforme, assemelhando-se a uma arraia com barbatanas e uma longa cauda pontiaguda, mas que se descompactava e reagrupava constantemente. Rastejou por uma selva pantanosa e cercada de colinas. Sem ser notado, viu passar lobos, panteras e leões até chegar a um abismo de onde avistou um vale denso. À esquerda, surgiu uma escada de coloração verde-oliva e que conduzia ao primeiro espiral do funil. Arrastou-se pelo acesso, escutando gritos atrozes cada vez mais próximos de si. Ao romper uma camada espessa de musgo, uma chispa cintilou ao seu lado, formando uma figura de silhuetas angelicais. 
+— Quem é você? — indagou, recuperando parcialmente a consciência ao se deparar com o formoso ser alado.
+— Você — respondeu a ser, tocando a cauda da arraia.
+Ele engatinhou e sua forma energética foi se erguendo, sustentada por duas pernas, caminhando curvado até ficar totalmente ereto, ganhando contornos humanos. Ouviu lamentos, sentiu angústia, tateou a matéria úmida que esculpia a escadaria; viu-se em um sutil esboço humano e prateado, formato semelhante àquela silhueta que o guiava, porém sem asas. 
+Chegaram ao limite do penhasco, de onde visualizou um ribeiro de águas turvas e, do lado oposto à margem, outro círculo mais elevado do funil. Um sinistro barqueiro de grandes olhos esbugalhados aproximou-se, e um forte odor de enxofre o fez perder os sentidos. 
+Foi despertado por um trovão e encontrava-se em um vale com vistas a um abismo nebuloso e brados constantes de trovoadas que ressoavam. Seguia acompanhado de seu guia, e ambos foram transportados a um castelo murado, onde passaram por sete portas até captarem uma voz branda soar:
+— Serás encaminhado aos traidores da pátria e, por teus atos, tua sentença: ficarás com o corpo submerso, apenas a cabeça para fora do gelo.
+“Isso é totalmente injusto. Na época do alistamento, meu chefe conhecia a cúpula militar e solicitou, se possível, minha dispensa porque eu era importante...”
+— Tu escolheste não servir. És um traidor da pátria.
+“Cadê ele? Meu falecido sócio também tá enterrado no gelo? Ele também não quis servir. Empregamos cerca de 90 funcionários, pessoas que sustentam suas famílias porque seguimos na informática. Quero ir com ele, se dane. Cadê ele?”
+Sentiu como serpentes a roçarem o traçado prateado de sua forma e tonteou, caindo desacordado. 
+Ao recobrar a consciência, ele estava em um lago congelado e, ao seu entorno, milhares de cabeças, feições agonizantes, flutuavam sobre as águas. Ouviu lamúrias bestiais e, ao movimentar sua fronte, viu seu contorno também submerso, reconhecendo que sua própria cabeça era mais uma a boiar.
+E sentiu o gelo a penetrar, como uma navalha, sua silhueta prateada; e sentiu o pulsar do coração lento e doloroso a abandoná-lo; e sentiu esvair-se, e, desesperado, gritou:
+— Deus, me leva pro paraíso.
                 </template>
             </article>
 
@@ -149,7 +155,7 @@ Ela mirou o senhor meneando a cabeça negativamente, e decidiu não revidar. Sub
 —  O que foi agora?
 — A senhorita não vai pra casa tão cedo. Vou chamar a polícia. Ele se atirou daqui.
 — Mentira. Desce daí — ordenou, soltando o baú no chão.
-— Cuida — aconselhou, descendo da pedra e oferecendo o braço para que se apoiasse à beira do despenhadeiro. 
+— Cuida — aconselhou, descendo da pedra e oferecendo o braço para que se apoiasse à beira do despenheiro. 
 Ela fechou os olhos, sorvendo uma golfada de ar. Uma efêmera lembrança da recém-noiva nos braços do noivo naquela mesma pedra habitou seus pensamentos, porém logo se dissipou. Tornou a abrir os olhos, preparada para encarar a terrível cena que projetara.
 — Tá louco? — questionou, após a primeira observação. Inclinou o corpo mais para frente. — Não tem nada ali...
 — Agora terá — sentenciou, empurrando-a pelas costas. Sorriu quando seus ouvidos captaram o eco agudo de um grito bestial antes da jovem mulher estatelar-se contra pedras onde também as ondas estouravam. Do alto da rocha que serviu de alicerce para uma história de amor, ele vislumbrou as espumas brancas que, sendo tingidas de vermelho, mesclaram-se ao alaranjado do sol, fusão de cores que foi tragada por suas retinas.
@@ -164,7 +170,7 @@ Assoviando, recolheu o baú, desceu a ladeira e caminhou, por cerca de dois quil
                 <img src="conto03.jpg" class="card-image" onerror="this.src='https://via.placeholder.com/400x250?text=O+Moleque'">
                 <div class="card-content">
                     <h4 class="card-titulo">O Moleque</h4>
-                    <p class="card-sinopse">O que separa o trauma da coragem? Entre as peças de um mico-leão-dourado e o asfalto frio de uma parada de ônibus, um menino revisita seus pesadelos para salvar uma vida.</p>
+                    <p class="card-sinopse">O que separa o trauma da coragem? Entre as peças de um quebra-cabeça e o asfalto frio, um menino revisita seus pesadelos.</p>
                     <div class="card-meta">
                         <span>👤 FOtobelli</span>
                         <span>⏱️ 8 min</span>
@@ -220,6 +226,17 @@ Quando voltou a si, o moleque se viu cercado por passageiros e passageiras, vizi
                 <span id="read-tempo"></span>
             </div>
             <div id="read-texto"></div>
+
+            <section class="secao-comentarios">
+                <h3>O que achou deste conto?</h3>
+                <form action="https://formspree.io/f/seu-id-aqui" method="POST" class="form-comentario">
+                    <input type="hidden" name="_subject" id="subject-comentario" value="Novo comentário">
+                    <input type="text" name="nome" placeholder="Seu Nome" required>
+                    <input type="email" name="email" placeholder="Seu E-mail" required>
+                    <textarea name="mensagem" rows="5" placeholder="Sua mensagem..." required></textarea>
+                    <button type="submit" class="btn-enviar">Enviar para Moderação</button>
+                </form>
+            </section>
         </div>
     </div>
 
@@ -241,57 +258,55 @@ Quando voltou a si, o moleque se viu cercado por passageiros e passageiras, vizi
     <script>
         function abrirLeitura(id) {
             const card = event.currentTarget;
-            document.getElementById('read-titulo').innerText = card.querySelector('.card-titulo').innerText;
+            const titulo = card.querySelector('.card-titulo').innerText;
+            document.getElementById('read-titulo').innerText = titulo;
             document.getElementById('read-sinopse').innerText = card.querySelector('.card-sinopse').innerText;
             document.getElementById('read-autor').innerText = card.querySelector('.card-meta span:nth-child(1)').innerText;
             document.getElementById('read-tempo').innerText = "⏱️ Leitura: " + card.querySelector('.card-meta span:nth-child(2)').innerText;
             document.getElementById('read-data').innerText = card.querySelector('div[style*="color: #ccc"]').innerText;
             document.getElementById('read-texto').innerHTML = document.getElementById('text-' + id).innerHTML;
+            
+            // Assunto do e-mail
+            document.getElementById('subject-comentario').value = "Comentário no Conto: " + titulo;
+
             document.getElementById('modal-leitura').style.display = 'block';
             document.body.style.overflow = 'hidden';
+            document.getElementById('modal-leitura').scrollTop = 0;
         }
 
-        function fecharLeitura() { document.getElementById('modal-leitura').style.display = 'none'; document.body.style.overflow = 'auto'; }
+        function fecharLeitura() { 
+            document.getElementById('modal-leitura').style.display = 'none'; 
+            document.body.style.overflow = 'auto'; 
+        }
 
         const textosLegais = {
-            termos: `<h3>Termos de Uso</h3><p>Conteúdo literário de uso pessoal...</p>`,
-            privacidade: `<h3>Privacidade</h3><p>Não coletamos seus dados...</p>`,
-            autoral: `<h3>Direitos Autorais</h3><p>Todos os direitos reservados a Fagner Otobelli.</p>`
+            termos: `
+                <h3>Termos de Uso</h3>
+                <p>Ao acessar o QuimikaMente, você concorda em utilizar este espaço para fins estritamente pessoais e artísticos. É expressamente proibida a reprodução, modificação ou distribuição do conteúdo sem autorização prévia.</p>
+                <p><strong>Conduta e Ética:</strong> Este é um espaço de respeito. Não toleramos qualquer forma de discriminação. É terminantemente proibida a veiculação de comentários ou interações que configurem crime de racismo (Lei nº 7.716/1989) ou homofobia e transfobia (conforme entendimento do STF na ADO 26), sob pena de banimento e medidas judiciais cabíveis.</p>`,
+            
+            privacidade: `
+                <h3>Política de Privacidade</h3>
+                <p>O QuimikaMente respeita a sua privacidade e a LGPD (Lei Geral de Proteção de Dados). Atualmente, este site não coleta dados pessoais, não utiliza cookies de rastreamento nem armazena informações dos visitantes de forma automática.</p>
+                <p>Caso no futuro venhamos a oferecer newsletters ou formulários de contato, o uso desses dados será restrito à finalidade de comunicação direta entre o autor e o leitor, garantindo sempre o direito de exclusão dos dados pelo usuário.</p>`,
+            
+            autoral: `
+                <h3>Direitos Autorais</h3>
+                <p><strong>Textos:</strong> Todo o conteúdo literário, incluindo contos, minicontos e ensaios, é 100% autoral e de propriedade intelectual exclusiva de <strong>Fagner Otobelli</strong>.</p>
+                <p><strong>Imagens:</strong> As artes visuais deste site foram desenvolvidas em um processo colaborativo entre o autor e inteligência artificial (Gemini/Google), sendo protegidas como obras derivadas de criação artística.</p>
+                <p>Todos os direitos reservados © 2026. A cópia não autorizada constitui crime de violação de direito autoral conforme a legislação vigente.</p>`
         };
 
         function abrirLegal(tipo) {
             document.getElementById('legal-content').innerHTML = textosLegais[tipo];
             document.getElementById('modal-legal').style.display = 'block';
-        }
-
-      function fecharLegal() { 
-            document.getElementById('modal-legal').style.display = 'none'; 
-            document.body.style.overflow = 'auto'; 
-        }
-
-        /* TEXTOS LEGAIS COMPLETOS DO INDEX */
-        textosLegais.termos = `
-            <h3>Termos de Uso</h3>
-            <p>Ao acessar o QuimikaMente, você concorda em utilizar este espaço para fins estritamente pessoais e artísticos. É expressamente proibida a reprodução, modificação ou distribuição do conteúdo sem autorização prévia.</p>
-            <p><strong>Conduta e Ética:</strong> Este é um espaço de respeito. Não toleramos qualquer forma de discriminação. É terminantemente proibida a veiculação de comentários ou interações que configurem crime de racismo (Lei nº 7.716/1989) ou homofobia e transfobia (conforme entendimento do STF na ADO 26), sob pena de banimento e medidas judiciais cabíveis.</p>`;
-        
-        textosLegais.privacidade = `
-            <h3>Política de Privacidade</h3>
-            <p>O QuimikaMente respeita a sua privacidade e a LGPD (Lei Geral de Proteção de Dados). Atualmente, este site não coleta dados pessoais, não utiliza cookies de rastreamento nem armazena informações dos visitantes de forma automática.</p>
-            <p>Caso no futuro venhamos a oferecer newsletters ou formulários de contato, o uso desses dados será restrito à finalidade de comunicação direta entre o autor e o leitor, garantindo sempre o direito de exclusão dos dados pelo usuário.</p>`;
-        
-        textosLegais.autoral = `
-            <h3>Direitos Autorais</h3>
-            <p><strong>Textos:</strong> Todo o conteúdo literário, incluindo contos, minicontos e ensaios, é 100% autoral e de propriedade intelectual exclusiva de <strong>Fagner Otobelli</strong>.</p>
-            <p><strong>Imagens:</strong> As artes visuais deste site foram desenvolvidas em um processo colaborativo entre o autor e inteligência artificial (Gemini/Google), sendo protegidas como obras derivadas de criação artística.</p>
-            <p>Todos os direitos reservados © 2026. A cópia não autorizada constitui crime de violação de direito autoral conforme a legislação vigente.</p>`;
-
-        // Garante que o fundo não role quando abrir o legal
-        const abrirLegalOriginal = abrirLegal;
-        abrirLegal = function(tipo) {
-            abrirLegalOriginal(tipo);
             document.body.style.overflow = 'hidden';
-        };
+        }
+
+        function fecharLegal() {
+            document.getElementById('modal-legal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
     </script>
 </body>
 </html>
