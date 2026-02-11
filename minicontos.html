@@ -40,7 +40,7 @@
         .modal-leitura { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 1000; overflow-y: auto; padding: 60px 20px; box-sizing: border-box; }
         .modal-content { max-width: 600px; margin: 0 auto; text-align: center; }
         .btn-fechar { position: fixed; top: 20px; right: 20px; background: #000; color: #fff; border: none; padding: 10px 20px; cursor: pointer; z-index: 1001; font-size: 12px; }
-        #read-texto { font-size: 26px; font-style: italic; line-height: 1.5; margin: 40px 0; color: #222; text-align: center; }
+        #read-texto { font-size: 26px; font-style: italic; line-height: 1.5; margin: 40px 0; color: #222; text-align: center; white-space: pre-wrap; }
         #read-autor { font-size: 14px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
 
         /* SEÇÃO DE COMENTÁRIOS NO MODAL */
@@ -53,7 +53,7 @@
         .btn-enviar:hover { background: #333; }
         .aviso-moderacao { font-size: 11px; color: #999; text-align: center; margin-top: 10px; font-style: italic; }
 
-        /* FOOTER */
+        /* RODAPÉ PADRONIZADO */
         footer { max-width: 650px; margin: 80px auto 40px auto; padding: 20px; border-top: 1px solid #eee; text-align: center; }
         .footer-logo { font-weight: bold; font-size: 18px; margin-bottom: 5px; }
         .slogan { font-size: 13px; color: #888; margin-bottom: 25px; }
@@ -61,9 +61,10 @@
         .legal a { color: #bbb; text-decoration: none; margin: 0 10px; cursor: pointer; transition: 0.3s; }
         .legal a:hover { color: #000; }
 
+        /* MODAL LEGAL PADRONIZADO */
         .modal-legal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.98); z-index: 2000; overflow-y: auto; padding: 60px 20px; box-sizing: border-box; }
         .modal-legal-content { max-width: 600px; margin: 0 auto; text-align: justify; color: #333; line-height: 1.6; }
-        .modal-legal-content h3 { border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        .modal-legal-content h3 { border-bottom: 1px solid #eee; padding-bottom: 10px; margin-top: 0; }
 
         @media (max-width: 650px) { header { flex-direction: column; gap: 20px; } }
     </style>
@@ -138,11 +139,9 @@
                 <h3>Deixe sua impressão</h3>
                 <form action="https://formspree.io/f/seu-id-aqui" method="POST" class="form-comentario">
                     <input type="hidden" name="_subject" id="subject-comentario" value="Novo comentário em Miniconto">
-                    
                     <input type="text" name="nome" placeholder="Seu Nome" required>
                     <input type="email" name="email" placeholder="Seu E-mail" required>
                     <textarea name="mensagem" rows="4" placeholder="O que você sentiu ao ler?" required></textarea>
-                    
                     <button type="submit" class="btn-enviar">Enviar para Moderação</button>
                     <p class="aviso-moderacao">Seu comentário será enviado para o autor e publicado após aprovação.</p>
                 </form>
@@ -166,6 +165,7 @@
     </div>
 
     <script>
+        // Lógica de Leitura dos Minicontos
         function abrirMini(id) {
             const card = event.currentTarget;
             const titulo = card.querySelector('.card-titulo').innerText;
@@ -174,11 +174,11 @@
             document.getElementById('read-autor').innerText = card.querySelector('.card-autor').innerText;
             document.getElementById('read-texto').innerHTML = document.getElementById('text-' + id).innerHTML;
             
-            // Atualiza o assunto do e-mail para você saber de qual conto estão falando
             document.getElementById('subject-comentario').value = "Comentário no Miniconto: " + titulo;
 
             document.getElementById('modal-leitura').style.display = 'block';
             document.body.style.overflow = 'hidden';
+            document.getElementById('modal-leitura').scrollTop = 0;
         }
 
         function fecharMini() {
@@ -186,29 +186,39 @@
             document.body.style.overflow = 'auto';
         }
 
-     /* TEXTOS LEGAIS COMPLETOS DO INDEX */
-        textosLegais.termos = `
-            <h3>Termos de Uso</h3>
-            <p>Ao acessar o QuimikaMente, você concorda em utilizar este espaço para fins estritamente pessoais e artísticos. É expressamente proibida a reprodução, modificação ou distribuição do conteúdo sem autorização prévia.</p>
-            <p><strong>Conduta e Ética:</strong> Este é um espaço de respeito. Não toleramos qualquer forma de discriminação. É terminantemente proibida a veiculação de comentários ou interações que configurem crime de racismo (Lei nº 7.716/1989) ou homofobia e transfobia (conforme entendimento do STF na ADO 26), sob pena de banimento e medidas judiciais cabíveis.</p>`;
-        
-        textosLegais.privacidade = `
-            <h3>Política de Privacidade</h3>
-            <p>O QuimikaMente respeita a sua privacidade e a LGPD (Lei Geral de Proteção de Dados). Atualmente, este site não coleta dados pessoais, não utiliza cookies de rastreamento nem armazena informações dos visitantes de forma automática.</p>
-            <p>Caso no futuro venhamos a oferecer newsletters ou formulários de contato, o uso desses dados será restrito à finalidade de comunicação direta entre o autor e o leitor, garantindo sempre o direito de exclusão dos dados pelo usuário.</p>`;
-        
-        textosLegais.autoral = `
-            <h3>Direitos Autorais</h3>
-            <p><strong>Textos:</strong> Todo o conteúdo literário, incluindo contos, minicontos e ensaios, é 100% autoral e de propriedade intelectual exclusiva de <strong>Fagner Otobelli</strong>.</p>
-            <p><strong>Imagens:</strong> As artes visuais deste site foram desenvolvidas em um processo colaborativo entre o autor e inteligência artificial (Gemini/Google), sendo protegidas como obras derivadas de criação artística.</p>
-            <p>Todos os direitos reservados © 2026. A cópia não autorizada constitui crime de violação de direito autoral conforme a legislação vigente.</p>`;
-
-        // Garante que o fundo não role quando abrir o legal
-        const abrirLegalOriginal = abrirLegal;
-        abrirLegal = function(tipo) {
-            abrirLegalOriginal(tipo);
-            document.body.style.overflow = 'hidden';
+        // Conteúdo Legal Padronizado
+        const textosLegais = {
+            termos: `
+                <h3>Termos de Uso</h3>
+                <p>Ao acessar o QuimikaMente, você concorda em utilizar este espaço para fins estritamente pessoais e artísticos. É expressamente proibida a reprodução, modificação ou distribuição do conteúdo sem autorização prévia.</p>
+                <p><strong>Conduta e Ética:</strong> Este é um espaço de respeito. Não toleramos qualquer forma de discriminação. É terminantemente proibida a veiculação de comentários ou interações que configurem crime de racismo (Lei nº 7.716/1989) ou homofobia e transfobia (conforme entendimento do STF na ADO 26), sob pena de banimento e medidas judiciais cabíveis.</p>`,
+            
+            privacidade: `
+                <h3>Política de Privacidade</h3>
+                <p>O QuimikaMente respeita a sua privacidade e a LGPD (Lei Geral de Proteção de Dados). Atualmente, este site não coleta dados pessoais, não utiliza cookies de rastreamento nem armazena informações dos visitantes de forma automática.</p>
+                <p>Caso no futuro venhamos a oferecer newsletters ou formulários de contato, o uso desses dados será restrito à finalidade de comunicação direta entre o autor e o leitor, garantindo sempre o direito de exclusão dos dados pelo usuário.</p>`,
+            
+            autoral: `
+                <h3>Direitos Autorais</h3>
+                <p><strong>Textos:</strong> Todo o conteúdo literário, incluindo contos, minicontos e ensaios, é 100% autoral e de propriedade intelectual exclusiva de <strong>Fagner Otobelli</strong>.</p>
+                <p><strong>Imagens:</strong> As artes visuais deste site foram desenvolvidas em um processo colaborativo entre o autor e inteligência artificial (Gemini/Google), sendo protegidas como obras derivadas de criação artística.</p>
+                <p>Todos os direitos reservados © 2026. A cópia não autorizada constitui crime de violação de direito autoral conforme a legislação vigente.</p>`
         };
+
+        function abrirLegal(tipo) {
+            document.getElementById('legal-content').innerHTML = textosLegais[tipo];
+            document.getElementById('modal-legal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            document.getElementById('modal-legal').scrollTop = 0;
+        }
+
+        function fecharLegal() {
+            document.getElementById('modal-legal').style.display = 'none';
+            // Só libera o scroll se o modal de leitura também estiver fechado
+            if (document.getElementById('modal-leitura').style.display !== 'block') {
+                document.body.style.overflow = 'auto';
+            }
+        }
     </script>
 </body>
 </html>
