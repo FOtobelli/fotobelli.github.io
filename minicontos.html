@@ -7,8 +7,17 @@
     <title>Minicontos | QuimikaMente - A Arte da Brevidade</title>
     <meta name="description" content="Explore a coleção de minicontos no QuimikaMente. Histórias rápidas, intensas e experimentais para ler em um minuto.">
     <meta name="keywords" content="minicontos, microcontos, literatura rápida, Fagner Otobelli, QuimikaMente">
-    <link rel="canonical" href="https://quimikamente.com.br/minicontos.html">
+    <link rel="canonical" href="https://www.quimikamente.com.br/minicontos.html">
     <meta name="author" content="FOtobelli">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.quimikamente.com.br/minicontos.html">
+    <meta property="og:title" content="Minicontos | QuimikaMente - A Arte da Brevidade">
+    <meta property="og:description" content="Histórias rápidas e intensas para ler em um minuto. Explore a brevidade literária de FOtobelli.">
+    <meta property="og:image" content="https://www.quimikamente.com.br/quimikamente.png"> <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Minicontos | QuimikaMente">
+    <meta name="twitter:description" content="Coleção de minicontos e microcontos autorais por FOtobelli.">
+    <meta name="twitter:image" content="https://www.quimikamente.com.br/quimikamente.png">
 
     <style>
         body { font-family: 'Georgia', serif; line-height: 1.8; margin: 0; color: #1a1a1a; background-color: #ffffff; }
@@ -165,7 +174,6 @@
     </div>
 
     <script>
-        // Lógica de Leitura
         function abrirMini(id) {
             const card = event.currentTarget;
             const titulo = card.querySelector('.card-titulo').innerText;
@@ -186,7 +194,6 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Script para envio via AJAX (sem sair da página)
         const form = document.getElementById("form-contato");
         const status = document.getElementById("form-status");
         const btn = document.getElementById("btn-enviar");
@@ -220,11 +227,10 @@
             });
         });
 
-        // Conteúdo Legal
         const textosLegais = {
-            termos: `<h3>Termos de Uso</h3><p>Ao acessar o QuimikaMente, você concorda em utilizar este espaço para fins estritamente pessoais e artísticos...</p>`,
-            privacidade: `<h3>Política de Privacidade</h3><p>O QuimikaMente respeita a sua privacidade e a LGPD...</p>`,
-            autoral: `<h3>Direitos Autorais</h3><p>Todo o conteúdo literário é de propriedade exclusiva de <strong>Fagner Otobelli</strong>.</p>`
+            termos: `<h3>Termos de Uso</h3><p>Ao acessar o QuimikaMente, você concorda em utilizar este espaço para fins estritamente pessoais e artísticos. É expressamente proibida a reprodução, modificação ou distribuição do conteúdo sem autorização prévia.</p><p><strong>Conduta e Ética:</strong> Este é um espaço de respeito. Não toleramos qualquer forma de discriminação conforme as leis vigentes.</p>`,
+            privacidade: `<h3>Política de Privacidade</h3><p>O QuimikaMente respeita a sua privacidade e a LGPD. Atualmente, este site não coleta dados pessoais de forma automática.</p>`,
+            autoral: `<h3>Direitos Autorais</h3><p>Todo o conteúdo literário é de propriedade exclusiva de <strong>Fagner Otobelli</strong>. © 2026.</p>`
         };
 
         function abrirLegal(tipo) {
