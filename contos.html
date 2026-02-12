@@ -215,6 +215,34 @@ Quando voltou a si, o moleque se viu cercado por passageiros e passageiras, vizi
                 </template>
             </article>
 
+            <article class="card-conto" onclick="abrirLeitura('conto04')">
+                <img src="conto04.jpg" class="card-image" onerror="this.src='https://via.placeholder.com/400x250?text=Entrelinhas'">
+                <div class="card-content">
+                    <h4 class="card-titulo">Entrelinhas</h4>
+                    <p class="card-sinopse">Ao revisar sua autobiografia, um homem descobre que as maiores verdades residem no silêncio entre as palavras.</p>
+                    <div class="card-meta">
+                        <span>👤 FOtobelli</span>
+                        <span>⏱️ 2 min</span>
+                    </div>
+                    <div style="font-size: 10px; color: #ccc; margin-top: 5px;">📅 12 FEV 2026</div>
+                </div>
+                <template id="text-conto04">
+A luz pálida da escrivaninha piscou.
+
+Interrompeu a leitura. Inspirou, sentindo o ar inflar o abdômen; expirou longamente. Da vidraça do quarto, fitou o céu estrelado — um vislumbre que ativou sua memória, recordando a recente discussão durante a ceia de Natal.
+
+— No momento em que pediu o divórcio, você acabou com a família, pai. A mãe morreu de desgosto, não de câncer. Agora você não tem mais a mãe, nem a biscate. Vaga sozinho pelo mundo, sempre calado. Você e a caixa de sertralina.
+
+Ao reler seus manuscritos, concluiu que cada pausa, cada vírgula e cada espaço em branco têm um significado próprio. Notou que, entre as linhas, há infinitos pontos de vista onde residem os segredos, as emoções e os pensamentos que o autor teve medo de revelar ou omitiu para se livrar de julgamentos.
+
+E, quando ia fechar o rascunho de sua autobiografia, a intuição intitulou a obra. Sem pestanejar, empunhou a caneta: *“O Vazio está Repleto de Vida em Forma de Silêncio”*.
+
+Pegou o celular, abriu o WhatsApp e digitou:
+
+— Pai, sei que nosso último encontro não foi dos melhores, mas se estiver pela cidade no sábado à noite, quer jantar conosco aqui em casa? Compro um quilo de carne a mais. kkkkkk Me avisa?
+                </template>
+            </article>
+
         </section>
     </main>
 
@@ -270,14 +298,12 @@ Quando voltou a si, o moleque se viu cercado por passageiros e passageiras, vizi
             document.getElementById('read-data').innerText = card.querySelector('div[style*="color: #ccc"]').innerText;
             document.getElementById('read-texto').innerHTML = document.getElementById('text-' + id).innerHTML;
             
-            // Atualiza o assunto do e-mail com o nome do conto
             document.getElementById('subject-comentario').value = "Comentário no Conto: " + titulo;
 
             document.getElementById('modal-leitura').style.display = 'block';
             document.body.style.overflow = 'hidden';
             document.getElementById('modal-leitura').scrollTop = 0;
             
-            // Reseta o status do formulário ao abrir novo conto
             document.getElementById("form-status").innerText = "Seu comentário será enviado para o autor e publicado após aprovação.";
             document.getElementById("form-status").style.color = "#1a1a1a";
         }
@@ -287,7 +313,6 @@ Quando voltou a si, o moleque se viu cercado por passageiros e passageiras, vizi
             document.body.style.overflow = 'auto'; 
         }
 
-        // Lógica de envio AJAX para o Formspree
         const form = document.getElementById("form-comentario");
         const status = document.getElementById("form-status");
         const btn = document.getElementById("btn-enviar");
@@ -322,7 +347,6 @@ Quando voltou a si, o moleque se viu cercado por passageiros e passageiras, vizi
             });
         });
 
-        // Textos Legais
         const textosLegais = {
             termos: `<h3>Termos de Uso</h3><p>Ao acessar o QuimikaMente, você concorda em utilizar este espaço para fins estritamente pessoais e artísticos. É expressamente proibida a reprodução, modificação ou distribuição do conteúdo sem autorização prévia.</p><p><strong>Conduta e Ética:</strong> Este é um espaço de respeito. Não toleramos qualquer forma de discriminação. É terminantemente proibida a veiculação de comentários ou interações que configurem crime de racismo (Lei nº 7.716/1989) ou homofobia e transfobia, sob pena de banimento e medidas judiciais cabíveis.</p>`,
             privacidade: `<h3>Política de Privacidade</h3><p>O QuimikaMente respeita a sua privacidade e a LGPD. Atualmente, este site não coleta dados pessoais de navegação automática. O uso dos dados enviados via formulário é restrito à finalidade de comunicação direta entre o autor e o leitor.</p>`,
