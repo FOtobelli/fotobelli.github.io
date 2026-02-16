@@ -9,12 +9,9 @@
     
     <meta name="description" content="Mergulhe nos contos. Histórias ordinárias, bem-humoradas ou profundas no QuimikaMente.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Contos | QuimikaMente - Literatura por FOtobelli</title>
-    
-    <title>Contos | QuimikaMente - Literatura por FOtobelli</title>
-    <meta name="description" content="Mergulhe nos contos. Histórias ordinárias, bem-humoradas ou profundas no QuimikaMente.">
     <meta name="author" content="FOtobelli">
+    
+    <title>Contos | QuimikaMente - Literatura por FOtobelli</title>
     
     <style>
         body { font-family: 'Georgia', serif; line-height: 1.8; margin: 0; color: #1a1a1a; background-color: #ffffff; }
@@ -47,7 +44,17 @@
         
         .btn-fechar { position: fixed; top: 20px; right: 20px; background: #000; color: #fff; border: none; padding: 10px 20px; cursor: pointer; z-index: 1001; font-size: 12px; }
         .read-info-bar { margin: 20px 0; padding: 10px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; font-size: 13px; color: #888; display: flex; gap: 20px; }
-        #read-texto { font-size: 19px; line-height: 1.8; text-align: justify; white-space: pre-wrap; margin-bottom: 40px; }
+        
+        /* AJUSTE DE POLIMENTO NO TEXTO */
+        #read-texto { 
+            font-size: 19px; 
+            line-height: 1.8; 
+            text-align: justify; 
+            white-space: pre-wrap; 
+            margin-top: 30px; 
+            margin-bottom: 40px;
+            padding-bottom: 50px; 
+        }
 
         /* FORMULÁRIO DE COMENTÁRIOS */
         .secao-comentarios { margin-top: 60px; border-top: 1px double #eee; padding: 40px 0; text-align: left; }
@@ -62,7 +69,7 @@
 
         /* FOOTER */
         footer { max-width: 650px; margin: 80px auto 40px auto; padding: 20px; border-top: 1px solid #eee; text-align: center; }
-        .footer-logo { font-weight: bold; font-size: 18px; margin-bottom: 5px; }
+        .footer-logo { font-weight: bold; font-size: 18px; margin-bottom: 5px; cursor: pointer; }
         .slogan { font-size: 13px; color: #888; margin-bottom: 25px; }
         .legal { font-size: 11px; color: #bbb; text-transform: uppercase; letter-spacing: 1px; }
         .legal a { color: #bbb; text-decoration: none; margin: 0 10px; cursor: pointer; }
@@ -73,11 +80,13 @@
 <body>
 
     <header>
-        <a href="/" class="logo-container"> <img src="logo-quimikamente.png" alt="Logo QuimikaMente" class="logo-img">
+        <a href="/" class="logo-container"> 
+            <img src="logo-quimikamente.png" alt="Logo QuimikaMente" class="logo-img">
             <span class="logo-text">QuimikaMente</span>
         </a>
         <nav>
-            <a href="/">Home</a> <a href="contos.html">Contos</a>
+            <a href="/">Home</a> 
+            <a href="contos.html">Contos</a>
             <a href="minicontos.html">Minicontos</a>
         </nav>
     </header>
@@ -97,7 +106,7 @@
                     </div>
                     <div style="font-size: 10px; color: #ccc; margin-top: 5px;">📅 10 FEV 2026</div>
                 </div>
-                <div id="text-conto01" style="display:none;">...</div>
+                <div id="text-conto01" style="display:none;">
 — É só um exame de praxe, amor — reclamou ele, ajustando o travesseiro. — Alterou o resultado inicial porque eu tô empenhado em cumprir o contrato com o meu maior cliente; horas a mais de trabalho, é isso. 
 — É imprudente da sua parte, é irresponsável — sentenciou ela, encerrando a acirrada discussão, acomodando o lençol sobre os quadris e voltando seu corpo ao lado oposto. 
 Cansado, suspirou profundamente, observando o balanço suave e parelho da chuva através da fresta da cortina. Notou o vento soprar brando a beijar os galhos dos coqueiros iluminados pelos postes públicos e relaxou, sentindo as pálpebras pesarem.
@@ -279,7 +288,7 @@ Pai, sei que nosso último encontro não foi dos melhores, mas se estiver pela c
     </div>
 
     <footer>
-        <div class="footer-logo">QuimikaMente</div>
+        <div class="footer-logo" onclick="window.location.href='/'">QuimikaMente</div>
         <div class="slogan">Viver, sentir, experimentar, recriar.</div>
         <div class="legal">
             <a onclick="abrirLegal('termos')">Termos de Uso</a> | 
