@@ -6,20 +6,13 @@
     <title>Minicontos | QuimikaMente - A Arte da Brevidade</title>
     
     <meta name="description" content="Explore a coleção de minicontos no QuimikaMente. Histórias rápidas, intensas e experimentais para ler em um minuto.">
-    <meta name="keywords" content="minicontos, microcontos, ficção literatura rápida, Fagner Otobelli, QuimikaMente">
     <meta name="author" content="FOtobelli">
     <link rel="canonical" href="https://www.quimikamente.com.br/minicontos.html">
 
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.quimikamente.com.br/minicontos.html">
-    <meta property="og:title" content="Minicontos | QuimikaMente - A Arte da Brevidade">
+    <meta property="og:title" content="Minicontos | QuimikaMente">
     <meta property="og:description" content="Histórias rápidas e intensas para ler em um minuto. Explore a brevidade literária de FOtobelli.">
-    <meta property="og:image" content="https://www.quimikamente.com.br/quimikamente.png">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Minicontos | QuimikaMente">
-    <meta name="twitter:description" content="Coleção de minicontos e microcontos autorais por FOtobelli.">
-    <meta name="twitter:image" content="https://www.quimikamente.com.br/quimikamente.png">
+    <meta property="og:image" content="quimikamente.png">
 
     <style>
         body { font-family: 'Georgia', serif; line-height: 1.8; margin: 0; color: #1a1a1a; background-color: #ffffff; }
@@ -49,30 +42,41 @@
 
         /* MODAL DE LEITURA */
         .modal-leitura { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 1000; overflow-y: auto; padding: 60px 20px; box-sizing: border-box; }
-        .modal-content { max-width: 600px; margin: 0 auto; text-align: center; }
+        .modal-content { max-width: 650px; margin: 0 auto; text-align: center; }
         .btn-fechar { position: fixed; top: 20px; right: 20px; background: #000; color: #fff; border: none; padding: 10px 20px; cursor: pointer; z-index: 1001; font-size: 12px; }
-        #read-texto { font-size: 26px; font-style: italic; line-height: 1.5; margin: 40px 0; color: #222; text-align: center; white-space: pre-wrap; }
-        #read-autor { font-size: 14px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+        
+        #read-texto { 
+            font-size: 24px; 
+            font-style: italic; 
+            line-height: 1.6; 
+            margin: 50px 0; 
+            color: #222; 
+            text-align: center; 
+            white-space: pre-wrap;
+            padding: 0 20px;
+        }
+        #read-autor { font-size: 14px; color: #888; text-transform: uppercase; letter-spacing: 2px; }
 
         /* SEÇÃO DE COMENTÁRIOS */
-        .secao-comentarios { margin-top: 60px; border-top: 1px double #eee; padding-top: 40px; text-align: left; }
-        .secao-comentarios h3 { font-size: 18px; text-transform: uppercase; letter-spacing: 2px; text-align: center; margin-bottom: 30px; }
-        .form-comentario { display: flex; flex-direction: column; gap: 15px; }
+        .secao-comentarios { margin-top: 80px; border-top: 1px double #eee; padding-top: 40px; text-align: left; }
+        .secao-comentarios h3 { font-size: 16px; text-transform: uppercase; letter-spacing: 2px; text-align: center; margin-bottom: 30px; }
+        .form-comentario { display: flex; flex-direction: column; gap: 15px; max-width: 500px; margin: 0 auto; }
         .form-comentario input, .form-comentario textarea { font-family: 'Georgia', serif; padding: 12px; border: 1px solid #eee; font-size: 14px; outline: none; }
         .form-comentario input:focus, .form-comentario textarea:focus { border-color: #000; }
         .btn-enviar { background: #000; color: #fff; border: none; padding: 15px; cursor: pointer; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s; }
         .btn-enviar:hover { background: #333; }
         .btn-enviar:disabled { background: #ccc; cursor: not-allowed; }
-        .aviso-moderacao { font-size: 11px; color: #999; text-align: center; margin-top: 10px; font-style: italic; }
+        .status-msg { text-align: center; font-size: 12px; margin-top: 10px; font-style: italic; }
 
-        /* RODAPÉ */
+        /* FOOTER PADRONIZADO */
         footer { max-width: 650px; margin: 80px auto 40px auto; padding: 20px; border-top: 1px solid #eee; text-align: center; }
-        .footer-logo { font-weight: bold; font-size: 18px; margin-bottom: 5px; }
+        .footer-logo { font-weight: bold; font-size: 18px; margin-bottom: 5px; cursor: pointer; }
         .slogan { font-size: 13px; color: #888; margin-bottom: 25px; }
         .legal { font-size: 11px; color: #bbb; text-transform: uppercase; letter-spacing: 1px; }
         .legal a { color: #bbb; text-decoration: none; margin: 0 10px; cursor: pointer; transition: 0.3s; }
         .legal a:hover { color: #000; }
 
+        /* MODAL LEGAL PADRONIZADO */
         .modal-legal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.98); z-index: 2000; overflow-y: auto; padding: 60px 20px; box-sizing: border-box; }
         .modal-legal-content { max-width: 600px; margin: 0 auto; text-align: justify; color: #333; line-height: 1.6; }
         .modal-legal-content h3 { border-bottom: 1px solid #eee; padding-bottom: 10px; margin-top: 0; }
@@ -104,7 +108,7 @@
                     <h4 class="card-titulo">QuimikaMente</h4>
                     <p class="card-autor">Por FOtobelli</p>
                     <div class="card-meta">
-                        <span>📅 06/02/2026</span>
+                        <span>📅 06 FEV 2026</span>
                         <span>⏱️ 1 min</span>
                     </div>
                 </div>
@@ -117,7 +121,7 @@
                     <h4 class="card-titulo">Pretérito Imperfeito</h4>
                     <p class="card-autor">Por FOtobelli</p>
                     <div class="card-meta">
-                        <span>📅 10/02/2026</span>
+                        <span>📅 10 FEV 2026</span>
                         <span>⏱️ 1 min</span>
                     </div>
                 </div>
@@ -130,7 +134,7 @@
                     <h4 class="card-titulo">Desvelou</h4>
                     <p class="card-autor">Por FOtobelli</p>
                     <div class="card-meta">
-                        <span>📅 10/02/2026</span>
+                        <span>📅 10 FEV 2026</span>
                         <span>⏱️ 1 min</span>
                     </div>
                 </div>
@@ -154,14 +158,14 @@
                     <input type="email" name="email" placeholder="Seu E-mail" required>
                     <textarea name="mensagem" rows="4" placeholder="O que você sentiu ao ler?" required></textarea>
                     <button type="submit" id="btn-enviar" class="btn-enviar">Enviar para Moderação</button>
-                    <p id="form-status" class="aviso-moderacao">Seu comentário será enviado para o autor e publicado após aprovação.</p>
+                    <p id="form-status" class="status-msg">Seu comentário será enviado para o autor e publicado após aprovação.</p>
                 </form>
             </section>
         </div>
     </div>
 
     <footer>
-        <div class="footer-logo">QuimikaMente</div>
+        <div class="footer-logo" onclick="window.location.href='/'">QuimikaMente</div>
         <div class="slogan">Viver, sentir, experimentar, recriar.</div>
         <div class="legal">
             <a onclick="abrirLegal('termos')">Termos de Uso</a> | 
@@ -176,6 +180,7 @@
     </div>
 
     <script>
+        // Funções de Leitura do Miniconto
         function abrirMini(id) {
             const card = event.currentTarget;
             const titulo = card.querySelector('.card-titulo').innerText;
@@ -189,6 +194,9 @@
             document.getElementById('modal-leitura').style.display = 'block';
             document.body.style.overflow = 'hidden';
             document.getElementById('modal-leitura').scrollTop = 0;
+            
+            document.getElementById("form-status").innerText = "Seu comentário será enviado para o autor e publicado após aprovação.";
+            document.getElementById("form-status").style.color = "#999";
         }
 
         function fecharMini() {
@@ -196,6 +204,7 @@
             document.body.style.overflow = 'auto';
         }
 
+        // Script do Formspree
         const form = document.getElementById("form-contato");
         const status = document.getElementById("form-status");
         const btn = document.getElementById("btn-enviar");
@@ -229,10 +238,11 @@
             });
         });
 
+        // TEXTOS LEGAIS (IGUAIS AOS DE CONTOS.HTML)
         const textosLegais = {
-            termos: `<h3>Termos de Uso</h3><p>Ao acessar o QuimikaMente, você concorda em utilizar este espaço para fins estritamente pessoais e artísticos. É expressamente proibida a reprodução, modificação ou distribuição do conteúdo sem autorização prévia.</p><p><strong>Conduta e Ética:</strong> Este é um espaço de respeito. Não toleramos qualquer forma de discriminação conforme as leis vigentes.</p>`,
-            privacidade: `<h3>Política de Privacidade</h3><p>O QuimikaMente respeita a sua privacidade e a LGPD. Atualmente, este site não coleta dados pessoais de forma automática.</p>`,
-            autoral: `<h3>Direitos Autorais</h3><p>Todo o conteúdo literário é de propriedade exclusiva de <strong>Fagner Otobelli</strong>. © 2026.</p>`
+            termos: `<h3>Termos de Uso</h3><p>Ao acessar o QuimikaMente, você concorda em utilizar este espaço para fins estritamente pessoais e artísticos. É expressamente proibida a reprodução, modificação ou distribuição do conteúdo sem autorização prévia.</p><p><strong>Conduta e Ética:</strong> Este é um espaço de respeito. Não toleramos qualquer forma de discriminação. É terminantemente proibida a veiculação de comentários ou interações que configurem crime de racismo (Lei nº 7.716/1989) ou homofobia e transfobia, sob pena de banimento e medidas judiciais cabíveis.</p>`,
+            privacidade: `<h3>Política de Privacidade</h3><p>O QuimikaMente respeita a sua privacidade e a LGPD. Atualmente, este site não coleta dados pessoais de navegação automática. O uso dos dados enviados via formulário é restrito à finalidade de comunicação direta entre o autor e o leitor.</p>`,
+            autoral: `<h3>Direitos Autorais</h3><p><strong>Textos:</strong> Todo o conteúdo literário é de propriedade intelectual exclusiva de <strong>Fagner Otobelli</strong>.</p><p><strong>Imagens:</strong> As artes visuais foram desenvolvidas em processo colaborativo entre o autor e inteligência artificial (Gemini/Google).</p><p>Todos os direitos reservados © 2026.</p>`
         };
 
         function abrirLegal(tipo) {
