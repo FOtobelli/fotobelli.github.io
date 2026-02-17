@@ -25,7 +25,8 @@
         nav a { margin-left: 20px; text-decoration: none; color: #666; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
         
         .container { max-width: 900px; margin: 20px auto; padding: 0 20px; text-align: center; }
-        h2 { font-weight: normal; font-style: italic; font-size: 28px; margin-bottom: 40px; }
+        h2 { font-weight: normal; font-style: italic; font-size: 28px; margin-bottom: 10px; }
+        .subtitulo-editorial { margin-bottom: 40px; font-size: 14px; color: #888; letter-spacing: 3px; text-transform: uppercase; }
 
         /* GRID DE MINICONTOS */
         .grid-mini { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; margin-top: 50px; text-align: left; }
@@ -100,9 +101,10 @@
 
     <main class="container">
         <h2>Minicontos</h2>
+        <p class="subtitulo-editorial">A Arte da Brevidade</p>
         
         <section class="grid-mini">
-            <article class="card-mini destaque" onclick="abrirMini('mini1')">
+            <article class="card-mini destaque" onclick="abrirMini(event, 'mini1')">
                 <img src="quimikamente.png" class="card-image" alt="Ilustração Miniconto QuimikaMente" onerror="this.src='https://via.placeholder.com/300x200?text=QuimikaMente'">
                 <div class="card-content">
                     <h4 class="card-titulo">QuimikaMente</h4>
@@ -115,7 +117,7 @@
                 <template id="text-mini1">Madrugada. Ela desperta, joga o cobertor no chão e corre ao laboratório. Lavoisier revelara a fórmula que traria paz à Terra. No agitador Vortex, uma após outra, ela insere moléculas: amerício + argônio + cobalto + molibdenio + nitrogênio + urânio + nitrogênio + cálcio. Agita. Reage: AmArCoMoNUNCa.</template>
             </article>
 
-            <article class="card-mini" onclick="abrirMini('mini2')">
+            <article class="card-mini" onclick="abrirMini(event, 'mini2')">
                 <img src="miniconto2.jpg" class="card-image" alt="Ilustração Pretérito Imperfeito" onerror="this.src='https://via.placeholder.com/300x200?text=Pretérito+Imperfeito'">
                 <div class="card-content">
                     <h4 class="card-titulo">Pretérito Imperfeito</h4>
@@ -128,7 +130,7 @@
                 <template id="text-mini2">Há menções nunca feitas. Há palavras nunca ditas. Suspensas no ar que nos sufoca, omissas em gavetas mofadas. Olhou a tempestade pela janela. Cada raio, um ato. Cada trovão, um diálogo. Todos postergados. Quando quis falar, percebeu que o "se" criara seu destino.</template>
             </article>
 
-            <article class="card-mini" onclick="abrirMini('mini3')">
+            <article class="card-mini" onclick="abrirMini(event, 'mini3')">
                 <img src="miniconto3.jpg" class="card-image" alt="Ilustração Desvelou" onerror="this.src='https://via.placeholder.com/300x200?text=Desvelou'">
                 <div class="card-content">
                     <h4 class="card-titulo">Desvelou</h4>
@@ -181,7 +183,7 @@
 
     <script>
         // Funções de Leitura do Miniconto
-        function abrirMini(id) {
+        function abrirMini(event, id) {
             const card = event.currentTarget;
             const titulo = card.querySelector('.card-titulo').innerText;
             
@@ -238,7 +240,7 @@
             });
         });
 
-        // TEXTOS LEGAIS (IGUAIS AOS DE CONTOS.HTML)
+        // TEXTOS LEGAIS
         const textosLegais = {
             termos: `<h3>Termos de Uso</h3><p>Ao acessar o QuimikaMente, você concorda em utilizar este espaço para fins estritamente pessoais e artísticos. É expressamente proibida a reprodução, modificação ou distribuição do conteúdo sem autorização prévia.</p><p><strong>Conduta e Ética:</strong> Este é um espaço de respeito. Não toleramos qualquer forma de discriminação. É terminantemente proibida a veiculação de comentários ou interações que configurem crime de racismo (Lei nº 7.716/1989) ou homofobia e transfobia, sob pena de banimento e medidas judiciais cabíveis.</p>`,
             privacidade: `<h3>Política de Privacidade</h3><p>O QuimikaMente respeita a sua privacidade e a LGPD (Lei Geral de Proteção de Dados). O uso dos dados enviados via formulário é restrito à finalidade de comunicação direta entre o autor e o leitor.</p>`,
