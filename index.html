@@ -13,7 +13,8 @@
     <style>
         body { font-family: 'Georgia', serif; line-height: 1.8; margin: 0; color: #1a1a1a; background-color: #ffffff; overflow-x: hidden; }
         
-        header { padding: 50px 25px; max-width: 750px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        /* HEADER: Ajustado de 50px para 20px para subir a imagem */
+        header { padding: 20px 25px; max-width: 750px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
         .logo-container { display: flex; align-items: center; text-decoration: none; color: #000; }
         .logo-img { height: 60px; width: auto; margin-right: 15px; display: block; }
         .logo-text { font-size: 24px; font-weight: 700; margin: 0; }
@@ -24,8 +25,8 @@
         .hero-wrapper {
             position: relative;
             max-width: 900px;
-            margin: 10px auto;
-            padding: 40px 20px;
+            margin: 0 auto; /* Removida margem superior */
+            padding: 10px 20px 40px 20px; /* Reduzido o padding superior de 40px para 10px */
         }
 
         .main-photo {
@@ -92,8 +93,8 @@
 
         /* Ajuste para Mobile */
         @media (max-width: 850px) {
-            header { flex-direction: column; gap: 20px; }
-            .hero-wrapper { display: flex; flex-direction: column; align-items: center; padding: 20px; }
+            header { flex-direction: column; gap: 20px; padding: 20px 25px; }
+            .hero-wrapper { display: flex; flex-direction: column; align-items: center; padding: 10px 20px; }
             .caixa-texto { position: static; max-width: 100%; text-align: center; margin: 20px 0; font-size: 1rem; }
             .texto-superior { order: 2; }
             .main-photo { order: 1; transform: scale(1); }
