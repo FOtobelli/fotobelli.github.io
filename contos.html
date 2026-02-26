@@ -6,11 +6,12 @@
     <meta name="author" content="FOtobelli">
 
     <title>Contos Autorais | QuimikaMente - Literatura por FOtobelli</title>
-    <meta name="description" content="Mergulhe nos contos. Histórias ordinárias, bem-humoradas ou profundas de Fagner Otobelli no QuimikaMente.">
+    <meta name="description" content="Mergulhe em histórias ordinárias, bem-humoradas e profundas de Fagner Otobelli no QuimikaMente.">
+    
     <link rel="canonical" href="https://quimikamente.com.br/contos">
 
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://quimikamente.com.br/contos.html">
+    <meta property="og:url" content="https://quimikamente.com.br/contos">
     <meta property="og:title" content="Contos Autorais | QuimikaMente">
     <meta property="og:description" content="Mergulhe nas histórias profundas de Fagner Otobelli.">
     <meta property="og:image" content="https://www.quimikamente.com.br/logo-quimikamente.png">
@@ -35,7 +36,10 @@
         .card-conto:hover { border-color: #bbb; transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
         .card-image { width: 100%; height: 200px; object-fit: cover; background: #f9f9f9; }
         .card-content { padding: 15px; flex-grow: 1; }
+        
+        /* HIERARQUIA SEO: Ajustado para h3 */
         .card-titulo { font-size: 18px; font-weight: bold; margin: 0 0 5px 0; color: #000; }
+        
         .card-sinopse { font-size: 14px; color: #555; font-style: italic; margin-bottom: 10px; line-height: 1.4; }
         .card-meta { font-size: 11px; color: #999; border-top: 1px solid #f5f5f5; padding-top: 10px; display: flex; justify-content: space-between; }
         
@@ -45,33 +49,20 @@
         .modal-content, .modal-legal-content { max-width: 700px; margin: 0 auto; }
         
         .btn-fechar { position: fixed; top: 20px; right: 20px; background: #000; color: #fff; border: none; padding: 10px 20px; cursor: pointer; z-index: 1001; font-size: 12px; }
-        .read-info-bar { margin: 20px 0; padding: 10px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; font-size: 13px; color: #888; display: flex; gap: 20px; }
         
-        /* AJUSTE DE POLIMENTO NO TEXTO */
+        /* AJUSTE DE POLIMENTO NO TEXTO DE LEITURA */
         #read-texto { 
             font-size: 19px; 
-            line-height: 1.8; 
+            line-height: 1.9; 
             text-align: justify; 
             white-space: pre-wrap; 
             margin-top: 30px; 
-            margin-bottom: 40px;
-            padding-bottom: 50px; 
+            padding-bottom: 80px; 
         }
-
-        /* FORMULÁRIO DE COMENTÁRIOS */
-        .secao-comentarios { margin-top: 60px; border-top: 1px double #eee; padding: 40px 0; text-align: left; }
-        .secao-comentarios h3 { text-align: center; letter-spacing: 2px; font-size: 16px; text-transform: uppercase; }
-        .form-comentario { display: flex; flex-direction: column; gap: 15px; max-width: 500px; margin: 30px auto; }
-        .form-comentario input, .form-comentario textarea { padding: 12px; border: 1px solid #eee; font-family: 'Georgia', serif; font-size: 14px; outline: none; }
-        .form-comentario input:focus, .form-comentario textarea:focus { border-color: #000; }
-        .btn-enviar { background: #000; color: #fff; border: none; padding: 15px; cursor: pointer; letter-spacing: 2px; text-transform: uppercase; font-size: 12px; transition: 0.3s; }
-        .btn-enviar:hover { background: #333; }
-        .btn-enviar:disabled { background: #ccc; cursor: not-allowed; }
-        .status-msg { text-align: center; font-size: 12px; margin-top: 10px; font-style: italic; }
 
         /* FOOTER */
         footer { max-width: 650px; margin: 80px auto 40px auto; padding: 20px; border-top: 1px solid #eee; text-align: center; }
-        .footer-logo { font-weight: bold; font-size: 18px; margin-bottom: 5px; cursor: pointer; }
+        .footer-logo { font-weight: bold; font-size: 18px; margin-bottom: 5px; }
         .slogan { font-size: 13px; color: #888; margin-bottom: 25px; }
         .legal { font-size: 11px; color: #bbb; text-transform: uppercase; letter-spacing: 1px; }
         .legal a { color: #bbb; text-decoration: none; margin: 0 10px; cursor: pointer; }
@@ -88,8 +79,8 @@
         </a>
         <nav>
             <a href="/">Home</a> 
-            <a href="contos.html">Contos</a>
-            <a href="minicontos.html">Minicontos</a>
+            <a href="contos">Contos</a>
+            <a href="minicontos">Minicontos</a>
         </nav>
     </header>
 
@@ -100,7 +91,7 @@
             <article class="card-conto" onclick="abrirLeitura('conto01')">
                 <img src="conto01.jpg" class="card-image" onerror="this.src='https://via.placeholder.com/400x250?text=O+Sopro'">
                 <div class="card-content">
-                    <h4 class="card-titulo">O Sopro - Parte I</h4>
+                    <h3 class="card-titulo">O Sopro - Parte I</h3>
                     <p class="card-sinopse">Um despertar abrupto entre a neblina e o desconhecido, onde o tempo e a realidade se fragmentam.</p>
                     <div class="card-meta">
                         <span>👤 FOtobelli</span>
@@ -112,8 +103,8 @@
 — É só um exame de praxe, amor — reclamou ele, ajustando o travesseiro. — Alterou o resultado inicial porque eu tô empenhado em cumprir o contrato com o meu maior cliente; horas a mais de trabalho, é isso. 
 — É imprudente da sua parte, é irresponsável — sentenciou ela, encerrando a acirrada discussão, acomodando o lençol sobre os quadris e voltando seu corpo ao lado oposto. 
 Cansado, suspirou profundamente, observando o balanço suave e parelho da chuva através da fresta da cortina. Notou o vento soprar brando a beijar os galhos dos coqueiros iluminados pelos postes públicos e relaxou, sentindo as pálpebras pesarem.
-Ofuscando a luz da manhã, a densa névoa corria apressada, formando uma cortina esbranquiçada que se esparramava sobre a rodovia. Ele conduzia sua picape rumo ao trabalho, após realizar o exame. Enquanto pressionava o botão multimídia conectado ao volante, abruptamente, a vívida neblina, como uma avalanche, encobriu sua visão por completo. A camada branca envolveu o para-brisa e os vidros laterais do carro, penetrando as frestas sorrateiramente. Em choque, viu a gélida umidade se espalhar pelo interior do veículo, conduzindo sua mente a um vazio imenso, espécie de porão sombrio que recendia a mofo. 
-Segundos depois, assustado, ele voltou a focar na estrada. As obscuras imagens se dissiparam, e ele percebeu alguns borrões das sinaleiras dos veículos que trafegavam à frente. Luzes vermelhas acendiam, frenéticas, em meio à névoa. Ao escutar o som das sireres e o brilho dos sinalizadores da ambulância e do caminhão dos bombeiros, acionou o pisca-alerta. Freou, aos poucos, até parar, constatando a longa fila que se formava nas quatro pistas: trânsito parado nos dois sentidos. 
+Ofuscando a luz da manhã, a densa névoa corria apressada, formando uma cortina esbranquiçada que se esparramava sobre a rodovia. Ele conduzindo sua picape rumo ao trabalho, após realizar o exame. Enquanto pressionava o botão multimídia conectado ao volante, abruptamente, a vívida neblina, como uma avalanche, encobriu sua visão por completo. A camada branca envolveu o para-brisa e os vidros laterais do carro, penetrando as frestas sorrateiramente. Em choque, viu a gélida umidade se espalhar pelo interior do veículo, conduzindo sua mente a um vazio imenso, espécie de porão sombrio que recendia a mofo. 
+Segundos depois, assustado, ele voltou a focar na estrada. As obscuras imagens se dissiparam, e ele percebeu alguns borrões das sinaleiras dos veículos que trafegavam à frente. Luzes vermelhas acendiam, frenéticas, em meio à névoa. Ao escutar o som das sirenes e o brilho dos sinalizadores da ambulância e do caminhão dos bombeiros, acionou o pisca-alerta. Freou, aos poucos, até parar, constatando a longa fila que se formava nas quatro pistas: trânsito parado nos dois sentidos. 
 Transcorridos breves minutos e recomposto do pavor, em contraponto à pacata personalidade de desenvolvedor de software, desembarcou do carro, desrespeitando as instruções do policial militar, e passou por ele sem ser notado. Caminhou até o local onde estava a ambulância, buscando um ângulo em que ficasse oculto aos olhos dos profissionais que prestavam o complexo serviço de resgate. 
 Espreitou o cenário, reparando no guard-rail central retorcido ao absorver o impacto da parte frontal da caminhonete, que foi transformada em uma lata de atum. “Provavelmente o condutor perdeu o controle, subiu o cordão e mergulhou, de frente, contra a proteção metálica no centro. A parte mais atingida foi a dianteira do motorista. Tá bem moída, meu Deus. Será que tinha alguém junto?" 
 Ele caminhou em direção aos destroços, e um bombeiro pareceu flagrar o intruso, que disfarçou, virando de costas e agachando-se como se procurasse algo caído ao chão. Verificou o socorrista voltar à rotina, ignorando sua presença. 
@@ -142,7 +133,7 @@ E sentiu o gelo a penetrar, como uma navalha, sua silhueta prateada; e sentiu o 
             <article class="card-conto" onclick="abrirLeitura('conto02')">
                 <img src="conto02.jpg" class="card-image" onerror="this.src='https://via.placeholder.com/400x250?text=Soberba'">
                 <div class="card-content">
-                    <h4 class="card-titulo">Soberba</h4>
+                    <h3 class="card-titulo">Soberba</h3>
                     <p class="card-sinopse">Entre as pedras do belvedere, ela descobre que o perigo não vem de quem se ama, mas de quem sabe calcular o preço de uma vida.</p>
                     <div class="card-meta">
                         <span>👤 FOtobelli</span>
@@ -185,11 +176,10 @@ Assoviando, recolheu o baú, desceu a ladeira e caminhou, por cerca de dois quil
 — Cinquenta. Mulher petulante suga meu bom humor.
                 </div>
             </article>
-
-            <article class="card-conto" onclick="abrirLeitura('conto03')">
+<article class="card-conto" onclick="abrirLeitura('conto03')">
                 <img src="conto03.jpg" class="card-image" onerror="this.src='https://via.placeholder.com/400x250?text=O+Moleque'">
                 <div class="card-content">
-                    <h4 class="card-titulo">O Moleque</h4>
+                    <h3 class="card-titulo">O Moleque</h3>
                     <p class="card-sinopse">O que separa o trauma da coragem? Entre as peças de um quebra-cabeça e o asfalto frio, um menino revisita seus pesadelos.</p>
                     <div class="card-meta">
                         <span>👤 FOtobelli</span>
@@ -235,7 +225,7 @@ Quando voltou a si, o moleque se viu cercado por passageiros e passageiras, vizi
             <article class="card-conto" onclick="abrirLeitura('conto04')">
                 <img src="conto04.jpg" class="card-image" onerror="this.src='https://via.placeholder.com/400x250?text=Entrelinhas'">
                 <div class="card-content">
-                    <h4 class="card-titulo">Entrelinhas</h4>
+                    <h3 class="card-titulo">Entrelinhas</h3>
                     <p class="card-sinopse">Ao revisar sua autobiografia, um homem descobre que as maiores verdades residem no silêncio entre as palavras.</p>
                     <div class="card-meta">
                         <span>👤 FOtobelli</span>
@@ -264,10 +254,10 @@ Pai, sei que nosso último encontro não foi dos melhores, mas se estiver pela c
     </main>
 
     <div id="modal-leitura" class="modal-leitura">
-        <button class="btn-fechar" onclick="fecharLeitura()">FECHAR LEITURA</button>
+        <button class="btn-fechar" onclick="fecharLeitura()">FECHAR LEITURA [X]</button>
         <div class="modal-content">
-            <h1 id="read-titulo"></h1>
-            <p id="read-sinopse" style="font-style: italic; color: #555; font-size: 18px;"></p>
+            <h1 id="read-titulo" style="font-size: 32px; margin-bottom: 10px;"></h1>
+            <p id="read-sinopse" style="font-style: italic; color: #555; font-size: 18px; margin-bottom: 20px;"></p>
             <div class="read-info-bar">
                 <span id="read-autor"></span>
                 <span id="read-data"></span>
@@ -290,39 +280,36 @@ Pai, sei que nosso último encontro não foi dos melhores, mas se estiver pela c
     </div>
 
     <footer>
-        <div class="footer-logo" onclick="window.location.href='/'">QuimikaMente</div>
+        <div class="footer-logo" onclick="window.location.href='/'" style="cursor:pointer;">QuimikaMente</div>
         <div class="slogan">Sentir, experimentar, recriar...</div>
         <div class="legal">
-            <a onclick="abrirLegal('termos')">Termos de Uso</a> | 
-            <a onclick="abrirLegal('privacidade')">Política de Privacidade</a> | 
+            <a onclick="abrirLegal('termos')">Termos e Condições</a> | 
+            <a onclick="abrirLegal('privacidade')">Privacidade e LGPD</a> | 
             <a onclick="abrirLegal('autoral')">Direitos Autorais</a>
         </div>
     </footer>
 
     <div id="modal-legal" class="modal-legal">
-        <button class="btn-fechar" onclick="fecharLegal()">FECHAR</button>
-        <div id="legal-content" class="modal-legal-content"></div>
+        <button class="btn-fechar" onclick="fecharLegal()">FECHAR [X]</button>
+        <div id="legal-content" class="modal-legal-content" style="padding-top: 40px; font-family: sans-serif; line-height: 1.6;"></div>
     </div>
 
     <script>
+        // LÓGICA DE ABERTURA DE LEITURA
         function abrirLeitura(id) {
             const card = event.currentTarget;
             const titulo = card.querySelector('.card-titulo').innerText;
             document.getElementById('read-titulo').innerText = titulo;
             document.getElementById('read-sinopse').innerText = card.querySelector('.card-sinopse').innerText;
             document.getElementById('read-autor').innerText = card.querySelector('.card-meta span:nth-child(1)').innerText;
-            document.getElementById('read-tempo').innerText = "⏱️ Leitura: " + card.querySelector('.card-meta span:nth-child(2)').innerText;
+            document.getElementById('read-tempo').innerText = "⏱️ " + card.querySelector('.card-meta span:nth-child(2)').innerText;
             document.getElementById('read-data').innerText = card.querySelector('div[style*="color: #ccc"]').innerText;
             document.getElementById('read-texto').innerHTML = document.getElementById('text-' + id).innerHTML;
             
             document.getElementById('subject-comentario').value = "Comentário no Conto: " + titulo;
-
             document.getElementById('modal-leitura').style.display = 'block';
             document.body.style.overflow = 'hidden';
             document.getElementById('modal-leitura').scrollTop = 0;
-            
-            document.getElementById("form-status").innerText = "Seu comentário será enviado para o autor e publicado após aprovação.";
-            document.getElementById("form-status").style.color = "#1a1a1a";
         }
 
         function fecharLeitura() { 
@@ -330,15 +317,43 @@ Pai, sei que nosso último encontro não foi dos melhores, mas se estiver pela c
             document.body.style.overflow = 'auto'; 
         }
 
+        // TEXTOS LEGAIS DENSOS (SEM ABREVIAÇÕES)
+        const textosLegais = {
+            termos: `
+                <h3>Termos de Uso e Conduta Ética</h3>
+                <p>Ao acessar o QuimikaMente, você concorda em utilizar este espaço para fins estritamente pessoais e artísticos. É expressamente proibida a reprodução, modificação ou distribuição do conteúdo sem autorização prévia.</p>
+                <p><strong>COMBATE AO RACISMO E DISCRIMINAÇÃO:</strong> Este é um espaço de respeito absoluto. Não toleramos qualquer forma de discriminação. Em conformidade com a <strong>Lei nº 7.716, de 5 de janeiro de 1989</strong>, praticar, induzir ou incitar a discriminação ou preconceito de raça, cor, etnia, religião ou procedência nacional é crime inafiançável. </p>
+                <p><strong>DECISÃO STF - ADO 26:</strong> Em respeito à decisão do Supremo Tribunal Federal na <strong>Ação Direta de Inconstitucionalidade por Omissão (ADO) 26</strong>, este site aplica as sanções da Lei de Racismo a atos de homofobia e transfobia. Qualquer comentário de cunho intolerante será deletado e os dados do infrator preservados para as autoridades.</p>`,
+            privacidade: `
+                <h3>Política de Privacidade e LGPD</h3>
+                <p>O QuimikaMente atua em total conformidade com a <strong>Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018 - LGPD)</strong>. </p>
+                <p><strong>Tratamento de Dados:</strong> O uso dos dados enviados via formulário de comentários (nome e e-mail) é restrito à finalidade de moderação e comunicação direta. Seus dados nunca serão vendidos ou compartilhados com terceiros para fins comerciais. Você possui o direito de solicitar a exclusão de seus comentários e dados a qualquer momento.</p>`,
+            autoral: `
+                <h3>Direitos Autorais e Propriedade Intelectual</h3>
+                <p><strong>Textos:</strong> Todo o conteúdo literário publicado nesta página é de propriedade intelectual exclusiva de <strong>Fagner Otobelli</strong>, protegido pela Lei de Direitos Autorais (Lei nº 9.610/98).</p>
+                <p><strong>Artes:</strong> As ilustrações foram geradas em processo colaborativo entre o autor e tecnologias de inteligência artificial generativa, sendo o uso das mesmas condicionado à citação da fonte QuimikaMente.</p>
+                <p>Todos os direitos reservados © 2026.</p>`
+        };
+
+        function abrirLegal(tipo) {
+            document.getElementById('legal-content').innerHTML = textosLegais[tipo];
+            document.getElementById('modal-legal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function fecharLegal() {
+            document.getElementById('modal-legal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // SCRIPT DO FORMULÁRIO (FORMSPREE)
         const form = document.getElementById("form-comentario");
         const status = document.getElementById("form-status");
-        const btn = document.getElementById("btn-enviar");
-
         form.addEventListener("submit", async function(event) {
             event.preventDefault();
+            const btn = document.getElementById("btn-enviar");
             btn.disabled = true;
             btn.innerText = "ENVIANDO...";
-            
             const data = new FormData(event.target);
             fetch(event.target.action, {
                 method: form.method,
@@ -353,33 +368,13 @@ Pai, sei que nosso último encontro não foi dos melhores, mas se estiver pela c
                     btn.disabled = false;
                 } else {
                     status.innerHTML = "❌ Erro ao enviar. Tente novamente.";
-                    status.style.color = "#dc3545";
                     btn.disabled = false;
-                    btn.innerText = "TENTAR NOVAMENTE";
                 }
             }).catch(error => {
-                status.innerHTML = "❌ Erro de conexão com o servidor.";
+                status.innerHTML = "❌ Erro de conexão.";
                 btn.disabled = false;
-                btn.innerText = "TENTAR NOVAMENTE";
             });
         });
-
-        const textosLegais = {
-            termos: `<h3>Termos de Uso</h3><p>Ao acessar o QuimikaMente, você concorda em utilizar este espaço para fins estritamente pessoais e artísticos. É expressamente proibida a reprodução, modificação ou distribuição do conteúdo sem autorização prévia.</p><p><strong>Conduta e Ética:</strong> Este é um espaço de respeito. Não toleramos qualquer forma de discriminação. É terminantemente proibida a veiculação de comentários ou interações que configurem crime de racismo (Lei nº 7.716/1989) ou homofobia e transfobia, sob pena de banimento e medidas judiciais cabíveis.</p>`,
-            privacidade: `<h3>Política de Privacidade</h3><p>O QuimikaMente respeita a sua privacidade e a LGPD (Lei Geral de Proteção de Dados). O uso dos dados enviados via formulário é restrito à finalidade de comunicação direta entre o autor e o leitor.</p>`,
-            autoral: `<h3>Direitos Autorais</h3><p><strong>Textos:</strong> Todo o conteúdo literário é de propriedade intelectual exclusiva de <strong>Fagner Otobelli</strong>.</p><p><strong>Imagens:</strong> As artes visuais foram desenvolvidas em processo colaborativo entre o autor e inteligência artificial (Gemini/Google).</p><p>Todos os direitos reservados © 2026.</p>`
-        };
-
-        function abrirLegal(tipo) {
-            document.getElementById('legal-content').innerHTML = textosLegais[tipo];
-            document.getElementById('modal-legal').style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function fecharLegal() {
-            document.getElementById('modal-legal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
     </script>
 </body>
 </html>
