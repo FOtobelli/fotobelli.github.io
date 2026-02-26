@@ -118,17 +118,17 @@ Em poucos instantes, a resposta:
 Parabéns, Ludwig van Beethoven, o mestre na arte musical que finalizou a composição da Nona Sinfonia completamente surdo.</template>
             </article>
 
-<article class="card-mini" onclick="abrirMini(event, 'davinci')">
-    <img src="serie02.jpg" class="card-image" alt="Leonardo da Vinci e o Telégrafo">
-    <div class="card-content">
-        <h3 class="card-titulo">1499</h3>
-        <p class="card-autor">Por FOtobelli</p>
-        <div class="card-meta">
-            <span>📅 20 FEV 2026</span>
-            <span>⏱️ 1 min</span>
-        </div>
-    </div>
-    <template id="text-davinci">Imagine que, à distância, você observa seu vizinho excêntrico. Ele está lá, postado no gramado, desenhando obsessivamente o voo dos pássaros, traduzindo sua imaginação em detalhes artísticos e cálculos matemáticos. Curioso, mas um pouco intimidado, você decide ir até o telégrafo da cidade e envia uma mensagem anônima:
+            <article class="card-mini" onclick="abrirMini(event, 'davinci')">
+                <img src="serie02.jpg" class="card-image" alt="Leonardo da Vinci e o Telégrafo">
+                <div class="card-content">
+                    <h3 class="card-titulo">1499</h3>
+                    <p class="card-autor">Por FOtobelli</p>
+                    <div class="card-meta">
+                        <span>📅 20 FEV 2026</span>
+                        <span>⏱️ 1 min</span>
+                    </div>
+                </div>
+                <template id="text-davinci">Imagine que, à distância, você observa seu vizinho excêntrico. Ele está lá, postado no gramado, desenhando obsessivamente o voo dos pássaros, traduzindo sua imaginação em detalhes artísticos e cálculos matemáticos. Curioso, mas um pouco intimidado, você decide ir até o telégrafo da cidade e envia uma mensagem anônima:
 
 <div style="font-family: 'Courier New', Courier, monospace; font-weight: bold; padding: 15px; margin: 20px 0; border-left: 4px solid #444; background: #f9f9f9; color: #444;">
 "LEONARDO, CONFESSO QUE ANDEI OBSERVANDO O SENHOR NESTES ÚLTIMOS DIAS. MUNIDO DE TELAS, RÉGUAS, CARVÃO E TINTAS, PASSA AS TARDES OLHANDO PARA O ALTO. CURIOSIDADE: PLANEJA MONTAR ALGUMA GERINGONÇA VOADORA?"
@@ -141,7 +141,7 @@ Semanas depois, a resposta chega:
 </div>
 
 Parabéns, Leonardo da Vinci! Um ser que conseguiu pintar a obra de arte mais valorizada da história e, como passatempo, imaginou o espaço aéreo futuro dividido entre animais, aviões e humanos. Pintor, escultor, engenheiro, anatomista, matemático, inventor e físico. Gênio — talvez o maior de todos!</template>
-</article>
+            </article>
 
         </section>
     </main>
@@ -199,9 +199,20 @@ Parabéns, Leonardo da Vinci! Um ser que conseguiu pintar a obra de arte mais va
         }
 
         const textosLegais = {
-            termos: `<h3>Termos de Uso</h3><p>Conteúdo literário para uso pessoal e artístico.</p>`,
-            privacidade: `<h3>Privacidade</h3><p>Seus dados estão seguros conforme a LGPD.</p>`,
-            autoral: `<h3>Direitos Autorais</h3><p>Textos de Fagner Otobelli. © 2026.</p>`
+            termos: `
+                <h3>Termos de Uso e Conduta Ética</h3>
+                <p>Ao acessar o QuimikaMente, você concorda em utilizar este espaço para fins estritamente pessoais e artísticos. É expressamente proibida a reprodução, modificação ou distribuição do conteúdo sem autorização prévia.</p>
+                <p><strong>COMBATE AO RACISMO E DISCRIMINAÇÃO:</strong> Este é um espaço de respeito absoluto. Não toleramos qualquer forma de discriminação. Em conformidade com a <strong>Lei nº 7.716, de 5 de janeiro de 1989</strong>, praticar, induzir ou incitar a discriminação ou preconceito de raça, cor, etnia, religião ou procedência nacional é crime inafiançável. </p>
+                <p><strong>DECISÃO STF - ADO 26:</strong> Em respeito à decisão do Supremo Tribunal Federal na <strong>Ação Direta de Inconstitucionalidade por Omissão (ADO) 26</strong>, este site aplica as sanções da Lei de Racismo a atos de homofobia e transfobia. Qualquer comentário de cunho intolerante será deletado e os dados do infrator preservados para as autoridades.</p>`,
+            privacidade: `
+                <h3>Política de Privacidade e LGPD</h3>
+                <p>O QuimikaMente atua em total conformidade com a <strong>Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018 - LGPD)</strong>. </p>
+                <p><strong>Tratamento de Dados:</strong> O uso dos dados enviados via formulário de comentários (nome e e-mail) é restrito à finalidade de moderação e comunicação direta. Seus dados nunca serão vendidos ou compartilhados com terceiros para fins comerciais. Você possui o direito de solicitar a exclusão de seus comentários e dados a qualquer momento.</p>`,
+            autoral: `
+                <h3>Direitos Autorais e Propriedade Intelectual</h3>
+                <p><strong>Textos:</strong> Todo o conteúdo literário publicado nesta página é de propriedade intelectual exclusiva de <strong>Fagner Otobelli</strong>, protegido pela Lei de Direitos Autorais (Lei nº 9.610/98).</p>
+                <p><strong>Artes:</strong> As ilustrações foram geradas em processo colaborativo entre o autor e tecnologias de inteligência artificial generativa, sendo o uso das mesmas condicionado à citação da fonte QuimikaMente.</p>
+                <p>Todos os direitos reservados © 2026.</p>`
         };
 
         function abrirLegal(tipo) {
