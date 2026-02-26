@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Fagner Otobelli">
+
+    <title>Séries Literárias | QuimikaMente - Se existisse tecnologia em...</title>
+    <meta name="description" content="Explore as séries literárias do QuimikaMente. Reimagining history com tecnologia moderna: Da Vinci com telégrafo, Beethoven no WhatsApp e mais.">
+    
+    <link rel="canonical" href="https://quimikamente.com.br/series">
+
+    <style>
+        body { font-family: 'Georgia', serif; line-height: 1.8; margin: 0; color: #1a1a1a; background-color: #ffffff; overflow-x: hidden; }
+        
+        /* HEADER PADRONIZADO */
+        header { padding: 20px 25px; max-width: 750px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo-container { display: flex; align-items: center; text-decoration: none; color: #000; }
+        .logo-img { height: 90px; width: auto; margin-right: 15px; display: block; }
+        .logo-text { font-size: 28px; font-weight: 700; margin: 0; }
+        nav a { margin-left: 20px; text-decoration: none; color: #666; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        nav a:hover { color: #000; }
+        
+        .container { max-width: 900px; margin: 40px auto; padding: 0 20px; text-align: center; }
+        h2 { font-weight: normal; font-style: italic; font-size: 32px; margin-bottom: 5px; color: #000; }
+        .subtitulo-editorial { margin-bottom: 50px; font-size: 12px; color: #aaa; letter-spacing: 4px; text-transform: uppercase; }
+
+        /* GRID DE SÉRIES */
+        .grid-mini { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; text-align: left; }
+        
+        .card-mini { background: #fff; border: 1px solid #eee; transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); cursor: pointer; display: flex; flex-direction: column; position: relative; }
+        .card-mini:hover { border-color: #000; transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .card-mini.destaque { border-top: 3px solid #000; }
+
+        .card-image { width: 100%; height: 220px; object-fit: cover; background: #f9f9f9; filter: grayscale(20%); transition: 0.4s; }
+        .card-mini:hover .card-image { filter: grayscale(0%); }
+        
+        .card-content { padding: 20px; flex-grow: 1; }
+        .card-titulo { font-size: 20px; font-weight: bold; margin: 0 0 8px 0; color: #000; }
+        .card-autor { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
+        .card-meta { font-size: 10px; color: #bbb; border-top: 1px solid #f9f9f9; padding-top: 15px; display: flex; justify-content: space-between; text-transform: uppercase; }
+
+        /* MODAL DE LEITURA */
+        .modal-leitura { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 1000; overflow-y: auto; padding: 80px 20px; box-sizing: border-box; }
+        .modal-content { max-width: 650px; margin: 0 auto; text-align: center; }
+        .btn-fechar { position: fixed; top: 20px; right: 20px; background: #000; color: #fff; border: none; padding: 12px 25px; cursor: pointer; z-index: 1001; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; }
+        
+        #read-titulo { font-size: 32px; margin-bottom: 10px; font-weight: bold; line-height: 1.2; }
+        #read-texto { font-size: 20px; line-height: 1.8; margin: 40px 0; color: #333; text-align: justify; white-space: pre-wrap; padding: 0 10px; }
+        #read-autor { font-size: 13px; color: #aaa; text-transform: uppercase; letter-spacing: 3px; }
+
+        /* COMENTÁRIOS */
+        .secao-comentarios { margin-top: 100px; border-top: 1px solid #eee; padding-top: 60px; }
+        .secao-comentarios h3 { font-size: 14px; text-transform: uppercase; letter-spacing: 3px; color: #888; margin-bottom: 40px; }
+        .form-comentario { display: flex; flex-direction: column; gap: 15px; max-width: 450px; margin: 0 auto; text-align: left; }
+        .form-comentario input, .form-comentario textarea { font-family: 'Georgia', serif; padding: 15px; border: 1px solid #eee; font-size: 15px; background: #fcfcfc; outline: none; }
+        .form-comentario input:focus, .form-comentario textarea:focus { border-color: #000; }
+        .btn-enviar { background: #000; color: #fff; border: none; padding: 18px; cursor: pointer; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s; }
+        .btn-enviar:hover { background: #333; }
+
+        /* FOOTER */
+        footer { max-width: 650px; margin: 100px auto 40px auto; padding: 20px; border-top: 1px solid #eee; text-align: center; }
+        .footer-logo { font-weight: bold; font-size: 18px; margin-bottom: 5px; cursor: pointer; }
+        .slogan { font-size: 13px; color: #888; margin-bottom: 25px; }
+        .legal { font-size: 11px; color: #bbb; text-transform: uppercase; letter-spacing: 1px; }
+        .legal a { color: #bbb; text-decoration: none; margin: 0 10px; cursor: pointer; transition: 0.3s; }
+        .legal a:hover { color: #000; }
+
+        .modal-legal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.98); z-index: 2000; overflow-y: auto; padding: 60px 20px; box-sizing: border-box; }
+        .modal-legal-content { max-width: 600px; margin: 0 auto; text-align: justify; color: #333; line-height: 1.6; }
+
+        @media (max-width: 850px) {
+            header { flex-direction: column; gap: 20px; }
+            #read-titulo { font-size: 26px; }
+            #read-texto { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="/" class="logo-container">
+            <img src="logo-quimikamente.png" alt="Logo QuimikaMente" class="logo-img">
+            <h1 class="logo-text">QuimikaMente</h1>
+        </a>
+        <nav>
+            <a href="/">Home</a>
+            <a href="contos">Contos</a>
+            <a href="minicontos">Minicontos</a>
+            <a href="series">Séries</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h2>Séries</h2>
+        <p class="subtitulo-editorial">Se existisse tecnologia em...</p>
+        
+        <section class="grid-mini">
+            
+            <article class="card-mini destaque" onclick="abrirMini(event, 'beethoven')">
+                <img src="beethoven-whatsapp.jpg" class="card-image" alt="Beethoven usando WhatsApp">
+                <div class="card-content">
+                    <h3 class="card-titulo">WhatsApp em 1820</h3>
+                    <p class="card-autor">Por Fagner Otobelli</p>
+                    <div class="card-meta">
+                        <span>📅 26 FEV 2026</span>
+                        <span>⏱️ 1 min</span>
+                    </div>
+                </div>
+                <template id="text-beethoven">Faz anos que você não conversa com seu amigo de infância e ex-colega de cursos de literatura e filosofia. Em uma breve visita à cidade natal, você descobre que ele está morando justamente na cidade em que pretende passar as férias. De imediato, você abre o WhatsApp e envia um áudio:
+
+“Ludy, acho que anda bem ocupado, cheio de encomendas, pelos papos que rolam em Bonn. Descobri que está morando em Viena. Semana que vem estarei por aí. Que tal uma caminhada pelos campos para colocarmos os papos em dia? Abraço!”
+
+Em poucos instantes, a resposta:
+
+“Ah, pela foto vejo que é meu companheiro iluminista. Você não era metido a escritor? ✍️ Escreva, pois, preguiçoso... 😉 Meus ouvidos estão cansados.”
+
+Parabéns, Ludwig van Beethoven, o mestre na arte musical que finalizou a composição da Nona Sinfonia completamente surdo.</template>
+            </article>
+
+            <article class="card-mini" onclick="abrirMini(event, 'davinci')">
+                <img src="davinci-telegrafo.jpg" class="card-image" alt="Leonardo da Vinci e o Telégrafo">
+                <div class="card-content">
+                    <h3 class="card-titulo">Telégrafo em 1499</h3>
+                    <p class="card-autor">Por Fagner Otobelli</p>
+                    <div class="card-meta">
+                        <span>📅 20 FEV 2026</span>
+                        <span>⏱️ 1 min</span>
+                    </div>
+                </div>
+                <template id="text-davinci">Imagine o Renascimento com a velocidade da era vitoriana. Leonardo, em seu ateliê, recebe um sinal ruidoso.
+
+“Leonardo, andei observando o senhor nestes últimos dias. Munido de telas, réguas e pincéis, o senhor passa as tardes olhando para o alto. Confesso minha curiosidade: planeja montar alguma geringonça voadora?”
+
+O mestre apenas sorri, olha para seus esboços de asas e responde com a brevidade que o código exige. O futuro sempre esteve à espreita, apenas faltavam os fios para conectá-lo.</template>
+            </article>
+
+        </section>
+    </main>
+
+    <div id="modal-leitura" class="modal-leitura">
+        <button class="btn-fechar" onclick="fecharMini()">FECHAR [X]</button>
+        <div class="modal-content">
+            <h1 id="read-titulo"></h1>
+            <p id="read-autor"></p>
+            <div id="read-texto"></div>
+
+            <section class="secao-comentarios">
+                <h3>O que essa série desperta em você?</h3>
+                <form action="https://formspree.io/f/xbdadbrl" method="POST" class="form-comentario">
+                    <input type="hidden" name="_subject" id="subject-comentario" value="Novo comentário em Séries">
+                    <input type="text" name="nome" placeholder="Seu Nome" required>
+                    <input type="email" name="email" placeholder="Seu E-mail" required>
+                    <textarea name="mensagem" rows="4" placeholder="Deixe sua impressão literária..." required></textarea>
+                    <button type="submit" class="btn-enviar">Enviar Impressão</button>
+                </form>
+            </section>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-logo" onclick="window.location.href='/'">QuimikaMente</div>
+        <div class="slogan">Sentir, experimentar, recriar...</div>
+        <div class="legal">
+            <a onclick="abrirLegal('termos')">Termos de Uso</a> | 
+            <a onclick="abrirLegal('privacidade')">Política de Privacidade</a> | 
+            <a onclick="abrirLegal('autoral')">Direitos Autorais</a>
+        </div>
+    </footer>
+
+    <div id="modal-legal" class="modal-legal">
+        <button class="btn-fechar" onclick="fecharLegal()">VOLTAR [X]</button>
+        <div id="legal-content" class="modal-legal-content"></div>
+    </div>
+
+    <script>
+        function abrirMini(event, id) {
+            const card = event.currentTarget;
+            const titulo = card.querySelector('.card-titulo').innerText;
+            document.getElementById('read-titulo').innerText = titulo;
+            document.getElementById('read-autor').innerText = card.querySelector('.card-autor').innerText;
+            document.getElementById('read-texto').innerHTML = document.getElementById('text-' + id).innerHTML;
+            document.getElementById('modal-leitura').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            document.getElementById('modal-leitura').scrollTop = 0;
+        }
+
+        function fecharMini() {
+            document.getElementById('modal-leitura').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        const textosLegais = {
+            termos: `<h3>Termos de Uso</h3><p>Conteúdo literário para uso pessoal e artístico.</p>`,
+            privacidade: `<h3>Privacidade</h3><p>Seus dados estão seguros conforme a LGPD.</p>`,
+            autoral: `<h3>Direitos Autorais</h3><p>Textos de Fagner Otobelli. © 2026.</p>`
+        };
+
+        function abrirLegal(tipo) {
+            document.getElementById('legal-content').innerHTML = textosLegais[tipo];
+            document.getElementById('modal-legal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function fecharLegal() {
+            document.getElementById('modal-legal').style.display = 'none';
+            if (document.getElementById('modal-leitura').style.display !== 'block') {
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
+</body>
+</html>
