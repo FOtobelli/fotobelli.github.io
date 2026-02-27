@@ -105,11 +105,34 @@
         .legal { font-size: 11px; color: #bbb; text-transform: uppercase; letter-spacing: 1px; }
         .legal a { color: #bbb; text-decoration: none; margin: 0 10px; cursor: pointer; }
 
+       /* RESPONSIVIDADE PARA MOBILE (ESTILO CASCATA) */
         @media (max-width: 650px) { 
-            header { padding: 15px 10px; }
-            .logo-img { height: 70px; }
-            .logo-text { font-size: 22px; }
-            nav a { margin-left: 10px; font-size: 11px; }
+            header { 
+                flex-direction: column; /* Coloca logo acima e menu abaixo */
+                align-items: center;
+                padding: 15px 10px;
+            }
+            .logo-container {
+                margin-bottom: 15px; /* Espaço entre o logo e as abas */
+            }
+            .logo-img { 
+                height: 70px; 
+            }
+            .logo-text { 
+                font-size: 24px; 
+            }
+            nav { 
+                flex-wrap: wrap; /* Permite quebrar linha se o celular for muito pequeno */
+                justify-content: center;
+                gap: 10px; /* Espaçamento entre as abas */
+                margin-left: 0;
+                width: 100%;
+            }
+            nav a { 
+                margin: 0 8px; /* Espaçamento lateral igual para centralizar */
+                font-size: 12px;
+                padding: 5px 0;
+            }
         }
     </style>
 </head>
