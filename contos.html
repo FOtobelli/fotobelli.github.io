@@ -17,9 +17,9 @@
     <meta property="og:image" content="https://www.quimikamente.com.br/logo-quimikamente.png">
 
     <style>
-        body { font-family: 'Georgia', serif; line-height: 1.8; margin: 0; color: #1a1a1a; background-color: #ffffff; }
+        body { font-family: 'Georgia', serif; line-height: 1.8; margin: 0; color: #1a1a1a; background-color: #ffffff; overflow-x: hidden; }
         
-        /* HEADER */
+        /* HEADER PADRONIZADO */
         header { 
             padding: 20px 25px; 
             max-width: 800px; 
@@ -45,17 +45,40 @@
         }
         nav a:hover { color: #000; }
 
+        /* TÍTULO E SUBTÍTULO */
+        .container { 
+            max-width: 900px; 
+            margin: 40px auto; 
+            padding: 0 20px; 
+            text-align: center; 
+        }
+        h2 { 
+            font-family: 'Georgia', serif;
+            font-weight: normal; 
+            font-style: italic; 
+            font-size: 32px; 
+            margin-bottom: 5px; 
+            color: #000; 
+            text-align: center;
+        }
+        .subtitulo-editorial { 
+            margin-bottom: 50px; 
+            font-size: 12px; 
+            color: #aaa; 
+            letter-spacing: 4px; 
+            text-transform: uppercase; 
+            display: block;
+        }
+
         /* GRID DE CONTOS */
-        .grid-contos { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; margin-top: 50px; text-align: left; }
+        .grid-contos { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; text-align: left; }
         
         .card-conto { background: #fff; border: 1px solid #eee; text-decoration: none; color: inherit; transition: 0.3s; display: flex; flex-direction: column; cursor: pointer; }
         .card-conto:hover { border-color: #bbb; transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
         .card-image { width: 100%; height: 200px; object-fit: cover; background: #f9f9f9; }
         .card-content { padding: 15px; flex-grow: 1; }
         
-        /* HIERARQUIA SEO: Ajustado para h3 */
         .card-titulo { font-size: 18px; font-weight: bold; margin: 0 0 5px 0; color: #000; }
-        
         .card-sinopse { font-size: 14px; color: #555; font-style: italic; margin-bottom: 10px; line-height: 1.4; }
         .card-meta { font-size: 11px; color: #999; border-top: 1px solid #f5f5f5; padding-top: 10px; display: flex; justify-content: space-between; }
         
@@ -66,7 +89,6 @@
         
         .btn-fechar { position: fixed; top: 20px; right: 20px; background: #000; color: #fff; border: none; padding: 10px 20px; cursor: pointer; z-index: 1001; font-size: 12px; }
         
-        /* AJUSTE DE POLIMENTO NO TEXTO DE LEITURA */
         #read-texto { 
             font-size: 19px; 
             line-height: 1.9; 
@@ -78,12 +100,17 @@
 
         /* FOOTER */
         footer { max-width: 650px; margin: 80px auto 40px auto; padding: 20px; border-top: 1px solid #eee; text-align: center; }
-        .footer-logo { font-weight: bold; font-size: 18px; margin-bottom: 5px; }
+        .footer-logo { font-weight: bold; font-size: 18px; margin-bottom: 5px; cursor: pointer; }
         .slogan { font-size: 13px; color: #888; margin-bottom: 25px; }
         .legal { font-size: 11px; color: #bbb; text-transform: uppercase; letter-spacing: 1px; }
         .legal a { color: #bbb; text-decoration: none; margin: 0 10px; cursor: pointer; }
 
-        @media (max-width: 650px) { header { flex-direction: column; gap: 20px; } }
+        @media (max-width: 650px) { 
+            header { padding: 15px 10px; }
+            .logo-img { height: 70px; }
+            .logo-text { font-size: 22px; }
+            nav a { margin-left: 10px; font-size: 11px; }
+        }
     </style>
 </head>
 <body>
@@ -103,6 +130,8 @@
 
     <main class="container">
         <h2>Contos</h2>
+        <p class="subtitulo-editorial">O Ordinário em Perspectiva</p>
+        
         <section class="grid-contos">
 
             <article class="card-conto" onclick="abrirLeitura('conto01')">
@@ -273,24 +302,19 @@ Pai, sei que nosso último encontro não foi dos melhores, mas se estiver pela c
     <div id="modal-leitura" class="modal-leitura">
         <button class="btn-fechar" onclick="fecharLeitura()">FECHAR LEITURA [X]</button>
         <div class="modal-content">
-            <h1 id="read-titulo" style="font-size: 32px; margin-bottom: 10px;"></h1>
+            <h1 id="read-titulo" style="font-style: italic; font-weight: normal; font-size: 32px; margin-bottom: 10px;"></h1>
             <p id="read-sinopse" style="font-style: italic; color: #555; font-size: 18px; margin-bottom: 20px;"></p>
-            <div class="read-info-bar">
-                <span id="read-autor"></span>
-                <span id="read-data"></span>
-                <span id="read-tempo"></span>
-            </div>
+            
             <div id="read-texto"></div>
 
-            <section class="secao-comentarios">
+            <section class="secao-comentarios" style="margin-top: 50px; border-top: 1px solid #eee; padding-top: 30px;">
                 <h3>O que achou deste conto?</h3>
-                <form action="https://formspree.io/f/xbdadbrl" method="POST" class="form-comentario" id="form-comentario">
-                    <input type="hidden" name="_subject" id="subject-comentario" value="Novo comentário em Contos">
-                    <input type="text" name="nome" placeholder="Seu Nome" required>
-                    <input type="email" name="email" placeholder="Seu E-mail" required>
-                    <textarea name="mensagem" rows="5" placeholder="Sua mensagem..." required></textarea>
-                    <button type="submit" id="btn-enviar" class="btn-enviar">Enviar para Moderação</button>
-                    <p id="form-status" class="status-msg">Seu comentário será enviado para o autor e publicado após aprovação.</p>
+                <form action="https://formspree.io/f/xbdadbrl" method="POST" id="form-comentario" style="display: flex; flex-direction: column; gap: 10px;">
+                    <input type="text" name="nome" placeholder="Seu Nome" required style="padding: 10px; border: 1px solid #ddd;">
+                    <input type="email" name="email" placeholder="Seu E-mail" required style="padding: 10px; border: 1px solid #ddd;">
+                    <textarea name="mensagem" rows="5" placeholder="Sua mensagem..." required style="padding: 10px; border: 1px solid #ddd; font-family: inherit;"></textarea>
+                    <button type="submit" id="btn-enviar" style="background: #000; color: #fff; padding: 15px; border: none; cursor: pointer; font-weight: bold;">ENVIAR PARA MODERAÇÃO</button>
+                    <p id="form-status" style="font-size: 12px; color: #888;">Seu comentário será enviado para o autor e publicado após aprovação.</p>
                 </form>
             </section>
         </div>
@@ -312,18 +336,13 @@ Pai, sei que nosso último encontro não foi dos melhores, mas se estiver pela c
     </div>
 
     <script>
-        // LÓGICA DE ABERTURA DE LEITURA
         function abrirLeitura(id) {
             const card = event.currentTarget;
             const titulo = card.querySelector('.card-titulo').innerText;
             document.getElementById('read-titulo').innerText = titulo;
             document.getElementById('read-sinopse').innerText = card.querySelector('.card-sinopse').innerText;
-            document.getElementById('read-autor').innerText = card.querySelector('.card-meta span:nth-child(1)').innerText;
-            document.getElementById('read-tempo').innerText = "⏱️ " + card.querySelector('.card-meta span:nth-child(2)').innerText;
-            document.getElementById('read-data').innerText = card.querySelector('div[style*="color: #ccc"]').innerText;
             document.getElementById('read-texto').innerHTML = document.getElementById('text-' + id).innerHTML;
             
-            document.getElementById('subject-comentario').value = "Comentário no Conto: " + titulo;
             document.getElementById('modal-leitura').style.display = 'block';
             document.body.style.overflow = 'hidden';
             document.getElementById('modal-leitura').scrollTop = 0;
@@ -332,9 +351,9 @@ Pai, sei que nosso último encontro não foi dos melhores, mas se estiver pela c
         function fecharLeitura() { 
             document.getElementById('modal-leitura').style.display = 'none'; 
             document.body.style.overflow = 'auto'; 
-        }
+          }
 
-        // TEXTOS LEGAIS DENSOS (SEM ABREVIAÇÕES)
+        // TEXTOS LEGAIS DENSOS
         const textosLegais = {
             termos: `
                 <h3>Termos de Uso e Conduta Ética</h3>
@@ -363,33 +382,23 @@ Pai, sei que nosso último encontro não foi dos melhores, mas se estiver pela c
             document.body.style.overflow = 'auto';
         }
 
-        // SCRIPT DO FORMULÁRIO (FORMSPREE)
+        // Script de envio do Formspree
         const form = document.getElementById("form-comentario");
-        const status = document.getElementById("form-status");
         form.addEventListener("submit", async function(event) {
             event.preventDefault();
-            const btn = document.getElementById("btn-enviar");
-            btn.disabled = true;
-            btn.innerText = "ENVIANDO...";
+            const status = document.getElementById("form-status");
             const data = new FormData(event.target);
             fetch(event.target.action, {
-                method: form.method,
+                method: 'POST',
                 body: data,
                 headers: { 'Accept': 'application/json' }
             }).then(response => {
                 if (response.ok) {
-                    status.innerHTML = "<strong>✅ Mensagem enviada com sucesso!</strong>";
-                    status.style.color = "#28a745";
+                    status.innerHTML = "✅ Enviado com sucesso!";
                     form.reset();
-                    btn.innerText = "ENVIAR PARA MODERAÇÃO";
-                    btn.disabled = false;
                 } else {
-                    status.innerHTML = "❌ Erro ao enviar. Tente novamente.";
-                    btn.disabled = false;
+                    status.innerHTML = "❌ Erro ao enviar.";
                 }
-            }).catch(error => {
-                status.innerHTML = "❌ Erro de conexão.";
-                btn.disabled = false;
             });
         });
     </script>
