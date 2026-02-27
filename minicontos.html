@@ -13,16 +13,34 @@
     <style>
         body { font-family: 'Georgia', serif; line-height: 1.8; margin: 0; color: #1a1a1a; background-color: #ffffff; overflow-x: hidden; }
         
-        /* HEADER PADRONIZADO */
-        header { padding: 20px 25px; max-width: 750px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        /* HEADER PADRONIZADO CASCATA */
+        header { 
+            padding: 20px 25px; 
+            max-width: 800px; 
+            margin: 0 auto; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
         .logo-container { display: flex; align-items: center; text-decoration: none; color: #000; }
         .logo-img { height: 90px; width: auto; margin-right: 15px; display: block; }
         .logo-text { font-size: 28px; font-weight: 700; margin: 0; }
-        nav a { margin-left: 20px; text-decoration: none; color: #666; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
+        
+        nav { display: flex; align-items: center; }
+        nav a { 
+            margin-left: 20px; 
+            text-decoration: none; 
+            color: #666; 
+            font-size: 13px; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            transition: 0.3s;
+        }
+        nav a:hover { color: #000; }
         
         .container { max-width: 900px; margin: 40px auto; padding: 0 20px; text-align: center; }
         h2 { font-weight: normal; font-style: italic; font-size: 32px; margin-bottom: 5px; color: #000; }
-        .subtitulo-editorial { margin-bottom: 50px; font-size: 12px; color: #aaa; letter-spacing: 4px; text-transform: uppercase; }
+        .subtitulo-editorial { margin-bottom: 50px; font-size: 12px; color: #aaa; letter-spacing: 4px; text-transform: uppercase; display: block; }
 
         /* GRID DE MINICONTOS */
         .grid-mini { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; text-align: left; }
@@ -57,7 +75,7 @@
         .btn-enviar { background: #000; color: #fff; border: none; padding: 18px; cursor: pointer; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s; }
         .btn-enviar:hover { background: #333; }
 
-        /* FOOTER */
+        /* FOOTER PADRONIZADO */
         footer { max-width: 650px; margin: 100px auto 40px auto; padding: 20px; border-top: 1px solid #eee; text-align: center; }
         .footer-logo { font-weight: bold; font-size: 18px; margin-bottom: 5px; cursor: pointer; }
         .slogan { font-size: 13px; color: #888; margin-bottom: 25px; }
@@ -70,8 +88,14 @@
         .modal-legal-content { max-width: 600px; margin: 0 auto; text-align: justify; color: #333; line-height: 1.6; }
         .modal-legal-content h3 { border-bottom: 1px solid #eee; padding-bottom: 10px; margin-top: 0; }
 
-        @media (max-width: 850px) {
-            header { flex-direction: column; gap: 20px; }
+        /* RESPONSIVIDADE MOBILE CASCATA */
+        @media (max-width: 650px) {
+            header { flex-direction: column; align-items: center; padding: 15px 10px; }
+            .logo-container { margin-bottom: 15px; }
+            .logo-img { height: 70px; }
+            .logo-text { font-size: 24px; }
+            nav { flex-wrap: wrap; justify-content: center; gap: 10px; width: 100%; }
+            nav a { margin: 0 8px; font-size: 12px; }
             #read-titulo { font-size: 28px; }
             #read-texto { font-size: 19px; }
         }
@@ -80,12 +104,12 @@
 <body>
 
     <header>
-        <a href="index" class="logo-container">
+        <a href="/" class="logo-container">
             <img src="logo-quimikamente.png" alt="Logo QuimikaMente" class="logo-img">
-            <h1 class="logo-text">QuimikaMente</h1>
+            <span class="logo-text">QuimikaMente</span>
         </a>
         <nav>
-            <a href="index">Home</a>
+            <a href="/">Home</a>
             <a href="contos">Contos</a>
             <a href="minicontos">Minicontos</a>
             <a href="series">Séries</a>
@@ -160,7 +184,7 @@
     </div>
 
     <footer>
-        <div class="footer-logo" onclick="window.location.href='index'">QuimikaMente</div>
+        <div class="footer-logo" onclick="window.location.href='/'">QuimikaMente</div>
         <div class="slogan">Sentir, experimentar, recriar...</div>
         <div class="legal">
             <a onclick="abrirLegal('termos')">Termos de Uso</a> | 
@@ -225,18 +249,18 @@
             termos: `
                 <h3>Termos de Uso e Conduta Ética</h3>
                 <p>Ao acessar o QuimikaMente, você concorda em utilizar este espaço para fins estritamente pessoais e artísticos. É expressamente proibida a reprodução, modificação ou distribuição do conteúdo sem autorização prévia.</p>
-                <p><strong>COMBATE AO RACISMO E DISCRIMINAÇÃO:</strong> Este é um espaço de respeito absoluto. Não toleramos qualquer forma de discriminação. Em conformidade com a <strong>Lei nº 7.716, de 5 de janeiro de 1989</strong>, praticar, induzir ou incitar a discriminação ou preconceito de raça, cor, etnia, religião ou procedência nacional é crime inafiançável.</p>
-                <p><strong>DECISÃO STF - ADO 26:</strong> Em respeito à decisão do Supremo Tribunal Federal na <strong>Ação Direta de Inconstitucionalidade por Omissão (ADO) 26</strong>, este site aplica as sanções da Lei de Racismo a atos de homofobia e transfobia. Qualquer comentário de cunho intolerante será deletado e os dados do infrator preservados para as autoridades.</p>`,
+                <p><strong>COMBATE AO RACISMO E DISCRIMINAÇÃO:</strong> Este é um espaço de respeito absoluto à dignidade humana. Não toleramos qualquer forma de discriminação. Em conformidade com a <strong>Lei nº 7.716, de 5 de janeiro de 1989</strong>, praticar, induzir ou incitar a discriminação ou preconceito de raça, cor, etnia, religião ou procedência nacional é crime inafiançável e imprescritível.</p>
+                <p><strong>DECISÃO STF - ADO 26:</strong> Em respeito à decisão do Supremo Tribunal Federal na <strong>Ação Direta de Inconstitucionalidade por Omissão (ADO) 26</strong>, este site aplica as sanções da Lei de Racismo a atos de homofobia e transfobia. Qualquer comentário de cunho intolerante será deletado e os dados do infrator preservados para as autoridades competentes.</p>`,
             
             privacidade: `
                 <h3>Política de Privacidade e LGPD</h3>
                 <p>O QuimikaMente reafirma seu compromisso com a transparência e a segurança dos seus dados, em total conformidade com a <strong>LGPD (Lei Geral de Proteção de Dados - Lei nº 13.709/2018)</strong>.</p>
-                <p>Os dados coletados através do formulário de comentários (nome e e-mail) destinam-se única e exclusivamente à finalidade de identificação do autor do comentário e comunicação direta entre o autor do projeto e o leitor. Seus dados nunca serão compartilhados ou vendidos para fins comerciais.</p>`,
+                <p>Os dados coletados através do formulário de comentários (nome e e-mail) destinam-se única e exclusivamente à finalidade de identificação do autor do comentário e comunicação direta entre o autor do projeto e o leitor. Seus dados nunca serão compartilhados ou vendidos para fins comerciais. Você possui o direito de solicitar a retificação ou exclusão de seus dados a qualquer momento.</p>`,
             
             autoral: `
                 <h3>Direitos Autorais e Propriedade Intelectual</h3>
                 <p><strong>Conteúdo Literário:</strong> Todo o acervo de contos, minicontos e ensaios publicados neste site é de propriedade intelectual exclusiva de <strong>Fagner Otobelli</strong>, protegido pela Lei de Direitos Autorais (Lei nº 9.610/98).</p>
-                <p><strong>Artes Visuais:</strong> As imagens presentes no projeto foram desenvolvidas em um processo colaborativo entre o autor e inteligência artificial.</p>
+                <p><strong>Artes Visuais:</strong> As imagens presentes no projeto foram desenvolvidas em um processo colaborativo entre o autor e inteligência artificial, sendo o uso das mesmas condicionado à citação da fonte QuimikaMente.</p>
                 <p>Todos os direitos reservados © 2026.</p>`
         };
 
