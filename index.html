@@ -171,7 +171,12 @@
         A escrita não é apenas o ato final de imprimir palavras no papel; é um processo químico de experimentação. Aqui, as ideias são os reagentes e a imaginação é o catalisador.
     </div>
 
-    <img src="foto-autor10.jpg" alt="Fagner Otobelli, autor do projeto literário QuimikaMente" class="main-photo">
+    <img src="foto-autor10.jpg" 
+     alt="Fagner Otobelli, autor do projeto literário QuimikaMente" 
+     class="main-photo" 
+     width="400" 
+     height="500" 
+     fetchpriority="high">
 
         <div class="caixa-texto texto-inferior">
             <strong>QuimikaMente</strong> é o tubo de ensaio onde misturo fragmentos de realidade com doses generosas de ficção, observando as reações voláteis que transformam o trivial em singular.
@@ -185,14 +190,14 @@
     <p class="copyright-photo">© Todos os direitos reservados.</p>
 
     <footer>
-        <div class="footer-logo" onclick="window.location.href='/'">QuimikaMente</div>
-        <div class="slogan"> Sentir, experimentar, recriar...</div>
-        <div class="legal">
-            <a onclick="abrirLegal('termos')">Termos de Uso</a> | 
-            <a onclick="abrirLegal('privacidade')">Política de Privacidade</a> | 
-            <a onclick="abrirLegal('autoral')">Direitos Autorais</a>
-        </div>
-    </footer>
+    <div class="footer-logo" onclick="window.location.href='/'" style="cursor:pointer;">QuimikaMente</div>
+    <div class="slogan" style="color: #666;">Sentir, experimentar, recriar...</div>
+    <div class="legal">
+        <a href="javascript:void(0)" onclick="abrirLegal('termos')" style="color: #777;">Termos e Condições</a> | 
+        <a href="javascript:void(0)" onclick="abrirLegal('privacidade')" style="color: #777;">Privacidade e LGPD</a> | 
+        <a href="javascript:void(0)" onclick="abrirLegal('autoral')" style="color: #777;">Direitos Autorais</a>
+    </div>
+</footer>
 
     <div id="modal-legal" class="modal-legal">
         <button class="btn-fechar" onclick="fecharLegal()">VOLTAR [X]</button>
