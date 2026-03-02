@@ -405,26 +405,40 @@ Pai, sei que nosso último encontro não foi dos melhores, mas se estiver pela c
 
         function fecharLegal() {
             document.getElementById('modal-legal').style.display = 'none';
-            document.body.style.overflow = 'auto';
+            // Só devolve o scroll ao corpo se o modal de leitura NÃO estiver aberto
+            if (document.getElementById('modal-leitura').style.display !== 'block') {
+                document.body.style.overflow = 'auto';
+            }
         }
 
-        // Script de envio do Formspree
+        // Script de envio do Formspree com Feedback Visual
         const form = document.getElementById("form-comentario");
         form.addEventListener("submit", async function(event) {
             event.preventDefault();
             const status = document.getElementById("form-status");
-            const data = new FormData(event.target);
+            const btn = event.target.querySelector("button"); // Pega o botão de enviar
+            
+            btn.disabled = true;
+            btn.innerText = "ENVIANDO...";
+
             fetch(event.target.action, {
                 method: 'POST',
-                body: data,
+                body: new FormData(event.target),
                 headers: { 'Accept': 'application/json' }
             }).then(response => {
                 if (response.ok) {
-                    status.innerHTML = "✅ Enviado com sucesso!";
+                    status.innerHTML = "<strong>✅ Recebido! Obrigado pela sua impressão.</strong>";
+                    status.style.color = "#28a745";
                     form.reset();
                 } else {
-                    status.innerHTML = "❌ Erro ao enviar.";
+                    status.innerHTML = "❌ Erro ao enviar. Tente novamente.";
+                    status.style.color = "#dc3545";
                 }
+            }).catch(() => {
+                status.innerHTML = "❌ Erro de conexão.";
+            }).finally(() => {
+                btn.disabled = false;
+                btn.innerText = "ENVIAR PARA MODERAÇÃO";
             });
         });
     </script>
