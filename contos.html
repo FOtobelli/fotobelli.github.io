@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Fagner Otobelli">
 
+    <link rel="preload" as="image" href="conto01.jpg" fetchpriority="high">
+
     <title>Contos Autorais | QuimikaMente - Laboratório Literário</title>
     <meta name="description" content="Explore contos autorais que transformam o ordinário em ficção profunda. Histórias de Fagner Otobelli no laboratório literário QuimikaMente.">
     <meta name="keywords" content="contos, ficção literária, Fagner Otobelli, QuimikaMente, literatura brasileira, escrita criativa">
@@ -22,135 +24,61 @@
         body { font-family: 'Georgia', serif; line-height: 1.8; margin: 0; color: #1a1a1a; background-color: #ffffff; overflow-x: hidden; }
         
         /* HEADER PADRONIZADO */
-        header { 
-            padding: 20px 25px; 
-            max-width: 800px; 
-            margin: 0 auto; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-        }
+        header { padding: 20px 25px; max-width: 800px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
         .logo-container { display: flex; align-items: center; text-decoration: none; color: #000; }
         .logo-img { height: 90px; width: auto; margin-right: 15px; display: block; }
         .logo-text { font-size: 28px; font-weight: 700; margin: 0; }
         
         nav { display: flex; align-items: center; }
-        nav a { 
-            margin-left: 15px; 
-            text-decoration: none; 
-            color: #666; 
-            font-size: 13px; 
-            text-transform: uppercase; 
-            letter-spacing: 1px; 
-            transition: 0.3s;
-            white-space: nowrap;
-        }
+        nav a { margin-left: 15px; text-decoration: none; color: #555; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; white-space: nowrap; }
         nav a:hover { color: #000; }
 
         /* TÍTULO E SUBTÍTULO */
-        .container { 
-            max-width: 900px; 
-            margin: 40px auto; 
-            padding: 0 20px; 
-            text-align: center; 
-        }
-        h2 { 
-            font-family: 'Georgia', serif;
-            font-weight: normal; 
-            font-style: italic; 
-            font-size: 32px; 
-            margin-bottom: 5px; 
-            color: #000; 
-            text-align: center;
-        }
-        .subtitulo-editorial { 
-            margin-bottom: 50px; 
-            font-size: 12px; 
-            color: #727272; /* Escurecido para passar no teste de contraste */
-            letter-spacing: 4px; 
-            text-transform: uppercase; 
-            display: block;
-        }
+        .container { max-width: 900px; margin: 40px auto; padding: 0 20px; text-align: center; }
+        h1 { font-family: 'Georgia', serif; font-weight: normal; font-style: italic; font-size: 32px; margin-bottom: 5px; color: #000; }
+        .subtitulo-editorial { margin-bottom: 50px; font-size: 12px; color: #717171; letter-spacing: 4px; text-transform: uppercase; display: block; }
 
-        .legal a { 
-            color: #777; /* Escurecido para contraste */
-            text-decoration: none; 
-            margin: 0 10px; 
-            cursor: pointer; 
-            transition: 0.3s;
-        }
-        .legal a:hover { color: #000; }  
-        }
+        .legal a { color: #555; text-decoration: none; margin: 0 10px; cursor: pointer; transition: 0.3s; }
+        .legal a:hover { color: #000; }
 
         /* GRID DE CONTOS */
         .grid-contos { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; text-align: left; }
-        
         .card-conto { background: #fff; border: 1px solid #eee; text-decoration: none; color: inherit; transition: 0.3s; display: flex; flex-direction: column; cursor: pointer; }
         .card-conto:hover { border-color: #bbb; transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
         .card-image { width: 100%; height: 200px; object-fit: cover; background: #f9f9f9; }
         .card-content { padding: 15px; flex-grow: 1; }
         
         .card-titulo { font-size: 18px; font-weight: bold; margin: 0 0 5px 0; color: #000; }
-        .card-sinopse { font-size: 14px; color: #555; font-style: italic; margin-bottom: 10px; line-height: 1.4; }
-        .card-meta { font-size: 11px; color: #999; border-top: 1px solid #f5f5f5; padding-top: 10px; display: flex; justify-content: space-between; }
+        .card-sinopse { font-size: 14px; color: #444; font-style: italic; margin-bottom: 10px; line-height: 1.4; }
+        .card-meta { font-size: 11px; color: #717171; border-top: 1px solid #f5f5f5; padding-top: 10px; display: flex; justify-content: space-between; }
         
         /* MODAIS */
         .modal-leitura, .modal-legal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 1000; overflow-y: auto; padding: 60px 20px; box-sizing: border-box; }
         .modal-legal { background: rgba(255,255,255,0.98); z-index: 2000; }
         .modal-content, .modal-legal-content { max-width: 700px; margin: 0 auto; }
-        
         .btn-fechar { position: fixed; top: 20px; right: 20px; background: #000; color: #fff; border: none; padding: 10px 20px; cursor: pointer; z-index: 1001; font-size: 12px; }
         
-        #read-texto { 
-            font-size: 19px; 
-            line-height: 1.9; 
-            text-align: justify; 
-            white-space: pre-wrap; 
-            margin-top: 30px; 
-            padding-bottom: 80px; 
-        }
+        #read-texto { font-size: 19px; line-height: 1.9; text-align: justify; white-space: pre-wrap; margin-top: 30px; padding-bottom: 80px; }
 
         /* FOOTER */
         footer { max-width: 650px; margin: 80px auto 40px auto; padding: 20px; border-top: 1px solid #eee; text-align: center; }
         .footer-logo { font-weight: bold; font-size: 18px; margin-bottom: 5px; cursor: pointer; }
-        .slogan { font-size: 13px; color: #888; margin-bottom: 25px; }
-        .legal { font-size: 11px; color: #bbb; text-transform: uppercase; letter-spacing: 1px; }
-        .legal a { color: #bbb; text-decoration: none; margin: 0 10px; cursor: pointer; }
+        .slogan { font-size: 13px; color: #555; margin-bottom: 25px; }
+        .legal { font-size: 11px; color: #717171; text-transform: uppercase; letter-spacing: 1px; }
 
-       /* RESPONSIVIDADE PARA MOBILE (ESTILO CASCATA) */
         @media (max-width: 650px) { 
-            header { 
-                flex-direction: column; /* Coloca logo acima e menu abaixo */
-                align-items: center;
-                padding: 15px 10px;
-            }
-            .logo-container {
-                margin-bottom: 15px; /* Espaço entre o logo e as abas */
-            }
-            .logo-img { 
-                height: 70px; 
-            }
-            .logo-text { 
-                font-size: 24px; 
-            }
-            nav { 
-                flex-wrap: wrap; /* Permite quebrar linha se o celular for muito pequeno */
-                justify-content: center;
-                gap: 10px; /* Espaçamento entre as abas */
-                margin-left: 0;
-                width: 100%;
-            }
-            nav a { 
-                margin: 0 8px; /* Espaçamento lateral igual para centralizar */
-                font-size: 12px;
-                padding: 5px 0;
-            }
+            header { flex-direction: column; align-items: center; padding: 15px 10px; }
+            .logo-container { margin-bottom: 15px; }
+            .logo-img { height: 70px; }
+            .logo-text { font-size: 24px; }
+            nav { flex-wrap: wrap; justify-content: center; gap: 10px; margin-left: 0; width: 100%; }
+            nav a { margin: 0 8px; font-size: 12px; padding: 5px 0; }
         }
     </style>
 </head>
 <body>
 
-   <header>
+<header>
     <a href="/" class="logo-container"> 
         <img src="logo-quimikamente.png" alt="Logo QuimikaMente" class="logo-img" width="90" height="90">
         <span class="logo-text">QuimikaMente</span>
@@ -163,31 +91,31 @@
     </nav>
 </header>
 
-    <main class="container">
-        <h1>Contos</h1>
-        <p class="subtitulo-editorial">O Ordinário em Perspectiva</p>
-        
-        <section class="grid-contos">
+<main class="container">
+    <h1>Contos</h1>
+    <p class="subtitulo-editorial">O Ordinário em Perspectiva</p>
+    
+    <section class="grid-contos">
 
-          <article class="card-conto" onclick="abrirLeitura('conto01')">
-            <img src="conto01.jpg" 
+      <article class="card-conto" onclick="abrirLeitura('conto01')">
+        <img src="conto01.jpg" 
              class="card-image" 
              width="400" 
              height="250" 
              fetchpriority="high" 
-             alt="Capa do conto O Sopro"
+             alt="Capa do conto O Sopro - QuimikaMente"
              onerror="this.src='https://via.placeholder.com/400x250?text=O+Sopro'">
                 
             <div class="card-content">
-                    <h3 class="card-titulo">O Sopro - Parte I</h3>
-                    <p class="card-sinopse">Um despertar abrupto entre a neblina e o desconhecido, onde o tempo e a realidade se fragmentam.</p>
-                    <div class="card-meta">
-                        <span>👤 FOtobelli</span>
-                        <span>⏱️ 10 min</span>
-                    </div>
-                    <div style="font-size: 10px; color: #ccc; margin-top: 5px;">📅 10 FEV 2026</div>
-                </div>
-                <div id="text-conto01" style="display:none; white-space: pre-wrap;">
+        <h3 class="card-titulo">O Sopro - Parte I</h3>
+        <p class="card-sinopse">Um despertar abrupto entre a neblina e o desconhecido, onde o tempo e a realidade se fragmentam.</p>
+        <div class="card-meta">
+          <span>👤 FOtobelli</span>
+          <span>⏱️ 10 min</span>
+        </div>
+        <div style="font-size: 10px; color: #717171; margin-top: 5px;">📅 10 FEV 2026</div>
+      </div>
+      <div id="text-conto01" style="display:none;">
 — É só um exame de praxe, amor — ele reclamou, ajustando o travesseiro. — O resultado alterou porque estou empenhado no contrato com meu maior cliente. São horas a mais de trabalho, só isso.
 — É imprudente. É irresponsável — ela sentenciou, encerrando a discussão. Acomodou o lençol sobre os quadris e virou o corpo para o lado oposto.
 Cansado, ele suspirou fundo. Observou a chuva cair constante pela fresta da cortina. O vento soprava brando, beijando os galhos dos coqueiros iluminados pelos postes. Ele relaxou conforme as pálpebras pesavam.
@@ -216,21 +144,21 @@ Sentiu como se serpentes roçassem o traçado prateado de sua forma. Tonteou e c
 Ao recobrar a consciência, estava no lago congelado. Ao seu redor, milhares de cabeças e feições agonizantes flutuavam sobre as águas. Ouviu lamúrias bestiais. Ao movimentar o rosto, percebeu-se submerso; sua cabeça era apenas mais uma a boiar.
 Sentiu o gelo penetrar sua silhueta como uma navalha. Sentiu o pulsar do coração, lento e doloroso, abandoná-lo. Sentiu-se esvair e, em desespero, gritou:
 — Deus, me leva para o paraíso!
-                </div>
-            </article>
+      </div>
+    </article>
 
-            <article class="card-conto" onclick="abrirLeitura('conto02')">
-                <img src="conto02.jpg" class="card-image" width="400" height="250" onerror="this.src='https://via.placeholder.com/400x250?text=Soberba'">
-                <div class="card-content">
-                    <h3 class="card-titulo">Soberba</h3>
-                    <p class="card-sinopse">Entre as pedras do belvedere, ela descobre que o perigo não vem de quem se ama, mas de quem sabe calcular o preço de uma vida.</p>
-                    <div class="card-meta">
-                        <span>👤 FOtobelli</span>
-                        <span>⏱️ 7 min</span>
-                    </div>
-                    <div style="font-size: 10px; color: #ccc; margin-top: 5px;">📅 10 FEV 2026</div>
-                </div>
-                <div id="text-conto02" style="display:none;">
+    <article class="card-conto" onclick="abrirLeitura('conto02')">
+      <img src="conto02.jpg" class="card-image" width="400" height="250" alt="Capa do conto Soberba - QuimikaMente" onerror="this.src='https://via.placeholder.com/400x250?text=Soberba'">
+      <div class="card-content">
+        <h3 class="card-titulo">Soberba</h3>
+        <p class="card-sinopse">Entre as pedras do belvedere, ela descobre que o perigo não vem de quem se ama, mas de quem sabe calcular o preço de uma vida.</p>
+        <div class="card-meta">
+          <span>👤 FOtobelli</span>
+          <span>⏱️ 7 min</span>
+        </div>
+        <div style="font-size: 10px; color: #717171; margin-top: 5px;">📅 10 FEV 2026</div>
+      </div>
+      <div id="text-conto02" style="display:none;">
 — Patético é ele marcar encontro comigo e eu dar de cara com o suposto advogado, justo aqui. 
 — Mas eu também não sabia...
 — Ele sempre teve poucos colhões. Falei pra investir na carreira de corretor de seguros porque um dia o bem-bom ia terminar, mas ele nunca me ouviu. 
@@ -263,81 +191,63 @@ Assoviando, recolheu o baú, desceu a ladeira e caminhou, por cerca de dois quil
 — Feito o serviço. Da apólice, você tem a metade dos quatro milhões, como beneficiário legal. Quero a metade desses dois milhões.
 — Nosso combinado foi quarenta por cento.  
 — Cinquenta. Mulher petulante suga meu bom humor.
-                </div>
-            </article>
-<article class="card-conto" onclick="abrirLeitura('conto03')">
-                <img src="conto03.jpg" class="card-image" width="400" height="250" onerror="this.src='https://via.placeholder.com/400x250?text=O+Moleque'">
-                <div class="card-content">
-                    <h3 class="card-titulo">O Moleque</h3>
-                    <p class="card-sinopse">O que separa o trauma da coragem? Entre as peças de um quebra-cabeça e o asfalto frio, um menino revisita seus pesadelos.</p>
-                    <div class="card-meta">
-                        <span>👤 FOtobelli</span>
-                        <span>⏱️ 8 min</span>
-                    </div>
-                    <div style="font-size: 10px; color: #ccc; margin-top: 5px;">📅 10 FEV 2026</div>
-                </div>
-                <div id="text-conto03" style="display:none;">
-Um brilho sinuoso rabiscou o negro horizonte, acompanhado por um estrondo que fez sacudir o piso do apartamento. Retesado, o moleque voltou seu olhar à vidraça. Sentiu a mão protetora acariciar os cabelos, gesto que foi seguido por um sereno suspiro materno. Sob o olhar afetuoso, tornou a sorrir, agarrando a única peça faltante e encaixando a cabeça do mico-leão-dourado. Ao mirar o tapete, ainda extasiado por finalizar a obra, de soslaio viu o pai parado à porta da sala de estar empunhando o tentador objeto voador. 
+      </div>
+    </article>
 
+    <article class="card-conto" onclick="abrirLeitura('conto03')">
+      <img src="conto03.jpg" class="card-image" width="400" height="250" alt="Capa do conto O Moleque - QuimikaMente" onerror="this.src='https://via.placeholder.com/400x250?text=O+Moleque'">
+      <div class="card-content">
+        <h3 class="card-titulo">O Moleque</h3>
+        <p class="card-sinopse">O que separa o trauma da coragem? Entre as peças de um quebra-cabeça e o asfalto frio, um menino revisita seus pesadelos.</p>
+        <div class="card-meta">
+          <span>👤 FOtobelli</span>
+          <span>⏱️ 8 min</span>
+        </div>
+        <div style="font-size: 10px; color: #717171; margin-top: 5px;">📅 10 FEV 2026</div>
+      </div>
+      <div id="text-conto03" style="display:none;">
+        Um brilho sinuoso rabiscou o negro horizonte, acompanhado por um estrondo que fez sacudir o piso do apartamento. Retesado, o moleque voltou seu olhar à vidraça. Sentiu a mão protetora acariciar os cabelos, gesto que foi seguido por um sereno suspiro materno. Sob o olhar afetuoso, tornou a sorrir, agarrando a única peça faltante e encaixando a cabeça do mico-leão-dourado. Ao mirar o tapete, ainda extasiado por finalizar a obra, de soslaio viu o pai parado à porta da sala de estar empunhando o tentador objeto voador. 
 — Nós vamos? — questionou, contendo a euforia. — Será que vai chover, pai?
 — O parque nos aguarda! 
 — Mas, pai...
-
 Andou por ruas e becos, buscando encontrar uma saída. Entre idas e vindas, adentrou vielas desconexas em um emaranhado ilógico e desprovido de quaisquer cálculos matemáticos a gerar elo entre as construções. Ora asfalto, ora terra batida, ora paralelepípedos desaprumados. Alguns prédios e casas inacabados; outros, perfeitamente alinhados e ornados por exuberantes jardins verdejantes. O moleque continuou seu vago caminhar e sentiu o sol repousar suave sobre seus ombros, notando a tonalidade rósea do crepúsculo.
-
 De súbito, um trovão ressoou, produzindo um extenso e grave eco. Arregalou os olhos. Ao vislumbrar o céu, avistou nuvens cinza-escuras, tais quais espessos blocos de concreto, que se moviam pelo horizonte descarregando sua fúria em traçados elétricos e ligeiros. O moleque sentiu pingos vertiginosos esbarrando contra seu rosto e correu rumo à parada de ônibus, onde estava sentado, de costas, um homem de terno azul-marinho e gorro negro. Reconheceu as vestimentas típicas do avô, tocando-lhe a nuca.
-
 — Onde estou, vô? 
 — No paraíso — afirmou o senhor, voltando suas desconhecidas faces ao menino, que não disfarçou a frustração. — E digo a você que está no melhor lugar e com as melhores pessoas possíveis. Agora volte lá e aproveite! — completou, abraçando-o carinhosamente.
-
 Acomodado nos braços do idoso, notou aumentar o som constante e metálico das gotas que se chocavam contra a côncava proteção.
-
 — Quem é você? Não encontro minha casa, nem minha rua — afirmou, ao pé do ouvido do velho. — Terminei o quebra-cabeça e estava indo ao parque com meu pai empinar pipa. De repente, tudo ficou diferente. Estou com fome.
 — Não é fome, meu rapaz. O medo é como um túnel: quanto mais dá atenção, mais escuro fica — proferiu o senhor, ainda entrelaçado ao moleque. — Praticar o bem pode acender luzes, muitas luzes...
-
 De sobressalto, o moleque despertou. Ofegante, removeu o lençol, enquanto o imponente ruído da chuva batendo contra o toldo da parada de ônibus ecoava à memória, ainda que pudesse sentir o calor do abraço acolhedor do velho desconhecido a reconfortá-lo. 
-
 A mescla selvagem das cores amarela e preta, pintura que fluía harmônica e confiante sobre o quadro da bicicleta, demarcava o oposto de personalidades. Montando em seu cavalo de guerra, o moleque transformava a estreita e florida rua de paralelepípedos irregulares em trincheiras por onde a imaginação golpeava traumas. A batalha diária só encerrava quando os últimos raios de sol se despediam. Hora de voltar para casa. Às vezes, seus companheiros de brincadeiras, jogos e pirraças estendiam o prazo, assumindo o risco da bronca dos pais ao cruzarem a porta de seus lares, mas ele preferia voltar só, ao seu tempo, também pelo fato de sua casa ser a mais afastada da vizinhança. Argumento íntimo para anunciar sua partida à turma, mas a verdade era que, ao crepúsculo, a fome se acentuava e, como o moleque costumava abdicar do lanche para não ser alvo de piadas, o prazer em apreciar a saborosa comida da vovó dominava seus pensamentos e o que mais queria era fartar-se à mesa. 
-
 A parada de ônibus era o ponto de encontro do grupo de amigos, e o último a comparecer, como castigo por retardar o início da recreação, se tornava responsável por buscar os quitutes na mercearia da mãe de uma das crianças. “Ameaçou chover e o guloso sempre atrasa.” “Não vá comer todo o nosso lanche pelo caminho.” 
-
 E foi em uma tarde primaveril de entretenimento e de céu cinzento que, sozinho e galopando seu singular cavalo aurinegro, ele flagrou uma fuga. Ao mesmo tempo em que reparou a escuridão que se formava no horizonte, avistou o meliante cruzar, sorrateiramente, o portão da garagem e trotear do pátio em direção à rua. Percebeu um micro-ônibus virar a esquina, veloz, e pressentiu que os atos contínuos gerariam uma trágica colisão. Desajeitado, livrou-se da bicicleta, jogando-a no canteiro de lavandas. Ao fitar inúmeras descargas elétricas iluminar as nuvens escuras e espessas, travou. Ao titubear, a imagem do estranho senhor do gorro negro, presente em sonho recente, habitou seus pensamentos. 
-
 Correu, passadas truncadas. Correu, pesado. Um forte trovão anunciou o primeiro gotejar, mas ele prosseguiu. Do lado oposto, alguns olharam e gritaram; próximos a ele, outros reagiram e acenaram para o motorista parar, mas só o moleque previu, e, apesar de sentir os pingos grossos esbarrando em seus braços, ele prosseguiu. No entanto, era tarde demais: seguindo o fluxo das linhas imaginárias traçadas pelos espectadores, o micro-ônibus esmagaria o vagabundo, transformando ousadia em morte. 
-
 A buzina e o tinido estridente dos freios despertaram memórias fragmentadas da chuvosa tarde em que, da janela do apartamento, viu um ônibus desgovernado chocar-se contra o carro parado ao sinal, derrubando pipas e sepultando quebra-cabeças. Berrou, desafiando o medo. O moleque sentiu seus músculos e tendões esticarem ao limite, pisando na longa coleira. Caiu sentado. Travado ao pescoço, o fugitivo empinou tal qual um mangalarga marchador. Aterrissou sobre o meio-fio, sentindo o calor da carcaça metálica passar a poucos centímetros de seu focinho. Latiu. Encarou o intruso com seu olhar dócil de filhote labrador. E foi então que o moleque vislumbrou uma luz dourada e circular a permear as pupilas do cão, duas argolas luminosas unidas em uma espiral que se contraía e retraía. Sentiu um toque sutil a acariciar seus cabelos e captou o efêmero suspiro. Reconheceu a paz interior na singular intimidade. 
-
 Quando voltou a si, o moleque se viu cercado por passageiros e passageiras, vizinhos e vizinhas, conhecidos e desconhecidos, trabalhadores e vadios, amigos e amigas, pássaros e plantas, cachorros e gatos a enaltecer sua valentia. Corou, cabisbaixo. O labrador, por sua vez, lambeu a bochecha rechonchuda do salvador. O moleque ergueu a cabeça e seus olhos brilharam tão intensos como quando era elogiado pela mãe ao finalizar a montagem do quebra-cabeças ou incentivado pelo pai ao empinar a pipa. O ameno suspiro materno ressoou, preenchendo espaços vazios, colorindo o horizonte do parque e enfeitando o tapete da sala de estar.
-                </div>
-            </article>
+      </div>
+    </article>
 
-            <article class="card-conto" onclick="abrirLeitura('conto04')">
-                <img src="conto04.jpg" class="card-image" width="400" height="250" onerror="this.src='https://via.placeholder.com/400x250?text=Entrelinhas'">
-                <div class="card-content">
-                    <h3 class="card-titulo">Entrelinhas</h3>
-                    <p class="card-sinopse">Ao revisar sua autobiografia, um homem descobre que as maiores verdades residem no silêncio entre as palavras.</p>
-                    <div class="card-meta">
-                        <span>👤 FOtobelli</span>
-                        <span>⏱️ 2 min</span>
-                    </div>
-                    <div style="font-size: 10px; color: #ccc; margin-top: 5px;">📅 12 FEV 2026</div>
-                </div>
-                <div id="text-conto04" style="display:none;">
+    <article class="card-conto" onclick="abrirLeitura('conto04')">
+      <img src="conto04.jpg" class="card-image" width="400" height="250" alt="Capa do conto Entrelinhas - QuimikaMente" onerror="this.src='https://via.placeholder.com/400x250?text=Entrelinhas'">
+      <div class="card-content">
+        <h3 class="card-titulo">Entrelinhas</h3>
+        <p class="card-sinopse">Ao revisar sua autobiografia, um homem descobre que as maiores verdades residem no silêncio entre as palavras.</p>
+        <div class="card-meta">
+          <span>👤 FOtobelli</span>
+          <span>⏱️ 2 min</span>
+        </div>
+        <div style="font-size: 10px; color: #717171; margin-top: 5px;">📅 12 FEV 2026</div>
+      </div>
+      <div id="text-conto04" style="display:none;">
 A luz pálida da escrivaninha piscou.
-
 Interrompeu a leitura. Inspirou, sentindo o ar inflar o abdômen; expirou longamente. Da vidraça do quarto, fitou o céu estrelado — um vislumbre que ativou sua memória, recordando a recente discussão durante a ceia de Natal.
-
 "No momento em que pediu o divórcio, você acabou com a família, pai. A mãe morreu de desgosto, não de câncer. Agora você não tem mais a mãe, nem a biscate. Vaga sozinho pelo mundo, sempre calado. Você e a caixa de sertralina."
-
 Ao reler seus manuscritos, concluiu que cada pausa, cada vírgula e cada espaço em branco têm um significado próprio. Notou que, entre as linhas, há infinitos pontos de vista onde residem os segredos, as emoções e os pensamentos que o autor teve medo de revelar ou omitiu para se livrar de julgamentos.
-
 E, quando ia fechar o rascunho de sua autobiografia, a intuição intitulou a obra. Sem pestanejar, empunhou a caneta: “O Vazio está Repleto de Vida em Forma de Silêncio”.
-
 Pegou o celular, abriu o WhatsApp e digitou:
-
 Pai, sei que nosso último encontro não foi dos melhores, mas se estiver pela cidade no sábado à noite, quer jantar conosco aqui em casa? Compro um quilo de carne a mais. kkkkkk Me avisa?
-                </div>
-            </article>
+      </div>
+    </article>
 
         </section>
     </main>
