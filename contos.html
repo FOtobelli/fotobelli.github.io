@@ -97,14 +97,16 @@
     
     <section class="grid-contos">
 
-      <article class="card-conto" onclick="abrirLeitura('conto01', event)">
-        <img src="conto01.jpg" 
-             class="card-image" 
-             width="400" 
-             height="250" 
-             fetchpriority="high" 
-             alt="Capa do conto O Sopro - QuimikaMente"
-             onerror="this.src='https://via.placeholder.com/400x250?text=O+Sopro'">
+    <article class="card-conto" onclick="abrirLeitura('conto01', event)">
+      <img src="conto01.jpg" 
+       class="card-image" 
+       width="400" 
+       height="250" 
+       fetchpriority="high" 
+       loading="eager"
+       decoding="sync"
+       alt="Capa do conto O Sopro - QuimikaMente"
+       onerror="this.src='https://via.placeholder.com/400x250?text=O+Sopro'">
                 
             <div class="card-content">
         <h3 class="card-titulo">O Sopro - Parte I</h3>
