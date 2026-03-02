@@ -19,38 +19,22 @@
     <style>
         body { font-family: 'Georgia', serif; line-height: 1.8; margin: 0; color: #1a1a1a; background-color: #ffffff; overflow-x: hidden; }
         
-        /* HEADER PADRONIZADO CASCATA */
-        header { 
-            padding: 20px 25px; 
-            max-width: 800px; 
-            margin: 0 auto; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-        }
+        /* HEADER PADRONIZADO */
+        header { padding: 20px 25px; max-width: 800px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
         .logo-container { display: flex; align-items: center; text-decoration: none; color: #000; }
         .logo-img { height: 90px; width: auto; margin-right: 15px; display: block; }
         .logo-text { font-size: 28px; font-weight: 700; margin: 0; }
         
         nav { display: flex; align-items: center; }
-        nav a { 
-            margin-left: 20px; 
-            text-decoration: none; 
-            color: #666; 
-            font-size: 13px; 
-            text-transform: uppercase; 
-            letter-spacing: 1px; 
-            transition: 0.3s;
-        }
+        nav a { margin-left: 20px; text-decoration: none; color: #555; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
         nav a:hover { color: #000; }
         
         .container { max-width: 900px; margin: 40px auto; padding: 0 20px; text-align: center; }
-        h2 { font-weight: normal; font-style: italic; font-size: 32px; margin-bottom: 5px; color: #000; }
-        .subtitulo-editorial { margin-bottom: 50px; font-size: 12px; color: #aaa; letter-spacing: 4px; text-transform: uppercase; display: block; }
+        h1 { font-weight: normal; font-style: italic; font-size: 38px; margin-bottom: 5px; color: #000; }
+        .subtitulo-editorial { margin-bottom: 50px; font-size: 12px; color: #727272; letter-spacing: 4px; text-transform: uppercase; display: block; }
 
         /* GRID DE MINICONTOS */
         .grid-mini { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; text-align: left; }
-        
         .card-mini { background: #fff; border: 1px solid #eee; transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); cursor: pointer; display: flex; flex-direction: column; position: relative; }
         .card-mini:hover { border-color: #000; transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .card-mini.destaque { border-top: 3px solid #000; }
@@ -60,8 +44,8 @@
         
         .card-content { padding: 20px; flex-grow: 1; }
         .card-titulo { font-size: 20px; font-weight: bold; margin: 0 0 8px 0; color: #000; }
-        .card-autor { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
-        .card-meta { font-size: 10px; color: #bbb; border-top: 1px solid #f9f9f9; padding-top: 15px; display: flex; justify-content: space-between; text-transform: uppercase; }
+        .card-autor { font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
+        .card-meta { font-size: 10px; color: #727272; border-top: 1px solid #f9f9f9; padding-top: 15px; display: flex; justify-content: space-between; text-transform: uppercase; }
 
         /* MODAL DE LEITURA */
         .modal-leitura { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 1000; overflow-y: auto; padding: 80px 20px; box-sizing: border-box; }
@@ -70,13 +54,13 @@
         
         #read-titulo { font-size: 36px; margin-bottom: 10px; font-weight: bold; }
         #read-texto { font-size: 22px; font-style: italic; line-height: 1.8; margin: 60px 0; color: #333; text-align: center; white-space: pre-wrap; padding: 0 10px; }
-        #read-autor { font-size: 13px; color: #aaa; text-transform: uppercase; letter-spacing: 3px; }
+        #read-autor { font-size: 13px; color: #727272; text-transform: uppercase; letter-spacing: 3px; }
 
         /* COMENTÁRIOS */
         .secao-comentarios { margin-top: 100px; border-top: 1px solid #eee; padding-top: 60px; }
-        .secao-comentarios h3 { font-size: 14px; text-transform: uppercase; letter-spacing: 3px; color: #888; margin-bottom: 40px; }
+        .secao-comentarios h3 { font-size: 14px; text-transform: uppercase; letter-spacing: 3px; color: #666; margin-bottom: 40px; }
         .form-comentario { display: flex; flex-direction: column; gap: 15px; max-width: 450px; margin: 0 auto; text-align: left; }
-        .form-comentario input, .form-comentario textarea { font-family: 'Georgia', serif; padding: 15px; border: 1px solid #eee; font-size: 15px; background: #fcfcfc; outline: none; }
+        .form-comentario input, .form-comentario textarea { font-family: 'Georgia', serif; padding: 15px; border: 1px solid #ddd; font-size: 15px; background: #fcfcfc; outline: none; }
         .form-comentario input:focus, .form-comentario textarea:focus { border-color: #000; }
         .btn-enviar { background: #000; color: #fff; border: none; padding: 18px; cursor: pointer; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s; }
         .btn-enviar:hover { background: #333; }
@@ -84,9 +68,9 @@
         /* FOOTER PADRONIZADO */
         footer { max-width: 650px; margin: 100px auto 40px auto; padding: 20px; border-top: 1px solid #eee; text-align: center; }
         .footer-logo { font-weight: bold; font-size: 18px; margin-bottom: 5px; cursor: pointer; }
-        .slogan { font-size: 13px; color: #888; margin-bottom: 25px; }
-        .legal { font-size: 11px; color: #bbb; text-transform: uppercase; letter-spacing: 1px; }
-        .legal a { color: #bbb; text-decoration: none; margin: 0 10px; cursor: pointer; transition: 0.3s; }
+        .slogan { font-size: 13px; color: #666; margin-bottom: 25px; }
+        .legal { font-size: 11px; color: #727272; text-transform: uppercase; letter-spacing: 1px; }
+        .legal a { color: #727272; text-decoration: none; margin: 0 10px; cursor: pointer; transition: 0.3s; }
         .legal a:hover { color: #000; }
 
         /* MODAL LEGAL */
@@ -94,7 +78,6 @@
         .modal-legal-content { max-width: 600px; margin: 0 auto; text-align: justify; color: #333; line-height: 1.6; }
         .modal-legal-content h3 { border-bottom: 1px solid #eee; padding-bottom: 10px; margin-top: 0; }
 
-        /* RESPONSIVIDADE MOBILE CASCATA */
         @media (max-width: 650px) {
             header { flex-direction: column; align-items: center; padding: 15px 10px; }
             .logo-container { margin-bottom: 15px; }
@@ -123,11 +106,17 @@
     </header>
 
     <main class="container">
-        <h1>Minicontos</h1> <p class="subtitulo-editorial">A Arte da Brevidade</p>
+        <h1>Minicontos</h1> 
+        <p class="subtitulo-editorial">A Arte da Brevidade</p>
         
         <section class="grid-mini">
             <article class="card-mini destaque" onclick="abrirMini(event, 'mini1')">
-                <img src="quimikamente.jpg" class="card-image" alt="Ilustração QuimikaMente" width="400" height="250">
+                <img src="quimikamente.jpg" 
+                     class="card-image" 
+                     alt="Capa do miniconto QuimikaMente" 
+                     width="400" 
+                     height="220" 
+                     fetchpriority="high">
                 <div class="card-content">
                     <h3 class="card-titulo">QuimikaMente</h3>
                     <p class="card-autor">Por FOtobelli</p>
@@ -140,7 +129,12 @@
             </article>
 
             <article class="card-mini" onclick="abrirMini(event, 'mini2')">
-                <img src="miniconto2.jpg" class="card-image" alt="Ilustração Pretérito Imperfeito" width="400" height="250">
+                <img src="miniconto2.jpg" 
+                     class="card-image" 
+                     alt="Capa do miniconto Pretérito Imperfeito" 
+                     width="400" 
+                     height="220" 
+                     loading="lazy">
                 <div class="card-content">
                     <h3 class="card-titulo">Pretérito Imperfeito</h3>
                     <p class="card-autor">Por FOtobelli</p>
@@ -153,7 +147,12 @@
             </article>
 
             <article class="card-mini" onclick="abrirMini(event, 'mini3')">
-               <img src="miniconto3.jpg" class="card-image" alt="Ilustração Desvelou" width="400" height="250">
+               <img src="miniconto3.jpg" 
+                    class="card-image" 
+                    alt="Capa do miniconto Desvelou" 
+                    width="400" 
+                    height="220" 
+                    loading="lazy">
                 <div class="card-content">
                     <h3 class="card-titulo">Desvelou</h3>
                     <p class="card-autor">Por FOtobelli</p>
@@ -168,7 +167,7 @@
     </main>
 
     <div id="modal-leitura" class="modal-leitura">
-        <button class="btn-fechar" onclick="fecharMini()">FECHAR [X]</button>
+        <button class="btn-fechar" onclick="fecharMini()">FECHAR LEITURA [X]</button>
         <div class="modal-content">
             <h1 id="read-titulo"></h1>
             <p id="read-autor"></p>
@@ -182,7 +181,7 @@
                     <input type="email" name="email" placeholder="Seu E-mail" required>
                     <textarea name="mensagem" rows="4" placeholder="Deixe sua impressão literária..." required></textarea>
                     <button type="submit" id="btn-enviar" class="btn-enviar">Enviar Impressão</button>
-                    <p id="form-status" style="font-size:12px; margin-top:15px; color:#aaa; font-style:italic; text-align: center;">Seu comentário será enviado para o autor.</p>
+                    <p id="form-status" style="font-size:12px; margin-top:15px; color:#727272; font-style:italic; text-align: center;">Seu comentário será enviado para o autor.</p>
                 </form>
             </section>
         </div>
@@ -192,9 +191,9 @@
         <div class="footer-logo" onclick="window.location.href='/'">QuimikaMente</div>
         <div class="slogan">Sentir, experimentar, recriar...</div>
         <div class="legal">
-            <a onclick="abrirLegal('termos')">Termos de Uso</a> | 
-            <a onclick="abrirLegal('privacidade')">Política de Privacidade</a> | 
-            <a onclick="abrirLegal('autoral')">Direitos Autorais</a>
+            <a href="javascript:void(0)" onclick="abrirLegal('termos')">Termos de Uso</a> | 
+            <a href="javascript:void(0)" onclick="abrirLegal('privacidade')">Política de Privacidade</a> | 
+            <a href="javascript:void(0)" onclick="abrirLegal('autoral')">Direitos Autorais</a>
         </div>
     </footer>
 
@@ -221,6 +220,7 @@
             document.body.style.overflow = 'auto';
         }
 
+        // Script de envio Formspree
         const form = document.getElementById("form-contato");
         form.addEventListener("submit", async function(event) {
             event.preventDefault();
@@ -254,18 +254,18 @@
             termos: `
                 <h3>Termos de Uso e Conduta Ética</h3>
                 <p>Ao acessar o QuimikaMente, você concorda em utilizar este espaço para fins estritamente pessoais e artísticos. É expressamente proibida a reprodução, modificação ou distribuição do conteúdo sem autorização prévia.</p>
-                <p><strong>COMBATE AO RACISMO E DISCRIMINAÇÃO:</strong> Este é um espaço de respeito absoluto à dignidade humana. Não toleramos qualquer forma de discriminação. Em conformidade com a <strong>Lei nº 7.716, de 5 de janeiro de 1989</strong>, praticar, induzir ou incitar a discriminação ou preconceito de raça, cor, etnia, religião ou procedência nacional é crime inafiançável e imprescritível.</p>
-                <p><strong>DECISÃO STF - ADO 26:</strong> Em respeito à decisão do Supremo Tribunal Federal na <strong>Ação Direta de Inconstitucionalidade por Omissão (ADO) 26</strong>, este site aplica as sanções da Lei de Racismo a atos de homofobia e transfobia. Qualquer comentário de cunho intolerante será deletado e os dados do infrator preservados para as autoridades competentes.</p>`,
+                <p><strong>COMBATE AO RACISMO E DISCRIMINAÇÃO:</strong> Este é um espaço de respeito absoluto à dignidade humana. Não toleramos qualquer forma de discriminação. Em conformidade com a <strong>Lei nº 7.716/1989</strong>, o preconceito de raça, cor, etnia ou religião é crime.</p>
+                <p><strong>DECISÃO STF - ADO 26:</strong> Aplicamos as sanções da Lei de Racismo a atos de homofobia e transfobia.</p>`,
             
             privacidade: `
                 <h3>Política de Privacidade e LGPD</h3>
-                <p>O QuimikaMente reafirma seu compromisso com a transparência e a segurança dos seus dados, em total conformidade com a <strong>LGPD (Lei Geral de Proteção de Dados - Lei nº 13.709/2018)</strong>.</p>
-                <p>Os dados coletados através do formulário de comentários (nome e e-mail) destinam-se única e exclusivamente à finalidade de identificação do autor do comentário e comunicação direta entre o autor do projeto e o leitor. Seus dados nunca serão compartilhados ou vendidos para fins comerciais. Você possui o direito de solicitar a retificação ou exclusão de seus dados a qualquer momento.</p>`,
+                <p>O QuimikaMente atua em conformidade com a <strong>LGPD (Lei nº 13.709/2018)</strong>.</p>
+                <p>Os dados coletados (nome e e-mail) são usados apenas para moderação de comentários. Você pode solicitar a exclusão de seus dados a qualquer momento.</p>`,
             
             autoral: `
                 <h3>Direitos Autorais e Propriedade Intelectual</h3>
-                <p><strong>Conteúdo Literário:</strong> Todo o acervo de contos, minicontos e ensaios publicados neste site é de propriedade intelectual exclusiva de <strong>Fagner Otobelli</strong>, protegido pela Lei de Direitos Autorais (Lei nº 9.610/98).</p>
-                <p><strong>Artes Visuais:</strong> As imagens presentes no projeto foram desenvolvidas em um processo colaborativo entre o autor e inteligência artificial, sendo o uso das mesmas condicionado à citação da fonte QuimikaMente.</p>
+                <p><strong>Conteúdo Literário:</strong> Propriedade exclusiva de <strong>Fagner Otobelli</strong> (Lei nº 9.610/98).</p>
+                <p><strong>Artes Visuais:</strong> Criadas em colaboração com IA, uso condicionado à citação da fonte QuimikaMente.</p>
                 <p>Todos os direitos reservados © 2026.</p>`
         };
 
