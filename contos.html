@@ -169,9 +169,16 @@
         
         <section class="grid-contos">
 
-            <article class="card-conto" onclick="abrirLeitura('conto01')">
-                <img src="conto01.jpg" class="card-image" width="400" height="250" onerror="this.src='https://via.placeholder.com/400x250?text=O+Sopro'">
-                <div class="card-content">
+          <article class="card-conto" onclick="abrirLeitura('conto01')">
+            <img src="conto01.jpg" 
+             class="card-image" 
+             width="400" 
+             height="250" 
+             fetchpriority="high" 
+             alt="Capa do conto O Sopro"
+             onerror="this.src='https://via.placeholder.com/400x250?text=O+Sopro'">
+                
+            <div class="card-content">
                     <h3 class="card-titulo">O Sopro - Parte I</h3>
                     <p class="card-sinopse">Um despertar abrupto entre a neblina e o desconhecido, onde o tempo e a realidade se fragmentam.</p>
                     <div class="card-meta">
