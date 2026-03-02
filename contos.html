@@ -97,7 +97,7 @@
     
     <section class="grid-contos">
 
-      <article class="card-conto" onclick="abrirLeitura('conto01')">
+      <article class="card-conto" onclick="abrirLeitura('conto01', event)">
         <img src="conto01.jpg" 
              class="card-image" 
              width="400" 
@@ -147,7 +147,7 @@ Sentiu o gelo penetrar sua silhueta como uma navalha. Sentiu o pulsar do coraç�
       </div>
     </article>
 
-    <article class="card-conto" onclick="abrirLeitura('conto02')">
+   <article class="card-conto" onclick="abrirLeitura('conto02', event)">
       <img src="conto02.jpg" class="card-image" width="400" height="250" alt="Capa do conto Soberba - QuimikaMente" onerror="this.src='https://via.placeholder.com/400x250?text=Soberba'">
       <div class="card-content">
         <h3 class="card-titulo">Soberba</h3>
@@ -194,7 +194,7 @@ Assoviando, recolheu o baú, desceu a ladeira e caminhou, por cerca de dois quil
       </div>
     </article>
 
-    <article class="card-conto" onclick="abrirLeitura('conto03')">
+    <article class="card-conto" onclick="abrirLeitura('conto03', event)">
       <img src="conto03.jpg" class="card-image" width="400" height="250" alt="Capa do conto O Moleque - QuimikaMente" onerror="this.src='https://via.placeholder.com/400x250?text=O+Moleque'">
       <div class="card-content">
         <h3 class="card-titulo">O Moleque</h3>
@@ -227,7 +227,7 @@ Quando voltou a si, o moleque se viu cercado por passageiros e passageiras, vizi
       </div>
     </article>
 
-    <article class="card-conto" onclick="abrirLeitura('conto04')">
+    <article class="card-conto" onclick="abrirLeitura('conto04', event)">
       <img src="conto04.jpg" class="card-image" width="400" height="250" alt="Capa do conto Entrelinhas - QuimikaMente" onerror="this.src='https://via.placeholder.com/400x250?text=Entrelinhas'">
       <div class="card-content">
         <h3 class="card-titulo">Entrelinhas</h3>
@@ -289,7 +289,7 @@ Pai, sei que nosso último encontro não foi dos melhores, mas se estiver pela c
     </div>
 
     <script>
-        function abrirLeitura(id) {
+        function abrirLeitura(id, event) {
             const card = event.currentTarget;
             const titulo = card.querySelector('.card-titulo').innerText;
             document.getElementById('read-titulo').innerText = titulo;
