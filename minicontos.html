@@ -10,11 +10,13 @@
     <meta name="keywords" content="minicontos, microcontos, Fagner Otobelli, literatura curta, escrita criativa, QuimikaMente">
     <link rel="canonical" href="https://quimikamente.com.br/minicontos">
 
+    <link rel="preload" as="image" href="quimikamente.webp" fetchpriority="high">
+
     <meta property="og:type" content="article">
     <meta property="og:title" content="Minicontos | A Arte da Brevidade no QuimikaMente">
     <meta property="og:description" content="Histórias rápidas e intensas de Fagner Otobelli para ler em apenas um minuto.">
     <meta property="og:url" content="https://quimikamente.com.br/minicontos">
-    <meta property="og:image" content="https://quimikamente.com.br/quimikamente.jpg">
+    <meta property="og:image" content="https://quimikamente.com.br/quimikamente.webp">
 
     <style>
         body { font-family: 'Georgia', serif; line-height: 1.8; margin: 0; color: #1a1a1a; background-color: #ffffff; overflow-x: hidden; }
@@ -45,7 +47,7 @@
         .card-content { padding: 20px; flex-grow: 1; }
         .card-titulo { font-size: 20px; font-weight: bold; margin: 0 0 8px 0; color: #000; }
         .card-autor { font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
-        .card-meta { font-size: 10px; color: #727272; border-top: 1px solid #f9f9f9; padding-top: 15px; display: flex; justify-content: space-between; text-transform: uppercase; }
+        .card-meta { font-size: 11px; color: #444; border-top: 1px solid #f9f9f9; padding-top: 15px; display: flex; justify-content: space-between; text-transform: uppercase; font-weight: bold; }
 
         /* MODAL DE LEITURA */
         .modal-leitura { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 1000; overflow-y: auto; padding: 80px 20px; box-sizing: border-box; }
@@ -111,12 +113,13 @@
         
         <section class="grid-mini">
             <article class="card-mini destaque" onclick="abrirMini(event, 'mini1')">
-                <img src="quimikamente.jpg" 
+                <img src="quimikamente.webp" 
                      class="card-image" 
                      alt="Capa do miniconto QuimikaMente" 
                      width="400" 
                      height="220" 
-                     fetchpriority="high">
+                     fetchpriority="high"
+                     decoding="sync">
                 <div class="card-content">
                     <h3 class="card-titulo">QuimikaMente</h3>
                     <p class="card-autor">Por FOtobelli</p>
@@ -129,7 +132,7 @@
             </article>
 
             <article class="card-mini" onclick="abrirMini(event, 'mini2')">
-                <img src="miniconto2.jpg" 
+                <img src="miniconto2.webp" 
                      class="card-image" 
                      alt="Capa do miniconto Pretérito Imperfeito" 
                      width="400" 
@@ -147,7 +150,7 @@
             </article>
 
             <article class="card-mini" onclick="abrirMini(event, 'mini3')">
-               <img src="miniconto3.jpg" 
+               <img src="miniconto3.webp" 
                     class="card-image" 
                     alt="Capa do miniconto Desvelou" 
                     width="400" 
@@ -191,9 +194,9 @@
         <div class="footer-logo" onclick="window.location.href='/'">QuimikaMente</div>
         <div class="slogan">Sentir, experimentar, recriar...</div>
         <div class="legal">
-            <a href="javascript:void(0)" onclick="abrirLegal('termos')">Termos de Uso</a> | 
-            <a href="javascript:void(0)" onclick="abrirLegal('privacidade')">Política de Privacidade</a> | 
-            <a href="javascript:void(0)" onclick="abrirLegal('autoral')">Direitos Autorais</a>
+            <a href="#termos" onclick="abrirLegal('termos'); return false;">Termos de Uso</a> | 
+            <a href="#privacidade" onclick="abrirLegal('privacidade'); return false;">Política de Privacidade</a> | 
+            <a href="#autoral" onclick="abrirLegal('autoral'); return false;">Direitos Autorais</a>
         </div>
     </footer>
 
@@ -250,20 +253,21 @@
             });
         });
 
+        // Textos Legais Densos com IDs para SEO Rastreável
         const textosLegais = {
             termos: `
-                <h3>Termos de Uso e Conduta Ética</h3>
+                <h3 id="termos">Termos de Uso e Conduta Ética</h3>
                 <p>Ao acessar o QuimikaMente, você concorda em utilizar este espaço para fins estritamente pessoais e artísticos. É expressamente proibida a reprodução, modificação ou distribuição do conteúdo sem autorização prévia.</p>
                 <p><strong>COMBATE AO RACISMO E DISCRIMINAÇÃO:</strong> Este é um espaço de respeito absoluto à dignidade humana. Não toleramos qualquer forma de discriminação. Em conformidade com a <strong>Lei nº 7.716/1989</strong>, o preconceito de raça, cor, etnia ou religião é crime.</p>
                 <p><strong>DECISÃO STF - ADO 26:</strong> Aplicamos as sanções da Lei de Racismo a atos de homofobia e transfobia.</p>`,
             
             privacidade: `
-                <h3>Política de Privacidade e LGPD</h3>
+                <h3 id="privacidade">Política de Privacidade e LGPD</h3>
                 <p>O QuimikaMente atua em conformidade com a <strong>LGPD (Lei nº 13.709/2018)</strong>.</p>
                 <p>Os dados coletados (nome e e-mail) são usados apenas para moderação de comentários. Você pode solicitar a exclusão de seus dados a qualquer momento.</p>`,
             
             autoral: `
-                <h3>Direitos Autorais e Propriedade Intelectual</h3>
+                <h3 id="autoral">Direitos Autorais e Propriedade Intelectual</h3>
                 <p><strong>Conteúdo Literário:</strong> Propriedade exclusiva de <strong>Fagner Otobelli</strong> (Lei nº 9.610/98).</p>
                 <p><strong>Artes Visuais:</strong> Criadas em colaboração com IA, uso condicionado à citação da fonte QuimikaMente.</p>
                 <p>Todos os direitos reservados © 2026.</p>`
