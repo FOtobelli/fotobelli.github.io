@@ -345,35 +345,39 @@ Após alguns segundos:
 — Paguei — insistiu, rindo. — Mas foi no virtual, um sonho! Lembro do comprovante sair serpenteando feito uma jararaca pelas mãos de São Pedro.
 — Cala essa boca. Vou comprar o presente da minha mãe agora. Tô com teu cartão na bolsa. Te prepara — ameaçou, deixando a fila furiosa. — Almoça sozinho, boca aberta.
 Um raio alaranjado correu, sinuoso, por entre as nuvens negras, seguido por um trovejar que produziu um ruído grave e longo. Instantes depois, João sentiu uma gota pesada estalar contra sua testa.
-— Olá, São Pedro! Como vai?
-      </div>
+— Olá, São Pedro! Como vai? </div>
+              
     </article>
+    </section>
+</main>
+
+<div id="modal-leitura" class="modal-leitura">
+    <button class="btn-fechar" onclick="fecharLeitura()">FECHAR [X]</button>
+    <div class="modal-content">
+        <h1 id="read-titulo" style="font-style: italic; font-weight: normal; font-size: 32px; margin-bottom: 10px;"></h1>
+        <p id="read-sinopse" style="font-style: italic; color: #555; font-size: 18px; margin-bottom: 20px;"></p>
         
-        <div class="modal-content">
-            <h1 id="read-titulo" style="font-style: italic; font-weight: normal; font-size: 32px; margin-bottom: 10px;"></h1>
-            <p id="read-sinopse" style="font-style: italic; color: #555; font-size: 18px; margin-bottom: 20px;"></p>
-            
-            <div id="read-texto"></div>
+        <div id="read-texto"></div>
 
-            <section class="secao-comentarios" style="margin-top: 50px; border-top: 1px solid #eee; padding-top: 30px;">
-                <h3>O que achou deste conto?</h3>
-                <form action="https://formspree.io/f/xbdadbrl" method="POST" id="form-comentario" style="display: flex; flex-direction: column; gap: 10px;">
-                    <input type="text" name="nome" placeholder="Seu Nome" required style="padding: 10px; border: 1px solid #ddd;">
-                    <input type="email" name="email" placeholder="Seu E-mail" required style="padding: 10px; border: 1px solid #ddd;">
-                    <textarea name="mensagem" rows="5" placeholder="Sua mensagem..." required style="padding: 10px; border: 1px solid #ddd; font-family: inherit;"></textarea>
-                    <button type="submit" id="btn-enviar" style="background: #000; color: #fff; padding: 15px; border: none; cursor: pointer; font-weight: bold;">ENVIAR PARA MODERAÇÃO</button>
-                    <p id="form-status" style="font-size: 12px; color: #888;">Seu comentário será enviado para o autor.</p>
-                </form>
+        <section class="secao-comentarios" style="margin-top: 50px; border-top: 1px solid #eee; padding-top: 30px;">
+            <h3>O que achou deste conto?</h3>
+            <form action="https://formspree.io/f/xbdadbrl" method="POST" id="form-comentario" style="display: flex; flex-direction: column; gap: 10px;">
+                <input type="text" name="nome" placeholder="Seu Nome" required style="padding: 10px; border: 1px solid #ddd;">
+                <input type="email" name="email" placeholder="Seu E-mail" required style="padding: 10px; border: 1px solid #ddd;">
+                <textarea name="mensagem" rows="5" placeholder="Sua mensagem..." required style="padding: 10px; border: 1px solid #ddd; font-family: inherit;"></textarea>
+                <button type="submit" id="btn-enviar" style="background: #000; color: #fff; padding: 15px; border: none; cursor: pointer; font-weight: bold;">ENVIAR PARA MODERAÇÃO</button>
+                <p id="form-status" style="font-size: 12px; color: #888;">Seu comentário será enviado para o autor.</p>
+            </form>
 
-                <div style="margin-top: 30px; padding: 20px; background: #f9f9f9; border-radius: 4px; text-align: center;">
-                    <p style="font-size: 14px; color: #333; margin-bottom: 10px;">Gostou da escrita? Receba novos contos no seu e-mail.</p>
-                    <a href="https://fagnerotobelli.substack.com/subscribe" target="_blank" style="text-decoration: none;">
-                        <span style="background: #000; color: #fff; padding: 8px 15px; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">Assinar Substack</span>
-                    </a>
-                </div>
-            </section>
-        </div>
+            <div style="margin-top: 30px; padding: 20px; background: #f9f9f9; border-radius: 4px; text-align: center;">
+                <p style="font-size: 14px; color: #333; margin-bottom: 10px;">Gostou da escrita? Receba novos contos no seu e-mail.</p>
+                <a href="https://fagnerotobelli.substack.com/subscribe" target="_blank" style="text-decoration: none;">
+                    <span style="background: #000; color: #fff; padding: 8px 15px; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">Assinar Substack</span>
+                </a>
+            </div>
+        </section>
     </div>
+</div>
 
    <footer>
         <div class="footer-logo" onclick="window.location.href='/'" style="cursor:pointer;">QuimikaMente</div>
