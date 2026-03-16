@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=GT-5DDS7KTL"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', 'GT-5DDS7KTL');
+      gtag('config', 'GT-5DDS7KTL', { 'anonymize_ip': true });
       gtag('config', 'AW-17992900954');
     </script>
 
@@ -122,15 +125,10 @@
         }
         .newsletter-titulo { font-family: 'Georgia', serif; font-size: 1.6rem; margin: 0 0 10px 0; }
         .newsletter-sub { color: #666; font-size: 0.95rem; margin-bottom: 25px; font-style: italic; }
-        .form-newsletter { display: flex; justify-content: center; gap: 10px; max-width: 450px; margin: 0 auto; }
-        .form-newsletter input[type="email"] { 
-            flex: 1; 
-            padding: 12px; 
-            border: 1px solid #ccc; 
-            border-radius: 2px; 
-            font-size: 0.9rem;
-        }
-        .form-newsletter button { 
+        
+        .btn-link-substack { text-decoration: none; width: 100%; display: flex; justify-content: center; }
+        
+        .btn-substack-manual { 
             background-color: #000; 
             color: #fff; 
             padding: 12px 20px; 
@@ -140,9 +138,11 @@
             font-weight: bold; 
             text-transform: uppercase; 
             letter-spacing: 1px; 
-            transition: 0.3s; 
+            transition: 0.3s;
+            width: 100%;
+            max-width: 450px;
         }
-        .form-newsletter button:hover { background-color: #333; }
+        .btn-substack-manual:hover { background-color: #333; }
 
         .seo-support {
             max-width: 650px;
@@ -187,7 +187,6 @@
             .texto-superior { order: 2; }
             .main-photo { order: 1; transform: scale(1); }
             .texto-inferior { order: 3; }
-            .form-newsletter { flex-direction: column; }
         }
     </style>
 </head>
@@ -218,10 +217,10 @@
         <img src="foto-autor10.webp" 
          alt="Fagner Otobelli, autor do projeto literário QuimikaMente" 
          class="main-photo" 
-         width="400" 
-         height="500" 
+         width="550" 
+         height="688" 
          fetchpriority="high"
-         decoding="sync">
+         decoding="async">
 
         <div class="caixa-texto texto-inferior">
             <strong>QuimikaMente</strong> é o tubo de ensaio onde misturo fragmentos de realidade com doses generosas de ficção, observando as reações voláteis que transformam o trivial em singular.
@@ -233,8 +232,8 @@
     <p class="newsletter-sub">Quer receber os novos contos por e-mail? Assine minha newsletter.</p>
     
     <div class="form-newsletter">
-        <a href="https://fagnerotobelli.substack.com/subscribe" target="_blank" style="text-decoration: none; width: 100%; display: flex; justify-content: center;">
-            <button type="button" style="width: 100%; max-width: 450px; cursor: pointer;">Inscrever no Substack</button>
+        <a href="https://fagnerotobelli.substack.com/subscribe" target="_blank" class="btn-link-substack">
+            <button type="button" class="btn-substack-manual">Inscrever no Substack</button>
         </a>
     </div>
     
