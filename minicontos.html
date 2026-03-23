@@ -253,21 +253,41 @@
 
     <script>
         function abrirMini(event, id) {
-            const card = event.currentTarget;
-            const titulo = card.querySelector('.card-titulo').innerText;
-            document.getElementById('read-titulo').innerText = titulo;
-            document.getElementById('read-autor').innerText = card.querySelector('.card-autor').innerText;
-            document.getElementById('read-texto').innerHTML = document.getElementById('text-' + id).innerHTML;
-            document.getElementById('subject-comentario').value = "Comentário no Miniconto: " + titulo;
-            document.getElementById('modal-leitura').style.display = 'block';
-            document.body.style.overflow = 'hidden';
-            document.getElementById('modal-leitura').scrollTop = 0;
-        }
+        const card = event.currentTarget;
+        const titulo = card.querySelector('.card-titulo').innerText;
+    
+        // 1. Preenche o conteúdo do modal (o que já fazia)
+        document.getElementById('read-titulo').innerText = titulo;
+        document.getElementById('read-autor').innerText = card.querySelector('.card-autor').innerText;
+        document.getElementById('read-texto').innerHTML = document.getElementById('text-' + id).innerHTML;
+        document.getElementById('subject-comentario').value = "Comentário no Miniconto: " + titulo;
+    
+        // 2. EXIBE O MODAL
+        document.getElementById('modal-leitura').style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        document.getElementById('modal-leitura').scrollTop = 0;
+
+        // 3. ATUALIZA A URL (A MÁGICA PARA O ADS)
+        // Criamos um "slug" amigável a partir do título
+        const slug = titulo.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-');
+        window.history.pushState({ id: id }, titulo, `?lido=${slug}`);
+
+        // 4. AVISA O GOOGLE ANALYTICS/ADS QUE UMA NOVA PÁGINA FOI VISTA
+        if (typeof gtag === 'function') {
+           gtag('event', 'page_view', {
+            page_title: titulo,
+            page_path: window.location.pathname + `?lido=${slug}`
+            });
+          }
+    }
 
         function fecharMini() {
-            document.getElementById('modal-leitura').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
+    document.getElementById('modal-leitura').style.display = 'none';
+    document.body.style.overflow = 'auto';
+
+    // Volta a URL para o estado original (/minicontos)
+    window.history.pushState({}, '', window.location.pathname);
+}
 
         // Script de envio Formspree
         const form = document.getElementById("form-contato");
