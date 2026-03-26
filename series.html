@@ -68,7 +68,21 @@
         #read-texto { font-size: 20px; line-height: 1.8; margin: 40px 0; color: #333; text-align: justify; white-space: pre-wrap; padding: 0 10px; }
         #read-autor { font-size: 13px; color: #727272; text-transform: uppercase; letter-spacing: 3px; }
 
-        .citacao-direct { font-family: 'Arial', sans-serif; font-size: 18px; background: #f4f4f4; padding: 20px; border-radius: 10px; margin: 25px 0; border-left: 5px solid #000; color: #444; }
+        /* Estilo para parecer um balão de chat (Direct/WhatsApp) */
+        .citacao-direct { 
+            font-family: 'Arial', sans-serif; 
+            font-size: 18px; 
+            background: #efefef; /* Cinza clarinho do Instagram */
+            padding: 15px 20px; 
+            border-radius: 18px; /* Bordas bem arredondadas de balão */
+            margin: 20px 0; 
+            border: none; /* Remove a borda dura da esquerda */
+            color: #262626; 
+            display: inline-block; /* Faz a caixa ajustar ao tamanho do texto */
+            max-width: 85%; /* Não deixa o balão ocupar a tela inteira */
+            text-align: left;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
 
         .secao-comentarios { margin-top: 100px; border-top: 1px solid #eee; padding-top: 60px; }
         .secao-comentarios h3 { font-size: 14px; text-transform: uppercase; letter-spacing: 3px; color: #666; margin-bottom: 40px; }
