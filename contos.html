@@ -400,10 +400,12 @@ Um raio alaranjado correu, sinuoso, por entre as nuvens negras, seguido por um t
         <div id="legal-content" class="modal-legal-content" style="padding-top: 40px; font-family: sans-serif; line-height: 1.6;"></div>
     </div>
 
-    <script>
+   <script>
+        // 1. ABRIR LEITURA E ATUALIZAR URL
         function abrirLeitura(id, event) {
             const card = event.currentTarget;
             const titulo = card.querySelector('.card-titulo').innerText;
+            
             document.getElementById('read-titulo').innerText = titulo;
             document.getElementById('read-sinopse').innerText = card.querySelector('.card-sinopse').innerText;
             document.getElementById('read-texto').innerHTML = document.getElementById('text-' + id).innerHTML;
@@ -411,14 +413,39 @@ Um raio alaranjado correu, sinuoso, por entre as nuvens negras, seguido por um t
             document.getElementById('modal-leitura').style.display = 'block';
             document.body.style.overflow = 'hidden';
             document.getElementById('modal-leitura').scrollTop = 0;
+
+            // Atualiza a URL com ?lido=id
+            const novaUrl = window.location.pathname + '?lido=' + id;
+            window.history.pushState({ path: novaUrl }, '', novaUrl);
         }
 
+        // 2. FECHAR LEITURA E LIMPAR URL
         function fecharLeitura() { 
             document.getElementById('modal-leitura').style.display = 'none'; 
             document.body.style.overflow = 'auto'; 
-          }
+            
+            // Limpa a URL ao fechar
+            window.history.pushState({}, '', window.location.pathname);
+        }
 
-        // TEXTOS LEGAIS DENSOS
+        // 3. VERIFICAÇÃO AO CARREGAR (Para abrir direto via link)
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const idParaAbrir = urlParams.get('lido');
+            
+            if (idParaAbrir) {
+                const template = document.getElementById('text-' + idParaAbrir);
+                if (template) {
+                    const cardCorrespondente = document.querySelector(`[onclick*="'${idParaAbrir}'"]`);
+                    if (cardCorrespondente) {
+                        const fakeEvent = { currentTarget: cardCorrespondente };
+                        abrirLeitura(idParaAbrir, fakeEvent);
+                    }
+                }
+            }
+        }
+
+        // TEXTOS LEGAIS MANTIDOS
         const textosLegais = {
             termos: `
                 <h3 id="termos">Termos de Uso e Conduta Ética</h3>
@@ -444,18 +471,17 @@ Um raio alaranjado correu, sinuoso, por entre as nuvens negras, seguido por um t
 
         function fecharLegal() {
             document.getElementById('modal-legal').style.display = 'none';
-            // Só devolve o scroll ao corpo se o modal de leitura NÃO estiver aberto
             if (document.getElementById('modal-leitura').style.display !== 'block') {
                 document.body.style.overflow = 'auto';
             }
         }
 
-        // Script de envio do Formspree com Feedback Visual
+        // Script de envio do Formspree
         const form = document.getElementById("form-comentario");
         form.addEventListener("submit", async function(event) {
             event.preventDefault();
             const status = document.getElementById("form-status");
-            const btn = event.target.querySelector("button"); // Pega o botão de enviar
+            const btn = event.target.querySelector("button");
             
             btn.disabled = true;
             btn.innerText = "ENVIANDO...";
@@ -481,5 +507,5 @@ Um raio alaranjado correu, sinuoso, por entre as nuvens negras, seguido por um t
             });
         });
     </script>
-</body>
+    </body>
 </html>
