@@ -255,24 +255,54 @@ Obrigado, Leonardo da Vinci! Um ser que conseguiu pintar a obra de arte mais val
     </div>
 
     <script>
+        // 1. FUNÇÃO PARA ABRIR O MODAL E ATUALIZAR A URL
         function abrirMini(event, id) {
             const card = event.currentTarget;
             const titulo = card.querySelector('.card-titulo').innerText;
+            
             document.getElementById('read-titulo').innerText = titulo;
             document.getElementById('read-autor').innerText = card.querySelector('.card-autor').innerText;
             document.getElementById('read-texto').innerHTML = document.getElementById('text-' + id).innerHTML;
+            
             document.getElementById('modal-leitura').style.display = 'block';
             document.body.style.overflow = 'hidden';
             document.getElementById('modal-leitura').scrollTop = 0;
             document.getElementById('subject-comentario').value = "Comentário em Série: " + titulo;
+
+            // Atualiza a URL com ?lido=id sem recarregar a página
+            const novaUrl = window.location.pathname + '?lido=' + id;
+            window.history.pushState({ path: novaUrl }, '', novaUrl);
         }
 
+        // 2. FUNÇÃO PARA FECHAR O MODAL E LIMPAR A URL
         function fecharMini() {
             document.getElementById('modal-leitura').style.display = 'none';
             document.body.style.overflow = 'auto';
+            
+            // Remove o ?lido= da URL ao fechar
+            window.history.pushState({}, '', window.location.pathname);
         }
 
-        // TEXTOS LEGAIS DENSOS E COMPLETOS (MANTENDO INTEGRIDADE JURÍDICA E ÉTICA)
+        // 3. VERIFICAÇÃO AUTOMÁTICA AO CARREGAR A PÁGINA (Para links compartilhados)
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const idParaAbrir = urlParams.get('lido');
+            
+            if (idParaAbrir) {
+                const template = document.getElementById('text-' + idParaAbrir);
+                if (template) {
+                    // Busca o card que tem o ID correspondente e dispara o clique
+                    const cardCorrespondente = document.querySelector(`[onclick*="'${idParaAbrir}'"]`);
+                    if (cardCorrespondente) {
+                        // Criamos um evento falso para a função abrirMini processar
+                        const fakeEvent = { currentTarget: cardCorrespondente };
+                        abrirMini(fakeEvent, idParaAbrir);
+                    }
+                }
+            }
+        }
+
+        // TEXTOS LEGAIS (MANTIDOS ORIGINAIS)
         const textosLegais = {
             termos: `
                 <h2 id="termos">Termos de Uso e Conduta Ética</h2>
